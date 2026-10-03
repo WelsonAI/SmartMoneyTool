@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffd66f">
+  <meta name="description" content="Alat interaktif wang Malaysia untuk murid sekolah rendah.">
+  <title>Smart Money Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">🪙</div>
+        <div>
+          <h1 data-i18n="title">Jom Kenali Wang!</h1>
+          <p data-i18n="subtitle">Kenal, susun dan urus wang dengan bijak.</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <button id="soundToggle" class="sound-button" type="button" aria-pressed="true">
+          <span aria-hidden="true">🔊</span>
+          <span data-i18n="soundOn">Bunyi: Buka</span>
+        </button>
+        <div class="language-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="ms" class="active">BM</button>
+          <button type="button" data-lang="zh">中文</button>
+          <button type="button" data-lang="en">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="mode-tabs" aria-label="Aktiviti utama">
+      <button type="button" data-mode="money" class="active"><span>💵</span><span data-i18n="tabMoney">Kenal &amp; Bina</span></button>
+      <button type="button" data-mode="spend"><span>🛒</span><span data-i18n="tabSpend">Bayar &amp; Belanja</span></button>
+      <button type="button" data-mode="manage"><span>🐷</span><span data-i18n="tabManage">Urus Wang</span></button>
+      <button type="button" data-mode="finance"><span>🌱</span><span data-i18n="tabFinance">Celik Kewangan</span></button>
+    </nav>
+
+    <main class="workspace">
+      <aside class="control-card">
+        <div class="eyebrow" data-i18n="chooseActivity">Pilih aktiviti</div>
+        <h2 id="sideTitle">Kenal &amp; Bina</h2>
+        <div class="divider"></div>
+
+        <label for="gradeSelect" data-i18n="grade">Tahun</label>
+        <select id="gradeSelect">
+          <option value="2">Tahun 2</option>
+          <option value="3">Tahun 3</option>
+          <option value="4">Tahun 4</option>
+          <option value="5">Tahun 5</option>
+          <option value="6">Tahun 6</option>
+        </select>
+
+        <label for="activitySelect" data-i18n="activity">Aktiviti</label>
+        <select id="activitySelect"></select>
+
+        <div id="scopeNote" class="scope-note"></div>
+        <div id="tipBox" class="tip-box"><span aria-hidden="true">☝️</span><span></span></div>
+
+        <div class="side-spacer"></div>
+        <button id="teacherButton" class="teacher-button" type="button">👩‍🏫 <span data-i18n="teacherMode">Soalan guru</span></button>
+        <button id="newQuestionButton" class="secondary-button" type="button">↻ <span data-i18n="newQuestion">Soalan baharu</span></button>
+      </aside>
+
+      <section class="activity-card" aria-live="polite">
+        <div class="activity-heading">
+          <div>
+            <div class="eyebrow" data-i18n="tryIt">Mari cuba!</div>
+            <h2 id="activityTitle"></h2>
+          </div>
+          <div class="heading-actions">
+            <button id="listenButton" class="listen-button" type="button">🔊 <span data-i18n="listen">Dengar</span></button>
+            <span id="gradeBadge" class="grade-badge">T2</span>
+          </div>
+        </div>
+
+        <div id="challengePanel" class="challenge-panel"></div>
+        <div id="visualStage" class="visual-stage"></div>
+        <div id="answerArea" class="answer-area"></div>
+
+        <div class="action-row">
+          <button id="resetButton" class="secondary-button compact" type="button">↻ <span data-i18n="reset">Mula semula</span></button>
+          <button id="checkButton" class="primary-button compact" type="button">✓ <span data-i18n="check">Semak</span></button>
+          <button id="nextButton" class="primary-button compact hidden" type="button">→ <span data-i18n="next">Seterusnya</span></button>
+        </div>
+        <div id="feedback" class="feedback neutral" role="status"></div>
+      </section>
+    </main>
+
+    <div class="steps" aria-label="Langkah aktiviti">
+      <div><b>1</b><span data-i18n="stepObserve">Perhatikan</span></div>
+      <div><b>2</b><span data-i18n="stepTry">Cuba jawapan</span></div>
+      <div><b>3</b><span data-i18n="stepCheck">Semak &amp; faham</span></div>
+    </div>
+  </div>
+
+  <footer class="forest-footer" aria-hidden="true"><img src="assets/forest-footer.png" alt=""></footer>
+
+  <dialog id="teacherDialog" class="teacher-dialog">
+    <form method="dialog" id="teacherForm">
+      <button class="dialog-close" value="cancel" aria-label="Close" type="submit">×</button>
+      <div class="eyebrow" data-i18n="teacherMode">Soalan guru</div>
+      <h2 data-i18n="customQuestion">Bina soalan sendiri</h2>
+      <div class="divider"></div>
+      <p data-i18n="customHelp">Masukkan nilai untuk aktiviti mengenal, membina atau membayar.</p>
+      <label for="teacherActivity" data-i18n="activity">Aktiviti</label>
+      <select id="teacherActivity">
+        <option value="identify" data-i18n="actIdentify">Kenal wang</option>
+        <option value="compose" data-i18n="actCompose">Bina jumlah</option>
+        <option value="pay" data-i18n="actPay">Bayar tepat</option>
+      </select>
+      <div class="money-inputs">
+        <div><label for="teacherRinggit" data-i18n="ringgit">Ringgit</label><input id="teacherRinggit" type="number" min="0" max="500" value="12"></div>
+        <div><label for="teacherSen" data-i18n="sen">Sen</label><input id="teacherSen" type="number" min="0" max="95" step="5" value="50"></div>
+      </div>
+      <div id="teacherPreview" class="teacher-preview">RM12.50</div>
+      <p id="teacherError" class="dialog-error"></p>
+      <div class="dialog-actions">
+        <button type="submit" value="cancel" class="secondary-button" data-i18n="cancel">Batal</button>
+        <button type="button" id="useTeacherQuestion" class="primary-button">✓ <span data-i18n="useQuestion">Gunakan soalan</span></button>
+      </div>
+    </form>
+  </dialog>
+
+  <template id="moneyCardTemplate">
+    <button type="button" class="money-card">
+      <span class="money-picture"><img alt=""><span class="contoh">CONTOH</span></span>
+      <span class="money-label"></span>
+    </button>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
