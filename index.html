@@ -64,8 +64,8 @@
         <div id="tipBox" class="tip-box"><span aria-hidden="true">☝️</span><span></span></div>
 
         <div class="side-spacer"></div>
-        <button id="teacherButton" class="teacher-button" type="button">👩‍🏫 <span data-i18n="teacherMode">Soalan guru</span></button>
-        <button id="newQuestionButton" class="secondary-button" type="button">↻ <span data-i18n="newQuestion">Soalan baharu</span></button>
+        <button id="teacherButton" class="teacher-button" type="button">👩‍🏫 <span data-i18n="teacherMode">Tetapan guru</span></button>
+        <button id="resetToolButton" class="secondary-button" type="button">↻ <span data-i18n="resetTool">Tetapkan semula alat</span></button>
       </aside>
 
       <section class="activity-card" aria-live="polite">
@@ -82,21 +82,15 @@
 
         <div id="challengePanel" class="challenge-panel"></div>
         <div id="visualStage" class="visual-stage"></div>
-        <div id="answerArea" class="answer-area"></div>
-
-        <div class="action-row">
-          <button id="resetButton" class="secondary-button compact" type="button">↻ <span data-i18n="reset">Mula semula</span></button>
-          <button id="checkButton" class="primary-button compact" type="button">✓ <span data-i18n="check">Semak</span></button>
-          <button id="nextButton" class="primary-button compact hidden" type="button">→ <span data-i18n="next">Seterusnya</span></button>
-        </div>
-        <div id="feedback" class="feedback neutral" role="status"></div>
+        <div id="controlArea" class="control-area"></div>
+        <div id="liveSummary" class="feedback neutral" role="status"></div>
       </section>
     </main>
 
     <div class="steps" aria-label="Langkah aktiviti">
       <div><b>1</b><span data-i18n="stepObserve">Perhatikan</span></div>
-      <div><b>2</b><span data-i18n="stepTry">Cuba jawapan</span></div>
-      <div><b>3</b><span data-i18n="stepCheck">Semak &amp; faham</span></div>
+      <div><b>2</b><span data-i18n="stepTry">Gerakkan &amp; cuba</span></div>
+      <div><b>3</b><span data-i18n="stepCheck">Lihat perubahan</span></div>
     </div>
   </div>
 
@@ -105,25 +99,23 @@
   <dialog id="teacherDialog" class="teacher-dialog">
     <form method="dialog" id="teacherForm">
       <button class="dialog-close" value="cancel" aria-label="Close" type="submit">×</button>
-      <div class="eyebrow" data-i18n="teacherMode">Soalan guru</div>
-      <h2 data-i18n="customQuestion">Bina soalan sendiri</h2>
+      <div class="eyebrow" data-i18n="teacherMode">Tetapan guru</div>
+      <h2 data-i18n="customSettings">Tetapkan nilai demonstrasi</h2>
       <div class="divider"></div>
-      <p data-i18n="customHelp">Masukkan nilai untuk aktiviti mengenal, membina atau membayar.</p>
-      <label for="teacherActivity" data-i18n="activity">Aktiviti</label>
-      <select id="teacherActivity">
-        <option value="identify" data-i18n="actIdentify">Kenal wang</option>
-        <option value="compose" data-i18n="actCompose">Bina jumlah</option>
-        <option value="pay" data-i18n="actPay">Bayar tepat</option>
-      </select>
+      <p data-i18n="customHelp">Gunakan nilai ini dalam alat semasa untuk demonstrasi kelas.</p>
       <div class="money-inputs">
         <div><label for="teacherRinggit" data-i18n="ringgit">Ringgit</label><input id="teacherRinggit" type="number" min="0" max="500" value="12"></div>
         <div><label for="teacherSen" data-i18n="sen">Sen</label><input id="teacherSen" type="number" min="0" max="95" step="5" value="50"></div>
       </div>
-      <div id="teacherPreview" class="teacher-preview">RM12.50</div>
+      <div class="money-inputs">
+        <div><label for="teacherRate" data-i18n="rate">Kadar (%)</label><input id="teacherRate" type="number" min="0" max="30" step="0.5" value="5"></div>
+        <div><label for="teacherPeriod" data-i18n="period">Tempoh</label><input id="teacherPeriod" type="number" min="1" max="20" value="5"></div>
+      </div>
+      <div id="teacherPreview" class="teacher-preview">RM12.50 · 5% · 5</div>
       <p id="teacherError" class="dialog-error"></p>
       <div class="dialog-actions">
         <button type="submit" value="cancel" class="secondary-button" data-i18n="cancel">Batal</button>
-        <button type="button" id="useTeacherQuestion" class="primary-button">✓ <span data-i18n="useQuestion">Gunakan soalan</span></button>
+        <button type="button" id="useTeacherSettings" class="primary-button">✓ <span data-i18n="useSettings">Gunakan tetapan</span></button>
       </div>
     </form>
   </dialog>

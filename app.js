@@ -3,75 +3,57 @@
 const ml = (ms, zh, en) => ({ ms, zh, en });
 
 const I18N = {
-  title: ml("Jom Kenali Wang!", "一起来认识金钱！", "Let's Explore Money!"),
-  subtitle: ml("Kenal, susun dan urus wang dengan bijak.", "认识、组合，并学习明智理财。", "Recognise, compose and manage money wisely."),
+  title: ml("Jom Teroka Wang!", "一起来探索金钱！", "Let's Explore Money!"),
+  subtitle: ml("Alat manipulatif untuk lihat, cuba dan faham.", "动手操作、观察变化、理解理财。", "Hands-on tools to try, observe and understand."),
   soundOn: ml("Bunyi: Buka", "声音：开", "Sound: On"),
   soundOff: ml("Bunyi: Tutup", "声音：关", "Sound: Off"),
   tabMoney: ml("Kenal & Bina", "认识与组合", "Recognise & Build"),
   tabSpend: ml("Bayar & Belanja", "付款与消费", "Pay & Spend"),
   tabManage: ml("Urus Wang", "管理金钱", "Manage Money"),
   tabFinance: ml("Celik Kewangan", "金融常识", "Financial Skills"),
-  chooseActivity: ml("Pilih aktiviti", "选择活动", "Choose an activity"),
+  chooseActivity: ml("Pilih alat", "选择工具", "Choose a tool"),
   grade: ml("Tahun", "年级", "Year"),
-  activity: ml("Aktiviti", "活动", "Activity"),
-  teacherMode: ml("Soalan guru", "老师出题", "Teacher question"),
-  newQuestion: ml("Soalan baharu", "换一道题", "New question"),
-  tryIt: ml("Mari cuba!", "试试看！", "Have a go!"),
-  listen: ml("Dengar", "听题目", "Listen"),
-  reset: ml("Mula semula", "重新开始", "Start again"),
-  check: ml("Semak", "检查", "Check"),
-  next: ml("Seterusnya", "下一题", "Next"),
+  activity: ml("Alat", "工具", "Tool"),
+  teacherMode: ml("Tetapan guru", "老师设置", "Teacher settings"),
+  resetTool: ml("Tetapkan semula alat", "重置工具", "Reset tool"),
+  tryIt: ml("Mari cuba!", "动手试试！", "Try it!"),
+  listen: ml("Dengar", "聆听", "Listen"),
   stepObserve: ml("Perhatikan", "仔细观察", "Observe"),
-  stepTry: ml("Cuba jawapan", "尝试作答", "Try an answer"),
-  stepCheck: ml("Semak & faham", "检查并理解", "Check & understand"),
-  customQuestion: ml("Bina soalan sendiri", "自订题目", "Create a question"),
-  customHelp: ml("Masukkan nilai untuk aktiviti mengenal, membina atau membayar.", "输入金额，制作认钱、组合金额或付款题目。", "Enter an amount for recognising, composing or paying."),
+  stepTry: ml("Gerakkan & cuba", "移动并尝试", "Move & try"),
+  stepCheck: ml("Lihat perubahan", "观察变化", "See what changes"),
+  customSettings: ml("Tetapkan nilai demonstrasi", "设置课堂示范数值", "Set demonstration values"),
+  customHelp: ml("Gunakan nilai ini dalam alat semasa untuk demonstrasi kelas.", "把这些数值应用到当前工具，方便课堂示范。", "Apply these values to the current tool for a class demonstration."),
   ringgit: ml("Ringgit", "令吉", "Ringgit"),
   sen: ml("Sen", "仙", "Sen"),
+  rate: ml("Kadar (%)", "比率（%）", "Rate (%)"),
+  period: ml("Tempoh", "期数", "Periods"),
   cancel: ml("Batal", "取消", "Cancel"),
-  useQuestion: ml("Gunakan soalan", "使用这道题", "Use this question"),
-  actIdentify: ml("Kenal wang", "认识钱币", "Recognise money"),
-  actCompose: ml("Bina jumlah", "组合金额", "Build an amount"),
-  actPay: ml("Bayar tepat", "准确付款", "Pay exactly"),
-  neutral: ml("Perhatikan bahan, kemudian pilih jawapan.", "先观察，再选择答案。", "Observe, then choose your answer."),
-  chooseFirst: ml("Pilih jawapan dahulu.", "请先选择答案。", "Choose an answer first."),
-  addMoney: ml("Klik wang untuk memasukkannya ke dalam dompet.", "点击钱币，把它放进钱包。", "Click money to add it to the wallet."),
-  correct: ml("Bagus! Jawapan kamu betul.", "答对了！做得好。", "Well done! Your answer is correct."),
-  wrong: ml("Belum tepat. Cuba perhatikan sekali lagi.", "还不正确，再仔细观察一次。", "Not quite. Look carefully and try again."),
-  wallet: ml("Jumlah dalam dompet", "钱包里的总额", "Total in wallet"),
-  emptyWallet: ml("Dompet masih kosong. Pilih wang di bawah.", "钱包还是空的，请从下方选择钱币。", "The wallet is empty. Choose money below."),
-  moneyChoices: ml("Wang Malaysia", "马来西亚钱币", "Malaysian money"),
-  removeHint: ml("Klik wang di dalam dompet untuk mengeluarkannya.", "点击钱包里的钱币可以移除。", "Click money in the wallet to remove it."),
-  officialSource: ml("Imej: Bank Negara Malaysia", "图片：马来西亚国家银行", "Images: Bank Negara Malaysia"),
-  target: ml("Jumlah sasaran", "目标金额", "Target amount"),
-  notAvailable: ml("Aktiviti ini bermula pada tahun lain. Pilih tab yang tersedia.", "这个年级还没有学习这项内容，请选择可用的活动。", "This topic starts in another year. Choose an available tab."),
-  teacherInvalid: ml("Untuk kenal wang, nilai mesti sama dengan satu wang kertas atau syiling. Nilai sen mestilah gandaan 5.", "认钱题必须是单张纸币或单枚硬币的面额；仙必须是 5 的倍数。", "For recognition, use one banknote or coin denomination. Sen must be a multiple of 5."),
-  teacherRange: ml("Jumlah mesti antara 5 sen hingga RM500.00.", "金额必须介于 5 仙至 RM500.00。", "The amount must be between 5 sen and RM500.00."),
+  useSettings: ml("Gunakan tetapan", "使用设置", "Use settings"),
 };
 
 const ACTIVITIES = {
-  identify: { label: ml("Kenal wang Malaysia", "认识马来西亚钱币", "Recognise Malaysian money"), scope: ml("Tahun 2 · Wang hingga RM100", "二年级 · 金额至 RM100", "Year 2 · Money up to RM100"), tip: ml("Perhatikan nombor dan unit pada wang.", "观察钱币上的数字和单位。", "Look at the number and unit on the money.") },
-  compose: { label: ml("Bina jumlah wang", "组合金额", "Build an amount"), scope: ml("Tahun 2–3 · Nilai dan gabungan wang", "二至三年级 · 金额与钱币组合", "Years 2–3 · Values and money combinations"), tip: ml("Gunakan beberapa wang untuk membina jumlah sasaran.", "用几张纸币或硬币组成目标金额。", "Use several notes or coins to build the target." ) },
-  equivalent: { label: ml("Gabungan sama nilai", "等值组合", "Equivalent combinations"), scope: ml("Tahun 2–3 · Nilai yang sama", "二至三年级 · 相同币值", "Years 2–3 · Equal values"), tip: ml("Wang yang berlainan boleh mempunyai jumlah yang sama.", "不同的钱币组合可以有相同总值。", "Different combinations can have the same total." ) },
-  foreign: { label: ml("Wang negara lain", "外国货币", "Foreign currencies"), scope: ml("Tahun 3–4 · Nama mata wang", "三至四年级 · 货币名称", "Years 3–4 · Currency names"), tip: ml("Nilai nombor yang sama tidak semestinya bernilai sama.", "相同的数字不代表相同的价值。", "The same number does not always mean the same value." ) },
-  pay: { label: ml("Bayar dengan tepat", "准确付款", "Pay exactly"), scope: ml("Tahun 2–3 · Situasi harian", "二至三年级 · 日常付款情境", "Years 2–3 · Everyday payment"), tip: ml("Bina harga tepat menggunakan wang Malaysia.", "用马来西亚钱币组成准确价格。", "Make the exact price using Malaysian money." ) },
-  methods: { label: ml("Cara pembayaran", "付款方式", "Payment methods"), scope: ml("Tahun 3–4 · Tunai dan tanpa tunai", "三至四年级 · 现金与无现金付款", "Years 3–4 · Cash and cashless payments"), tip: ml("Pilih alat pembayaran yang sesuai dengan situasi.", "根据情境选择适合的付款方式。", "Choose a suitable payment method for the situation." ) },
-  receipt: { label: ml("Kenal dokumen urus niaga", "认识交易文件", "Transaction documents"), scope: ml("Tahun 4–6 · Resit, bil dan invois", "四至六年级 · 收据、账单与发票", "Years 4–6 · Receipt, bill and invoice"), tip: ml("Cari petunjuk seperti sudah dibayar atau perlu dibayar.", "留意“已付款”或“待付款”等线索。", "Look for clues such as paid or amount due." ) },
-  needWant: { label: ml("Keperluan atau kehendak", "需要还是想要", "Needs or wants"), scope: ml("Tahun 2–3 · Pengurusan wang", "二至三年级 · 金钱管理", "Years 2–3 · Money management"), tip: ml("Keperluan didahulukan sebelum kehendak.", "先满足需要，再考虑想要。", "Needs come before wants." ) },
-  savingPlan: { label: ml("Simpan untuk matlamat", "为目标储蓄", "Save for a goal"), scope: ml("Tahun 2 · Simpanan terancang", "二年级 · 有计划地储蓄", "Year 2 · Planned saving"), tip: ml("Simpan sedikit demi sedikit sehingga cukup.", "一点一点储蓄，直到达成目标。", "Save a little at a time until you reach the goal." ) },
-  budget: { label: ml("Pilih rancangan wang", "选择金钱计划", "Choose a money plan"), scope: ml("Tahun 3–5 · Bajet dan keputusan", "三至五年级 · 预算与决定", "Years 3–5 · Budget and decisions"), tip: ml("Utamakan keperluan, simpanan dan perbelanjaan yang mampu.", "优先考虑需要、储蓄和负担得起的开销。", "Prioritise needs, savings and affordable spending." ) },
-  wiseChoice: { label: ml("Keputusan kewangan bijak", "明智的理财决定", "Wise financial decisions"), scope: ml("Tahun 4 · Merancang kewangan", "四年级 · 财务规划", "Year 4 · Financial planning"), tip: ml("Bandingkan pilihan sebelum berbelanja.", "消费前先比较不同选择。", "Compare choices before spending." ) },
-  cashless: { label: ml("Alat pembayaran tanpa tunai", "无现金付款工具", "Cashless payment tools"), scope: ml("Tahun 3 · Kad dan e-dompet", "三年级 · 银行卡与电子钱包", "Year 3 · Cards and e-wallets"), tip: ml("Kad dan e-dompet bukan wang percuma.", "银行卡和电子钱包里的钱并不是免费的。", "Cards and e-wallets are not free money." ) },
-  cashCredit: { label: ml("Tunai atau kredit", "现金还是信贷", "Cash or credit"), scope: ml("Tahun 4–5 · Kaedah pembelian", "四至五年级 · 购买方式", "Years 4–5 · Ways to buy"), tip: ml("Kredit ialah hutang yang perlu dibayar semula.", "信贷是日后必须偿还的债务。", "Credit is debt that must be repaid." ) },
-  saveInvest: { label: ml("Simpanan atau pelaburan", "储蓄还是投资", "Saving or investment"), scope: ml("Tahun 5 · Risiko dan pulangan", "五年级 · 风险与回报", "Year 5 · Risk and return"), tip: ml("Simpanan lebih mudah digunakan; pelaburan mempunyai risiko.", "储蓄较容易取用；投资带有风险。", "Savings are easier to access; investments carry risk." ) },
-  simpleCompound: { label: ml("Faedah mudah dan kompaun", "单利与复利", "Simple and compound interest"), scope: ml("Tahun 5 · Pertumbuhan simpanan", "五年级 · 储蓄增长", "Year 5 · Growth of savings"), tip: ml("Faedah kompaun dikira atas jumlah yang semakin bertambah.", "复利按照不断增加的总额计算。", "Compound interest is based on a growing total." ) },
-  creditDebt: { label: ml("Kredit dan hutang", "信贷与债务", "Credit and debt"), scope: ml("Tahun 5 · Tanggungjawab kewangan", "五年级 · 财务责任", "Year 5 · Financial responsibility"), tip: ml("Pinjaman perlu dibayar mengikut syarat yang dipersetujui.", "贷款必须按照同意的条件偿还。", "Loans must be repaid under the agreed terms." ) },
-  financialDecision: { label: ml("Buat pilihan kewangan", "作出财务选择", "Make financial choices"), scope: ml("Tahun 6 · Keputusan bertanggungjawab", "六年级 · 负责任的决定", "Year 6 · Responsible decisions"), tip: ml("Semak keperluan, kemampuan dan risiko sebelum memilih.", "选择前检查需要、负担能力和风险。", "Check needs, affordability and risk before choosing." ) },
-  profitLoss: { label: ml("Untung atau rugi", "盈利还是亏损", "Profit or loss"), scope: ml("Tahun 6 · Harga kos dan harga jual", "六年级 · 成本价与售价", "Year 6 · Cost and selling prices"), tip: ml("Bandingkan harga jual dengan harga kos.", "比较售价与成本价。", "Compare the selling price with the cost price." ) },
-  discount: { label: ml("Diskaun, rebat dan baucar", "折扣、回扣与礼券", "Discount, rebate and voucher"), scope: ml("Tahun 6 · Pembelian bijak", "六年级 · 精明消费", "Year 6 · Smart buying"), tip: ml("Kenal pasti cara setiap tawaran mengurangkan bayaran.", "辨认每种优惠如何减少付款。", "Identify how each offer reduces payment." ) },
-  documents: { label: ml("Bil, invois dan resit", "账单、发票与收据", "Bill, invoice and receipt"), scope: ml("Tahun 6 · Dokumen kewangan", "六年级 · 财务文件", "Year 6 · Financial documents"), tip: ml("Dokumen yang berbeza mempunyai tujuan yang berbeza.", "不同文件有不同用途。", "Different documents serve different purposes." ) },
-  assetsLiabilities: { label: ml("Aset atau liabiliti", "资产还是负债", "Assets or liabilities"), scope: ml("Tahun 6 · Kedudukan kewangan", "六年级 · 财务状况", "Year 6 · Financial position"), tip: ml("Aset dimiliki; liabiliti ialah tanggungan yang perlu dibayar.", "资产是拥有的东西；负债是需要偿还的责任。", "Assets are owned; liabilities are obligations to repay." ) },
-  insurance: { label: ml("Insurans dan takaful", "保险与伊斯兰保险", "Insurance and takaful"), scope: ml("Tahun 6 · Perlindungan kewangan", "六年级 · 财务保障", "Year 6 · Financial protection"), tip: ml("Perlindungan membantu menghadapi kerugian tertentu.", "保障能帮助应对特定损失。", "Protection helps manage certain losses." ) },
+  identify: { label: ml("Teroka wang Malaysia", "探索马来西亚钱币", "Explore Malaysian money"), scope: ml("Tahun 2 · Wang hingga RM100", "二年级 · 金额至 RM100", "Year 2 · Money up to RM100"), tip: ml("Sentuh setiap wang untuk melihat nilainya dengan dekat.", "点击每种钱币，近距离观察它的面额。", "Tap each note or coin to inspect its value.") },
+  compose: { label: ml("Bina jumlah wang", "组合金额", "Build an amount"), scope: ml("Tahun 2–3 · Gabungan wang", "二至三年级 · 钱币组合", "Years 2–3 · Money combinations"), tip: ml("Tambah dan keluarkan wang; jumlah berubah serta-merta.", "加入或移除钱币，总额会即时变化。", "Add and remove money; the total changes instantly.") },
+  equivalent: { label: ml("Bina nilai setara", "组合等值金额", "Build an equivalent value"), scope: ml("Tahun 2–3 · Nilai yang sama", "二至三年级 · 相同币值", "Years 2–3 · Equal values"), tip: ml("Cari beberapa gabungan berlainan yang bernilai sama.", "尝试用不同钱币组成相同金额。", "Make the same value in several different ways.") },
+  foreign: { label: ml("Penukar mata wang", "货币换算模拟器", "Currency converter"), scope: ml("Tahun 3–4 · Mata wang serantau", "三至四年级 · 区域货币", "Years 3–4 · Regional currencies"), tip: ml("Ubah jumlah dan mata wang untuk melihat anggaran pertukaran.", "调整金额和货币，观察模拟换算。", "Change the amount and currency to see a sample conversion.") },
+  pay: { label: ml("Kaunter bayar tepat", "准确付款柜台", "Exact-payment counter"), scope: ml("Tahun 2–3 · Situasi harian", "二至三年级 · 日常付款", "Years 2–3 · Everyday payment"), tip: ml("Pilih wang sebenar untuk membayar barang pada tanda harga.", "选择真实钱币，支付价格牌上的金额。", "Choose real money to pay the price on the tag.") },
+  methods: { label: ml("Simulator cara pembayaran", "付款方式模拟器", "Payment-method simulator"), scope: ml("Tahun 3–4 · Tunai dan tanpa tunai", "三至四年级 · 现金与无现金", "Years 3–4 · Cash and cashless"), tip: ml("Cuba tunai, kad, QR, pindahan dan cek di kaunter.", "在柜台模拟现金、银行卡、QR、转账和支票。", "Try cash, card, QR, transfer and cheque at the counter.") },
+  receipt: { label: ml("Studio resit dan bil", "收据与账单工作室", "Receipt and bill studio"), scope: ml("Tahun 4–5 · Dokumen urus niaga", "四至五年级 · 交易文件", "Years 4–5 · Transaction documents"), tip: ml("Tukar butiran dan lihat dokumen dikemas kini.", "修改资料，观察文件即时更新。", "Change the details and watch the document update.") },
+  needWant: { label: ml("Papan keperluan & kehendak", "需要与想要分类板", "Needs & wants board"), scope: ml("Tahun 2–3 · Pengurusan wang", "二至三年级 · 金钱管理", "Years 2–3 · Money management"), tip: ml("Pindahkan kad ke ruang pilihan dan bincangkan sebabnya.", "把卡片移到你选择的区域，并讨论原因。", "Move cards into either space and discuss your reasons.") },
+  savingPlan: { label: ml("Perancang matlamat simpanan", "储蓄目标规划器", "Savings-goal planner"), scope: ml("Tahun 2 · Simpanan terancang", "二年级 · 有计划地储蓄", "Year 2 · Planned saving"), tip: ml("Laraskan sasaran dan simpanan mingguan.", "调整目标和每周储蓄额。", "Adjust the goal and weekly saving amount.") },
+  budget: { label: ml("Papan agihan bajet", "预算分配板", "Budget allocation board"), scope: ml("Tahun 3–5 · Agih dan imbang", "三至五年级 · 分配与平衡", "Years 3–5 · Allocate and balance"), tip: ml("Agihkan pendapatan; perhatikan baki atau lebihan belanja.", "分配收入，观察余额或超支。", "Allocate income and watch the balance or overspend.") },
+  wiseChoice: { label: ml("Meja banding barang", "商品比较台", "Product comparison desk"), scope: ml("Tahun 4 · Harga, kualiti dan jaminan", "四年级 · 价格、品质与保修", "Year 4 · Price, quality and warranty"), tip: ml("Laraskan ciri dua barang untuk membandingkan nilai.", "调整两件商品的条件，比较价值。", "Adjust two products' features to compare value.") },
+  cashless: { label: ml("Dompet digital & kad", "电子钱包与银行卡", "Digital wallet & card"), scope: ml("Tahun 3 · Bayaran tanpa tunai", "三年级 · 无现金付款", "Year 3 · Cashless payment"), tip: ml("Tambah nilai dan buat bayaran untuk melihat baki berubah.", "充值并付款，观察余额变化。", "Top up and pay to see the balance change.") },
+  cashCredit: { label: ml("Pembelian tunai atau kredit", "现金与信贷购买模拟器", "Cash or credit purchase"), scope: ml("Tahun 4–5 · Kos pembelian", "四至五年级 · 购买成本", "Years 4–5 · Purchase cost"), tip: ml("Ubah deposit, kadar dan tempoh untuk melihat jumlah kos.", "调整首付、利率和期限，观察总成本。", "Change deposit, rate and term to see the total cost.") },
+  saveInvest: { label: ml("Pembahagi simpanan & pelaburan", "储蓄与投资分配器", "Saving & investment splitter"), scope: ml("Tahun 5 · Risiko dan pulangan", "五年级 · 风险与回报", "Year 5 · Risk and return"), tip: ml("Ubah agihan dan senario pulangan.", "调整资金分配和回报情境。", "Change the split and return scenario.") },
+  simpleCompound: { label: ml("Makmal faedah", "利息实验室", "Interest lab"), scope: ml("Tahun 5 · Faedah mudah dan kompaun", "五年级 · 单利与复利", "Year 5 · Simple and compound interest"), tip: ml("Laraskan modal, kadar dan tempoh; bandingkan pertumbuhan.", "调整本金、利率和时间，比较增长。", "Adjust principal, rate and time; compare growth.") },
+  creditDebt: { label: ml("Simulator pembayaran hutang", "债务偿还模拟器", "Debt repayment simulator"), scope: ml("Tahun 5 · Bayaran balik", "五年级 · 偿还计划", "Year 5 · Repayment"), tip: ml("Ubah pinjaman dan tempoh untuk melihat ansuran.", "调整贷款与期限，观察每月还款。", "Change the loan and term to see the instalment.") },
+  financialDecision: { label: ml("Pemeriksa kemampuan", "负担能力检查器", "Affordability checker"), scope: ml("Tahun 6 · Keputusan bertanggungjawab", "六年级 · 负责任的决定", "Year 6 · Responsible decisions"), tip: ml("Masukkan pendapatan, komitmen dan pembelian yang dirancang.", "输入收入、固定开销和计划购买金额。", "Enter income, commitments and a planned purchase.") },
+  profitLoss: { label: ml("Kalkulator untung rugi", "盈亏计算器", "Profit and loss calculator"), scope: ml("Tahun 6 · Kos dan jualan", "六年级 · 成本与销售", "Year 6 · Cost and sales"), tip: ml("Ubah kos, harga jual dan kuantiti.", "调整成本、售价和数量。", "Change cost, selling price and quantity.") },
+  discount: { label: ml("Mesin diskaun & baucar", "折扣与礼券计算器", "Discount & voucher machine"), scope: ml("Tahun 6 · Pembelian bijak", "六年级 · 精明消费", "Year 6 · Smart buying"), tip: ml("Gabungkan diskaun, baucar dan rebat untuk melihat harga akhir.", "组合折扣、礼券和回扣，观察最终价格。", "Combine a discount, voucher and rebate to see the final price.") },
+  documents: { label: ml("Pembina dokumen kewangan", "财务文件生成器", "Financial document builder"), scope: ml("Tahun 6 · Bil, invois dan resit", "六年级 · 账单、发票与收据", "Year 6 · Bills, invoices and receipts"), tip: ml("Tukar jenis dokumen dan butiran transaksi.", "切换文件类型并修改交易资料。", "Switch document type and edit the transaction details.") },
+  assetsLiabilities: { label: ml("Pembina kedudukan kewangan", "财务状况构建器", "Financial position builder"), scope: ml("Tahun 6 · Aset dan liabiliti", "六年级 · 资产与负债", "Year 6 · Assets and liabilities"), tip: ml("Laraskan aset dan hutang untuk melihat nilai bersih.", "调整资产与债务，观察净值。", "Adjust assets and debts to see net worth.") },
+  insurance: { label: ml("Simulator perlindungan", "保障模拟器", "Protection simulator"), scope: ml("Tahun 6 · Insurans dan takaful", "六年级 · 保险与伊斯兰保险", "Year 6 · Insurance and takaful"), tip: ml("Ubah kerugian, perlindungan dan deduktibel.", "调整损失、保额和自付额。", "Change the loss, coverage and deductible.") },
 };
 
 const GRADE_MODES = {
@@ -82,12 +64,7 @@ const GRADE_MODES = {
   6: { money: [], spend: ["discount", "documents"], manage: ["financialDecision"], finance: ["profitLoss", "assetsLiabilities", "insurance"] },
 };
 
-const MODE_LABELS = {
-  money: I18N.tabMoney,
-  spend: I18N.tabSpend,
-  manage: I18N.tabManage,
-  finance: I18N.tabFinance,
-};
+const MODE_LABELS = { money: I18N.tabMoney, spend: I18N.tabSpend, manage: I18N.tabManage, finance: I18N.tabFinance };
 
 const MONEY = [
   { id: "rm100", value: 10000, label: "RM100", kind: "note", image: "assets/rm100.png" },
@@ -106,343 +83,380 @@ const els = {
   grade: document.querySelector("#gradeSelect"), activity: document.querySelector("#activitySelect"),
   sideTitle: document.querySelector("#sideTitle"), scope: document.querySelector("#scopeNote"), tip: document.querySelector("#tipBox span:last-child"),
   title: document.querySelector("#activityTitle"), badge: document.querySelector("#gradeBadge"), challenge: document.querySelector("#challengePanel"),
-  stage: document.querySelector("#visualStage"), answers: document.querySelector("#answerArea"), feedback: document.querySelector("#feedback"),
-  check: document.querySelector("#checkButton"), next: document.querySelector("#nextButton"), reset: document.querySelector("#resetButton"),
-  listen: document.querySelector("#listenButton"), sound: document.querySelector("#soundToggle"), newQuestion: document.querySelector("#newQuestionButton"),
-  teacher: document.querySelector("#teacherButton"), dialog: document.querySelector("#teacherDialog"), teacherActivity: document.querySelector("#teacherActivity"),
-  teacherRinggit: document.querySelector("#teacherRinggit"), teacherSen: document.querySelector("#teacherSen"), teacherPreview: document.querySelector("#teacherPreview"),
-  teacherError: document.querySelector("#teacherError"), useTeacher: document.querySelector("#useTeacherQuestion"),
+  stage: document.querySelector("#visualStage"), controls: document.querySelector("#controlArea"), summary: document.querySelector("#liveSummary"),
+  listen: document.querySelector("#listenButton"), sound: document.querySelector("#soundToggle"), reset: document.querySelector("#resetToolButton"),
+  teacher: document.querySelector("#teacherButton"), dialog: document.querySelector("#teacherDialog"), ringgit: document.querySelector("#teacherRinggit"),
+  sen: document.querySelector("#teacherSen"), rate: document.querySelector("#teacherRate"), period: document.querySelector("#teacherPeriod"),
+  preview: document.querySelector("#teacherPreview"), teacherError: document.querySelector("#teacherError"), useSettings: document.querySelector("#useTeacherSettings"),
 };
 
-const state = { lang: "ms", grade: 2, mode: "money", activity: "identify", question: null, selected: null, wallet: [], answered: false, sound: true, custom: null };
+const state = { lang: "ms", grade: 2, mode: "money", activity: "identify", sound: true, teacher: { amount: 1250, rate: 5, period: 5 }, tool: null };
 let audioContext;
 
-function tr(key) { const item = I18N[key]; return item ? item[state.lang] : key; }
+function tr(key) { return I18N[key][state.lang]; }
 function loc(value) { return typeof value === "string" ? value : value[state.lang]; }
-function sample(array) { return array[Math.floor(Math.random() * array.length)]; }
-function shuffle(array) { return [...array].sort(() => Math.random() - .5); }
-function formatMoney(sen) { return `RM${(sen / 100).toFixed(2)}`; }
+function money(sen) { return `RM${(Number(sen) / 100).toFixed(2)}`; }
 function gradeName(n) { return state.lang === "ms" ? `Tahun ${n}` : state.lang === "zh" ? `${n}年级` : `Year ${n}`; }
+function clamp(value, min, max) { return Math.min(max, Math.max(min, Number(value) || 0)); }
 
-function beep(type = "click") {
+function beep(type = "tap") {
   if (!state.sound) return;
   audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
   const now = audioContext.currentTime;
-  const notes = type === "correct" ? [[523,.08],[659,.08],[784,.15]] : type === "wrong" ? [[210,.12],[170,.18]] : type === "coin" ? [[1200,.045],[850,.07]] : [[520,.04]];
+  const notes = type === "done" ? [[523, .07], [659, .07], [784, .13]] : type === "coin" ? [[1100, .04], [780, .06]] : [[500, .035]];
   notes.forEach(([frequency, duration], index) => {
-    const osc = audioContext.createOscillator(); const gain = audioContext.createGain();
+    const osc = audioContext.createOscillator(); const gain = audioContext.createGain(); const start = now + index * .075;
     osc.type = type === "coin" ? "triangle" : "sine"; osc.frequency.value = frequency;
-    const start = now + index * .085; gain.gain.setValueAtTime(.0001, start); gain.gain.exponentialRampToValueAtTime(.12, start + .01); gain.gain.exponentialRampToValueAtTime(.0001, start + duration);
+    gain.gain.setValueAtTime(.0001, start); gain.gain.exponentialRampToValueAtTime(.1, start + .008); gain.gain.exponentialRampToValueAtTime(.0001, start + duration);
     osc.connect(gain); gain.connect(audioContext.destination); osc.start(start); osc.stop(start + duration + .02);
   });
 }
 
 function speak(text) {
   if (!state.sound || !window.speechSynthesis) return;
-  speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
+  speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = state.lang === "ms" ? "ms-MY" : state.lang === "zh" ? "zh-CN" : "en-GB";
-  const voices = speechSynthesis.getVoices();
-  const match = voices.find(v => v.lang.toLowerCase().startsWith(utterance.lang.slice(0,2).toLowerCase()) && /female|zira|huihui|ting|siti|google/i.test(v.name)) || voices.find(v => v.lang.toLowerCase().startsWith(utterance.lang.slice(0,2).toLowerCase()));
-  if (match) utterance.voice = match;
-  utterance.rate = .88; utterance.pitch = 1.08;
-  speechSynthesis.speak(utterance);
-}
-
-function setFeedback(kind, text) {
-  els.feedback.className = `feedback ${kind}`;
-  els.feedback.textContent = text;
+  utterance.rate = .88; utterance.pitch = 1.06; speechSynthesis.speak(utterance);
 }
 
 function applyStaticLanguage() {
   document.documentElement.lang = state.lang === "zh" ? "zh-Hans" : state.lang;
-  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = tr(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n]").forEach(el => { if (I18N[el.dataset.i18n]) el.textContent = tr(el.dataset.i18n); });
   els.sound.querySelector("span:last-child").textContent = tr(state.sound ? "soundOn" : "soundOff");
   document.querySelectorAll("[data-lang]").forEach(button => button.classList.toggle("active", button.dataset.lang === state.lang));
-  [...els.grade.options].forEach((option, index) => option.textContent = gradeName(index + 2));
+  [...els.grade.options].forEach((option, index) => { option.textContent = gradeName(index + 2); });
 }
 
-function refreshControls({ keepActivity = false } = {}) {
+function refreshNavigation({ keepActivity = false } = {}) {
   const modes = GRADE_MODES[state.grade];
-  document.querySelectorAll("[data-mode]").forEach(button => {
-    const enabled = modes[button.dataset.mode].length > 0;
-    button.disabled = !enabled;
-    button.classList.toggle("active", button.dataset.mode === state.mode);
-  });
   if (!modes[state.mode].length) state.mode = Object.keys(modes).find(mode => modes[mode].length);
+  document.querySelectorAll("[data-mode]").forEach(button => {
+    button.disabled = !modes[button.dataset.mode].length; button.classList.toggle("active", button.dataset.mode === state.mode);
+  });
   const list = modes[state.mode];
   if (!keepActivity || !list.includes(state.activity)) state.activity = list[0];
-  document.querySelectorAll("[data-mode]").forEach(button => button.classList.toggle("active", button.dataset.mode === state.mode));
-  els.activity.replaceChildren(...list.map(id => {
-    const option = document.createElement("option"); option.value = id; option.textContent = loc(ACTIVITIES[id].label); return option;
-  }));
-  els.activity.value = state.activity;
-  els.sideTitle.textContent = loc(MODE_LABELS[state.mode]);
-  els.scope.textContent = loc(ACTIVITIES[state.activity].scope);
-  els.tip.textContent = loc(ACTIVITIES[state.activity].tip);
-  els.title.textContent = loc(ACTIVITIES[state.activity].label);
-  els.badge.textContent = state.lang === "zh" ? `${state.grade}年级` : `${state.lang === "ms" ? "T" : "Y"}${state.grade}`;
+  els.activity.replaceChildren(...list.map(id => Object.assign(document.createElement("option"), { value: id, textContent: loc(ACTIVITIES[id].label) })));
+  els.activity.value = state.activity; els.sideTitle.textContent = loc(MODE_LABELS[state.mode]);
+  els.scope.textContent = loc(ACTIVITIES[state.activity].scope); els.tip.textContent = loc(ACTIVITIES[state.activity].tip);
+  els.title.textContent = loc(ACTIVITIES[state.activity].label); els.badge.textContent = state.lang === "zh" ? `${state.grade}年级` : `${state.lang === "ms" ? "T" : "Y"}${state.grade}`;
 }
 
-function makeQuestion(activity) {
-  if (state.custom) {
-    const custom = state.custom; state.custom = null;
-    if (custom.activity === "identify") return makeIdentify(custom.value);
-    return makeBuilder(custom.activity === "pay" ? "pay" : "compose", custom.value);
-  }
-  if (activity === "identify") return makeIdentify();
-  if (["compose", "equivalent", "pay"].includes(activity)) return makeBuilder(activity);
-  return makeConcept(activity);
+function setChallenge(title, sub = "") {
+  els.challenge.innerHTML = `<div><div class="challenge-kicker">${tr("tryIt")}</div><div class="challenge-text">${title}</div>${sub ? `<div class="challenge-sub">${sub}</div>` : ""}</div>`;
 }
+function setSummary(text, tone = "neutral") { els.summary.className = `feedback ${tone}`; els.summary.innerHTML = text; }
+function moneyPicture(item, extra = "") { return `<span class="money-picture ${item.kind} ${extra}"><img src="${item.image}" alt="${item.label}" draggable="false"><span class="contoh">CONTOH</span></span>`; }
+function moneyBank(items = MONEY) { return `<div class="money-bank">${items.map(item => `<button type="button" class="money-card ${item.kind === "coin" ? "coin-card" : ""}" data-money="${item.id}">${moneyPicture(item)}<span class="money-label">${item.label}</span></button>`).join("")}</div>`; }
+function slider(id, label, min, max, step, value, suffix = "") { return `<label class="range-control" for="${id}"><span>${label}</span><strong>${value}${suffix}</strong><input id="${id}" type="range" min="${min}" max="${max}" step="${step}" value="${value}"></label>`; }
+function metric(label, value, cls = "") { return `<div class="metric ${cls}"><span>${label}</span><strong>${value}</strong></div>`; }
 
-function makeIdentify(forcedValue) {
-  const item = forcedValue ? MONEY.find(m => m.value === forcedValue) : sample(MONEY);
-  const others = shuffle(MONEY.filter(m => m.id !== item.id)).slice(0,3).map(m => m.label);
-  return {
-    type: "identify", item, answer: item.label, choices: shuffle([item.label, ...others]),
-    prompt: ml("Apakah nilai wang ini?", "这张纸币或硬币的面额是多少？", "What is the value of this money?"),
-    explain: ml(`Ini ialah ${item.label}.`, `这是 ${item.label}。`, `This is ${item.label}.`),
+function defaults(activity) {
+  const amount = state.teacher.amount;
+  const values = {
+    identify: { selected: "rm1" }, compose: { target: amount, wallet: [] }, equivalent: { target: 1000, wallet: [] }, pay: { target: amount, wallet: [] },
+    foreign: { rm: 20, currency: "sgd" }, methods: { price: amount, method: "cash", wallet: [], paid: false },
+    receipt: { type: "receipt", qty: 2, unit: 600 }, documents: { type: "invoice", qty: 3, unit: 750 },
+    needWant: { places: {} }, savingPlan: { goal: Math.max(50, Math.round(amount / 100)), saved: 10, weekly: 5 },
+    budget: { income: Math.max(100, Math.round(amount / 100)), needs: 50, saving: 20, learning: 15, wants: 10 },
+    wiseChoice: { aPrice: 45, aQuality: 3, aWarranty: 6, bPrice: 60, bQuality: 5, bWarranty: 18 },
+    cashless: { balance: Math.max(50, Math.round(amount / 100)), amount: 12, log: [] },
+    cashCredit: { price: Math.max(100, Math.round(amount / 100) * 10), deposit: 50, rate: state.teacher.rate, months: state.teacher.period * 12 },
+    saveInvest: { capital: Math.max(100, Math.round(amount / 100) * 10), investPct: 40, saveRate: 2, investReturn: 7 },
+    simpleCompound: { principal: Math.max(100, Math.round(amount / 100) * 10), rate: state.teacher.rate, years: state.teacher.period },
+    creditDebt: { loan: Math.max(500, Math.round(amount / 100) * 50), rate: state.teacher.rate, months: state.teacher.period * 12 },
+    financialDecision: { income: 2500, commitments: 1500, saving: 300, purchase: Math.max(100, Math.round(amount / 100) * 20) },
+    profitLoss: { cost: 8, price: 12, qty: 20 }, discount: { original: Math.max(50, Math.round(amount / 100) * 10), percent: 20, voucher: 10, rebate: 5 },
+    assetsLiabilities: { cash: 800, savings: 2500, property: 8000, card: 500, loan: 3000 },
+    insurance: { loss: 5000, coverage: 4000, deductible: 500, premium: 40 },
   };
+  return structuredClone(values[activity]);
 }
 
-function makeBuilder(kind, forcedValue) {
-  let values;
-  if (kind === "equivalent") values = [500, 1000, 2000, 5000];
-  else if (state.grade === 2) values = [150, 270, 450, 600, 750, 1250, 2050, 3670, 5000, 7820];
-  else values = [375, 680, 1250, 1840, 2350, 4270, 5650, 8950];
-  const target = forcedValue || sample(values);
-  const item = sample([
-    ml("sebuah buku cerita", "一本故事书", "a storybook"), ml("satu set alat tulis", "一套文具", "a stationery set"), ml("sebuah bekas minuman", "一个水壶", "a water bottle")
-  ]);
-  const prompts = {
-    compose: ml("Bina jumlah sasaran menggunakan wang di bawah.", "用下方的钱币组成目标金额。", "Build the target amount using the money below."),
-    equivalent: ml("Bina gabungan lain yang sama nilai.", "组成另一种相同币值的组合。", "Build another combination with the same value."),
-    pay: ml(`Bayar tepat untuk ${loc(item)}.`, `为${loc(item)}准确付款。`, `Pay the exact price for ${loc(item)}.`),
-  };
-  return { type: "builder", kind, target, answer: target, banned: kind === "equivalent" ? MONEY.find(m => m.value === target)?.id : null, prompt: prompts[kind], explain: ml(`Jumlah yang diperlukan ialah ${formatMoney(target)}.`, `需要的金额是 ${formatMoney(target)}。`, `The required amount is ${formatMoney(target)}.`) };
+function changeTool(mutator, sound = "tap") { mutator(state.tool); beep(sound); renderTool(); }
+
+function renderIdentify() {
+  const item = MONEY.find(x => x.id === state.tool.selected);
+  setChallenge(loc(ml("Sentuh wang untuk meneroka", "点击钱币进行探索", "Tap money to explore")), loc(ml("Tiada pemarkahan — lihat, banding dan bincang.", "没有评分——观察、比较并讨论。", "No scoring — inspect, compare and discuss.")));
+  const relation = item.value >= 100 ? `${item.label} = ${item.value / 100} ${loc(ml("ringgit", "令吉", "ringgit"))}` : `${item.label} = ${item.value} ${loc(ml("sen", "仙", "sen"))}`;
+  els.stage.innerHTML = `<div class="explorer-layout"><div class="money-hero">${moneyPicture(item)}<span class="source-note">${loc(ml("Imej: Bank Negara Malaysia", "图片：马来西亚国家银行", "Images: Bank Negara Malaysia"))}</span></div><div class="inspect-card"><span>${loc(ml("Nilai", "面额", "Value"))}</span><strong>${item.label}</strong><p>${relation}</p></div></div>`;
+  els.controls.innerHTML = moneyBank();
+  els.controls.querySelectorAll("[data-money]").forEach(button => button.addEventListener("click", () => changeTool(tool => { tool.selected = button.dataset.money; }, "coin")));
+  setSummary(loc(ml("Bandingkan saiz, warna dan unit pada setiap wang.", "比较每种钱币的大小、颜色和单位。", "Compare the size, colour and unit on each piece of money.")));
 }
 
-const CONCEPT_BANK = {
-  foreign: [
-    ["🇸🇬", ml("Mata wang Singapura", "新加坡的货币", "Singapore's currency"), "sgd", [["sgd",ml("Dolar Singapura", "新加坡元", "Singapore dollar")],["myr",ml("Ringgit", "令吉", "Ringgit")],["thb",ml("Baht", "泰铢", "Baht")],["idr",ml("Rupiah", "印尼盾", "Rupiah")]]],
-    ["🇹🇭", ml("Mata wang Thailand", "泰国的货币", "Thailand's currency"), "thb", [["myr",ml("Ringgit", "令吉", "Ringgit")],["thb",ml("Baht", "泰铢", "Baht")],["sgd",ml("Dolar Singapura", "新加坡元", "Singapore dollar")],["idr",ml("Rupiah", "印尼盾", "Rupiah")]]],
-    ["🇮🇩", ml("Mata wang Indonesia", "印度尼西亚的货币", "Indonesia's currency"), "idr", [["idr",ml("Rupiah", "印尼盾", "Rupiah")],["myr",ml("Ringgit", "令吉", "Ringgit")],["thb",ml("Baht", "泰铢", "Baht")],["usd",ml("Dolar AS", "美元", "US dollar")]]],
-  ],
-  needWant: [
-    ["🍚", ml("Makanan berkhasiat untuk makan tengah hari", "午餐所需的营养食物", "Nutritious food for lunch"), "need", [["need",ml("Keperluan", "需要", "Need")],["want",ml("Kehendak", "想要", "Want")]]],
-    ["🎮", ml("Permainan baharu walaupun permainan lama masih elok", "旧游戏仍完好，却想买新游戏", "A new game although the old one still works"), "want", [["need",ml("Keperluan", "需要", "Need")],["want",ml("Kehendak", "想要", "Want")]]],
-    ["📒", ml("Buku latihan yang diminta oleh guru", "老师要求的练习簿", "An exercise book requested by the teacher"), "need", [["need",ml("Keperluan", "需要", "Need")],["want",ml("Kehendak", "想要", "Want")]]],
-  ],
-  methods: [
-    ["🛍️", ml("Bayar di kedai menggunakan telefon dan kod QR", "在商店用手机扫描二维码付款", "Pay in a shop using a phone and QR code"), "ewallet", [["cash",ml("Tunai", "现金", "Cash")],["ewallet",ml("E-dompet / QR", "电子钱包／二维码", "E-wallet / QR")],["transfer",ml("Pindahan dalam talian", "线上转账", "Online transfer")],["cheque",ml("Cek", "支票", "Cheque")]]],
-    ["💻", ml("Bayar pembelian di laman sesawang", "在网站支付网购", "Pay for a purchase on a website"), "online", [["cash",ml("Syiling", "硬币", "Coins")],["online",ml("Perbankan / kad dalam talian", "网上银行／银行卡", "Online banking / card")],["barter",ml("Tukar barang", "以物换物", "Barter")],["stamp",ml("Setem", "邮票", "Stamp")]]],
-    ["🏪", ml("Bayar barang kecil di kaunter menggunakan wang kertas dan syiling", "在柜台用纸币和硬币支付小额商品", "Pay for a small item at the counter with notes and coins"), "cash", [["cash",ml("Tunai", "现金", "Cash")],["voucher",ml("Mata ganjaran", "积分", "Reward points")],["invoice",ml("Invois", "发票", "Invoice")],["loan",ml("Pinjaman", "贷款", "Loan")]]],
-  ],
-  cashless: [
-    ["📱", ml("Alat menyimpan nilai secara digital dalam aplikasi", "在应用程序中储存电子金额的工具", "A tool that stores value digitally in an app"), "ewallet", [["ewallet",ml("E-dompet", "电子钱包", "E-wallet")],["coin",ml("Syiling", "硬币", "Coin")],["receipt",ml("Resit", "收据", "Receipt")],["note",ml("Wang kertas", "纸币", "Banknote")]]],
-    ["💳", ml("Alat yang boleh digunakan pada terminal pembayaran", "可在付款终端使用的工具", "A tool used at a payment terminal"), "card", [["card",ml("Kad bank", "银行卡", "Bank card")],["bill",ml("Bil", "账单", "Bill")],["coin",ml("Syiling", "硬币", "Coin")],["stamp",ml("Setem", "邮票", "Stamp")]]],
-  ],
-  savingPlan: [
-    ["🚲", ml("Aina mahu membeli basikal. Apakah tindakan yang terancang?", "艾娜想买脚踏车，哪一种做法有计划？", "Aina wants to buy a bicycle. Which action is planned?"), "plan", [["plan",ml("Simpan jumlah tetap setiap minggu", "每周储蓄固定金额", "Save a fixed amount each week")],["rush",ml("Belanja semua wang sekarang", "现在花完所有钱", "Spend all the money now")],["ignore",ml("Tidak perlu tahu harganya", "不必知道价格", "Do not check its price")],["borrow",ml("Pinjam tanpa rancangan", "没有计划地借钱", "Borrow without a plan")]]],
-  ],
-  budget: [
-    ["🎒", ml("Kamu menerima RM20. Buku latihan berharga RM8. Pilih rancangan yang lebih baik.", "你有 RM20，练习簿价格 RM8。选择较好的计划。", "You receive RM20. An exercise book costs RM8. Choose the better plan."), "good", [["good",ml("Beli buku, simpan sebahagian baki", "买练习簿，并储蓄部分余额", "Buy the book and save part of the balance")],["all",ml("Belanjakan semua pada snek", "全部用来买零食", "Spend all of it on snacks")],["extra",ml("Beli barang melebihi RM20", "购买超过 RM20 的物品", "Buy items costing more than RM20")],["lose",ml("Tidak catat dan biarkan wang hilang", "不记录，让钱遗失", "Do not track the money")]]],
-  ],
-  wiseChoice: [
-    ["🔎", ml("Barang yang sama dijual pada harga berlainan. Apakah langkah bijak?", "同一件商品有不同价格，明智的做法是什么？", "The same item has different prices. What is a wise step?"), "compare", [["compare",ml("Bandingkan harga dan kualiti", "比较价格与品质", "Compare price and quality")],["first",ml("Beli yang pertama dilihat", "看到第一个就买", "Buy the first one seen")],["borrow",ml("Pinjam tanpa menyemak", "不检查就借钱", "Borrow without checking")],["ad",ml("Percaya iklan sahaja", "只相信广告", "Trust only the advertisement")]]],
-  ],
-  cashCredit: [
-    ["💳", ml("Pembelian dibuat sekarang dan dibayar kemudian. Ini ialah...", "现在购买，以后偿还。这是……", "A purchase is made now and repaid later. This is..."), "credit", [["cash",ml("Pembelian tunai", "现金购买", "Cash purchase")],["credit",ml("Pembelian secara kredit", "信贷购买", "Credit purchase")],["gift",ml("Hadiah", "礼物", "Gift")],["saving",ml("Simpanan", "储蓄", "Saving")]]],
-  ],
-  saveInvest: [
-    ["🏦", ml("Wang disimpan dengan risiko rendah dan mudah dikeluarkan apabila perlu.", "资金以较低风险存放，需要时较容易取用。", "Money is kept at low risk and is easy to access when needed."), "saving", [["saving",ml("Simpanan", "储蓄", "Saving")],["invest",ml("Pelaburan", "投资", "Investment")]]],
-    ["📈", ml("Wang digunakan dengan harapan mendapat pulangan, tetapi nilainya boleh berubah.", "资金用来争取回报，但价值可能变化。", "Money is used in hopes of a return, but its value can change."), "invest", [["saving",ml("Simpanan", "储蓄", "Saving")],["invest",ml("Pelaburan", "投资", "Investment")]]],
-  ],
-  simpleCompound: [
-    ["🌱", ml("Faedah dikira pada wang asal dan faedah yang telah diterima.", "利息按照本金以及之前获得的利息计算。", "Interest is calculated on the original money and previously earned interest."), "compound", [["simple",ml("Faedah mudah", "单利", "Simple interest")],["compound",ml("Faedah kompaun", "复利", "Compound interest")]]],
-    ["📏", ml("Faedah setiap tempoh dikira pada jumlah wang asal sahaja.", "每期利息只按照原本的本金计算。", "Interest each period is calculated only on the original amount."), "simple", [["simple",ml("Faedah mudah", "单利", "Simple interest")],["compound",ml("Faedah kompaun", "复利", "Compound interest")]]],
-  ],
-  creditDebt: [
-    ["🤝", ml("Wang dipinjam dan mesti dibayar semula mengikut syarat.", "借来的钱必须按照条件偿还。", "Money is borrowed and must be repaid under agreed terms."), "debt", [["debt",ml("Hutang", "债务", "Debt")],["income",ml("Pendapatan", "收入", "Income")],["asset",ml("Aset", "资产", "Asset")],["gift",ml("Hadiah", "礼物", "Gift")]]],
-  ],
-  financialDecision: [
-    ["📱", ml("Telefon masih berfungsi, tetapi model baharu sedang dijual. Apakah keputusan bertanggungjawab?", "手机仍可使用，但新型号正在促销。哪项决定较负责任？", "The phone still works, but a new model is on sale. What is a responsible decision?"), "wait", [["wait",ml("Semak keperluan dan bajet sebelum membeli", "购买前先检查需要和预算", "Check the need and budget before buying")],["loan",ml("Terus berhutang tanpa membandingkan", "不比较就立刻负债购买", "Borrow immediately without comparing")],["all",ml("Gunakan semua simpanan", "用完所有储蓄", "Use all savings")],["ignore",ml("Abaikan kos", "忽略成本", "Ignore the cost")]]],
-  ],
-  profitLoss: [
-    ["📦", ml("Harga kos RM40, harga jual RM55", "成本价 RM40，售价 RM55", "Cost price RM40, selling price RM55"), "profit", [["profit",ml("Untung", "盈利", "Profit")],["loss",ml("Rugi", "亏损", "Loss")],["same",ml("Tiada untung atau rugi", "没有盈利或亏损", "No profit or loss")]]],
-    ["📦", ml("Harga kos RM80, harga jual RM65", "成本价 RM80，售价 RM65", "Cost price RM80, selling price RM65"), "loss", [["profit",ml("Untung", "盈利", "Profit")],["loss",ml("Rugi", "亏损", "Loss")],["same",ml("Tiada untung atau rugi", "没有盈利或亏损", "No profit or loss")]]],
-  ],
-  discount: [
-    ["🏷️", ml("Harga asal RM100, diskaun 20%. Apakah maksud diskaun?", "原价 RM100，折扣 20%。折扣是什么意思？", "Original price RM100, 20% discount. What does discount mean?"), "reduce", [["reduce",ml("Harga dikurangkan sebelum membayar", "付款前减价", "The price is reduced before payment")],["increase",ml("Harga ditambah", "价格提高", "The price increases")],["loan",ml("Wang dipinjam", "借钱", "Money is borrowed")],["tax",ml("Cukai ditambah", "加税", "Tax is added")]]],
-    ["🎟️", ml("Baucar RM10 digunakan semasa membeli-belah. Apakah fungsinya?", "购物时使用 RM10 礼券，它有什么作用？", "An RM10 voucher is used when shopping. What does it do?"), "voucher", [["voucher",ml("Mengurangkan jumlah bayaran mengikut nilainya", "按礼券价值减少付款", "Reduces payment by its value")],["double",ml("Menggandakan harga", "使价格加倍", "Doubles the price")],["debt",ml("Mewujudkan hutang", "产生债务", "Creates debt")],["receipt",ml("Menjadi resit", "变成收据", "Becomes a receipt")]]],
-  ],
-  assetsLiabilities: [
-    ["🏠", ml("Rumah yang dimiliki keluarga", "家庭拥有的房屋", "A house owned by the family"), "asset", [["asset",ml("Aset", "资产", "Asset")],["liability",ml("Liabiliti", "负债", "Liability")]]],
-    ["🧾", ml("Baki pinjaman yang masih perlu dibayar", "仍需偿还的贷款余额", "A loan balance that still must be repaid"), "liability", [["asset",ml("Aset", "资产", "Asset")],["liability",ml("Liabiliti", "负债", "Liability")]]],
-  ],
-  insurance: [
-    ["🛡️", ml("Apakah tujuan utama insurans atau takaful?", "保险或伊斯兰保险的主要目的是什么？", "What is the main purpose of insurance or takaful?"), "protect", [["protect",ml("Memberi perlindungan kewangan bagi risiko tertentu", "为特定风险提供财务保障", "Provide financial protection for certain risks")],["free",ml("Memberi wang percuma setiap hari", "每天提供免费金钱", "Give free money every day")],["price",ml("Menentukan semua harga barang", "决定所有商品价格", "Set all item prices")],["coin",ml("Menggantikan semua wang tunai", "取代所有现金", "Replace all cash")]]],
-  ],
+function renderMoneyBuilder(kind) {
+  const tool = state.tool; const total = tool.wallet.reduce((sum, id) => sum + MONEY.find(x => x.id === id).value, 0); const diff = tool.target - total;
+  const availableMoney = kind === "equivalent" ? MONEY.filter(item => item.value !== tool.target) : MONEY;
+  const product = tool.target > 5000 ? ["🎒", ml("Beg sekolah", "书包", "School bag")] : tool.target > 1500 ? ["🧴", ml("Botol minuman", "水壶", "Water bottle")] : ["📚", ml("Buku cerita", "故事书", "Storybook")];
+  const title = kind === "pay" ? `${loc(product[1])} · ${money(tool.target)}` : `${loc(ml("Jumlah sasaran", "目标金额", "Target amount"))}: ${money(tool.target)}`;
+  const sub = kind === "equivalent" ? loc(ml("Cipta lebih daripada satu gabungan.", "尝试组合出不止一种方式。", "Try more than one combination.")) : loc(ml("Klik wang untuk menambah; klik wang dalam dulang untuk mengeluarkan.", "点击钱币加入；点击托盘中的钱币移除。", "Tap money to add it; tap money in the tray to remove it."));
+  setChallenge(title, sub);
+  const productCard = kind === "pay" ? `<div class="product-scene"><span class="product-art">${product[0]}</span><div><strong>${loc(product[1])}</strong><span class="price-tag">${money(tool.target)}</span></div></div>` : "";
+  const tray = tool.wallet.length ? tool.wallet.map((id, index) => { const item = MONEY.find(x => x.id === id); return `<button type="button" class="wallet-item" data-remove="${index}" aria-label="${item.label}">${moneyPicture(item)}</button>`; }).join("") : `<span class="wallet-empty">${loc(ml("Dulang masih kosong", "托盘还是空的", "The tray is empty"))}</span>`;
+  els.stage.innerHTML = `<div class="money-builder">${productCard}<div class="wallet-total"><span>${loc(ml("Jumlah di kaunter", "柜台上的总额", "Total on counter"))}</span><strong>${money(total)}</strong></div><div class="wallet-tray">${tray}</div>${moneyBank(availableMoney)}</div>`;
+  els.controls.innerHTML = `<button type="button" class="secondary-button compact" id="clearWallet">↻ ${loc(ml("Kosongkan dulang", "清空托盘", "Clear tray"))}</button>`;
+  els.stage.querySelectorAll("[data-money]").forEach(button => button.addEventListener("click", () => changeTool(t => { t.wallet.push(button.dataset.money); }, "coin")));
+  els.stage.querySelectorAll("[data-remove]").forEach(button => button.addEventListener("click", () => changeTool(t => { t.wallet.splice(Number(button.dataset.remove), 1); })));
+  document.querySelector("#clearWallet").addEventListener("click", () => changeTool(t => { t.wallet = []; }));
+  if (diff === 0) setSummary(`✨ ${loc(ml("Jumlah tepat! Cuba bina dengan gabungan lain.", "金额刚刚好！再尝试另一种组合。", "Exact amount! Now try another combination."))}`, "success");
+  else if (diff > 0) setSummary(`${loc(ml("Masih perlu", "还需要", "Still needed"))} <strong>${money(diff)}</strong>`);
+  else setSummary(`${loc(ml("Lebih sebanyak", "多出了", "Extra amount"))} <strong>${money(-diff)}</strong>`, "attention");
+}
+
+function renderForeign() {
+  const currencies = { sgd: ["🇸🇬", "SGD", .31], thb: ["🇹🇭", "THB", 7.6], idr: ["🇮🇩", "IDR", 3750], usd: ["🇺🇸", "USD", .24] }; const [flag, code, rate] = currencies[state.tool.currency];
+  setChallenge(loc(ml("Cuba penukaran mata wang", "模拟货币换算", "Try a currency conversion")), loc(ml("Kadar contoh untuk pembelajaran, bukan kadar langsung.", "课堂示例汇率，并非实时汇率。", "Classroom sample rates, not live rates.")));
+  els.stage.innerHTML = `<div class="converter"><div class="currency-card"><span>🇲🇾</span><strong>${money(state.tool.rm * 100)}</strong><small>MYR</small></div><div class="relation-arrow">⇄</div><div class="currency-card accent"><span>${flag}</span><strong>${(state.tool.rm * rate).toLocaleString(undefined, { maximumFractionDigits: code === "IDR" ? 0 : 2 })}</strong><small>${code}</small></div></div>`;
+  els.controls.innerHTML = `${slider("foreignAmount", loc(ml("Jumlah MYR", "马币金额", "MYR amount")), 1, 100, 1, state.tool.rm, "")}<div class="segmented">${Object.entries(currencies).map(([id, c]) => `<button type="button" data-currency="${id}" class="${id === state.tool.currency ? "active" : ""}">${c[0]} ${c[1]}</button>`).join("")}</div>`;
+  document.querySelector("#foreignAmount").addEventListener("change", event => changeTool(t => { t.rm = Number(event.target.value); }));
+  els.controls.querySelectorAll("[data-currency]").forEach(button => button.addEventListener("click", () => changeTool(t => { t.currency = button.dataset.currency; })));
+  setSummary(`1 MYR ≈ ${rate.toLocaleString()} ${code} · ${loc(ml("Gunakan kadar semasa untuk urusan sebenar.", "实际交易请使用当日汇率。", "Use the current rate for real transactions."))}`);
+}
+
+const PAYMENT_METHODS = {
+  cash: [ml("Tunai", "现金", "Cash"), "cash"], card: [ml("Kad", "银行卡", "Card"), "card"], qr: [ml("E-dompet / QR", "电子钱包／QR", "E-wallet / QR"), "qr"],
+  transfer: [ml("Pindahan bank", "银行转账", "Bank transfer"), "transfer"], cheque: [ml("Cek", "支票", "Cheque"), "cheque"],
 };
 
-function makeDocumentQuestion(activity) {
-  const records = activity === "receipt" ? [
-    [ml("KEDAI CERIA", "欢乐商店", "HAPPY SHOP"), ml("TELAH DIBAYAR", "已付款", "PAID"), "receipt", ml("Resit", "收据", "Receipt")],
-    [ml("SYARIKAT AIR", "水务公司", "WATER COMPANY"), ml("JUMLAH PERLU DIBAYAR", "应付总额", "AMOUNT DUE"), "bill", ml("Bil", "账单", "Bill")],
-  ] : [
-    [ml("KEDAI CERIA", "欢乐商店", "HAPPY SHOP"), ml("TELAH DIBAYAR", "已付款", "PAID"), "receipt", ml("Resit", "收据", "Receipt")],
-    [ml("SYARIKAT AIR", "水务公司", "WATER COMPANY"), ml("JUMLAH PERLU DIBAYAR", "应付总额", "AMOUNT DUE"), "bill", ml("Bil", "账单", "Bill")],
-    [ml("PEMBEKAL SEKOLAH", "学校供应商", "SCHOOL SUPPLIER"), ml("BARANG DIBEKALKAN · BAYARAN DIMINTA", "已供应物品 · 要求付款", "GOODS SUPPLIED · PAYMENT REQUESTED"), "invoice", ml("Invois", "发票", "Invoice")],
-  ];
-  const row = sample(records);
-  return { type: "document", icon: "📄", prompt: ml("Apakah nama dokumen ini?", "这是什么文件？", "What is this document?"), answer: row[2], choices: shuffle([["receipt",ml("Resit", "收据", "Receipt")],["bill",ml("Bil", "账单", "Bill")],["invoice",ml("Invois", "发票", "Invoice")]]), doc: row, explain: ml(`Dokumen ini ialah ${loc(row[3])}.`, `这份文件是${loc(row[3])}。`, `This document is a ${loc(row[3]).toLowerCase()}.`) };
+function methodVisual(type, small = false) {
+  if (type === "cash") return `<div class="method-visual ${small ? "small" : ""}">${moneyPicture(MONEY.find(x => x.id === "rm5"))}</div>`;
+  if (type === "qr") return `<div class="method-visual ${small ? "small" : ""}"><span class="phone-shape">📱<i class="qr-mark">▦</i></span></div>`;
+  if (type === "cheque") return `<div class="method-visual ${small ? "small" : ""}"><span class="cheque-shape">CEK <i>RM</i></span></div>`;
+  if (type === "transfer") return `<div class="method-visual ${small ? "small" : ""}"><span class="bank-shape">🏦<i>⇄</i></span></div>`;
+  return `<div class="method-visual ${small ? "small" : ""}"><span class="card-shape">💳</span></div>`;
 }
 
-function makeConcept(activity) {
-  if (["receipt", "documents"].includes(activity)) return makeDocumentQuestion(activity);
-  const row = sample(CONCEPT_BANK[activity]);
-  return { type: "concept", icon: row[0], prompt: row[1], answer: row[2], choices: shuffle(row[3]), explain: ml("Pilihan ini paling tepat berdasarkan situasi.", "根据情境，这是最合适的答案。", "This is the best answer for the situation.") };
-}
-
-function moneyPicture(item, extraClass = "") {
-  const wrap = document.createElement("span"); wrap.className = `money-picture ${item.kind} ${extraClass}`;
-  const img = document.createElement("img"); img.src = item.image; img.alt = item.label; img.loading = "eager"; img.draggable = false;
-  const contoh = document.createElement("span"); contoh.className = "contoh"; contoh.textContent = "CONTOH";
-  wrap.append(img, contoh); return wrap;
-}
-
-function renderQuestion() {
-  state.question = makeQuestion(state.activity); state.selected = null; state.wallet = []; state.answered = false;
-  els.check.classList.remove("hidden"); els.next.classList.add("hidden");
-  els.stage.replaceChildren(); els.answers.replaceChildren();
-  const q = state.question;
-  els.challenge.innerHTML = `<div><div class="challenge-kicker">${tr("tryIt")}</div><div class="challenge-text">${q.type === "builder" ? `${tr("target")}: ${formatMoney(q.target)}` : loc(q.prompt)}</div>${q.type === "builder" ? `<div class="challenge-sub">${loc(q.prompt)}</div>` : ""}</div>`;
-  if (q.type === "identify") renderIdentify(q);
-  else if (q.type === "builder") renderBuilder(q);
-  else if (q.type === "document") renderDocument(q);
-  else renderConcept(q);
-  setFeedback("neutral", q.type === "builder" ? tr("addMoney") : tr("neutral"));
-}
-
-function renderIdentify(q) {
-  const hero = document.createElement("div"); hero.className = "money-hero"; hero.append(moneyPicture(q.item));
-  const source = document.createElement("span"); source.className = "source-note"; source.textContent = tr("officialSource"); hero.append(source); els.stage.append(hero);
-  renderChoices(q.choices.map(value => [value, value]));
-}
-
-function renderBuilder(q) {
-  const builder = document.createElement("div"); builder.className = "money-builder";
-  builder.innerHTML = `<div class="wallet-total"><span>${tr("wallet")}</span><strong id="walletTotal">RM0.00</strong></div><div id="walletTray" class="wallet-tray"><span class="wallet-empty">${tr("emptyWallet")}</span></div><div class="source-note">${tr("officialSource")}</div>`;
-  const bank = document.createElement("div"); bank.className = "money-bank"; bank.setAttribute("aria-label", tr("moneyChoices"));
-  const permitted = MONEY.filter(item => item.id !== q.banned && item.value <= q.target);
-  permitted.forEach(item => {
-    const button = document.createElement("button"); button.type = "button"; button.className = `money-card ${item.kind === "coin" ? "coin-card" : ""}`; button.dataset.money = item.id;
-    button.append(moneyPicture(item), Object.assign(document.createElement("span"), { className: "money-label", textContent: item.label }));
-    button.addEventListener("click", () => { if (state.answered) return; state.wallet.push(item.id); beep("coin"); updateWallet(); }); bank.append(button);
-  });
-  builder.append(bank); els.stage.append(builder);
-  const hint = document.createElement("div"); hint.className = "challenge-sub"; hint.style.textAlign = "center"; hint.textContent = tr("removeHint"); els.answers.append(hint);
-}
-
-function updateWallet() {
-  const tray = document.querySelector("#walletTray"); if (!tray) return;
-  tray.replaceChildren();
-  if (!state.wallet.length) { const empty = document.createElement("span"); empty.className = "wallet-empty"; empty.textContent = tr("emptyWallet"); tray.append(empty); }
-  state.wallet.forEach((id, index) => {
-    const item = MONEY.find(m => m.id === id); const button = document.createElement("button"); button.type = "button"; button.className = "wallet-item"; button.title = item.label; button.append(moneyPicture(item));
-    button.addEventListener("click", () => { if (state.answered) return; state.wallet.splice(index, 1); beep("click"); updateWallet(); }); tray.append(button);
-  });
-  const total = state.wallet.reduce((sum, id) => sum + MONEY.find(m => m.id === id).value, 0);
-  document.querySelector("#walletTotal").textContent = formatMoney(total);
-}
-
-function renderChoices(choices) {
-  const grid = document.createElement("div"); grid.className = "choices";
-  choices.forEach(([id, label]) => {
-    const button = document.createElement("button"); button.type = "button"; button.className = "choice-button"; button.dataset.answer = id; button.textContent = loc(label);
-    button.addEventListener("click", () => selectAnswer(id, button, grid)); grid.append(button);
-  });
-  els.answers.append(grid);
-}
-
-function selectAnswer(id, button, container) {
-  if (state.answered) return; beep("click"); state.selected = id;
-  container.querySelectorAll("button").forEach(item => item.classList.remove("selected")); button.classList.add("selected");
-}
-
-function renderConcept(q) {
-  const grid = document.createElement("div"); grid.className = "scenario-grid";
-  q.choices.forEach(([id, label], index) => {
-    const button = document.createElement("button"); button.type = "button"; button.className = "scenario-card"; button.dataset.answer = id;
-    const icons = [q.icon, "💡", "🔍", "✨"];
-    button.innerHTML = `<span class="card-icon">${icons[index]}</span><span class="card-copy"><strong>${loc(label)}</strong></span>`;
-    button.addEventListener("click", () => selectAnswer(id, button, grid)); grid.append(button);
-  });
-  els.stage.append(grid);
-}
-
-function renderDocument(q) {
-  const card = document.createElement("div"); card.className = "document-card";
-  card.innerHTML = `<h3>${loc(q.doc[0])}</h3><div class="document-row"><span>Tarikh / 日期 / Date</span><span>04-10-2026</span></div><div class="document-row"><span>Item</span><span>RM12.00</span></div><div class="document-row"><span>Item</span><span>RM8.00</span></div><div class="document-row total"><span>${loc(q.doc[1])}</span><span>RM20.00</span></div>`;
-  els.stage.append(card); renderChoices(q.choices);
-}
-
-function checkAnswer() {
-  if (state.answered) return;
-  const q = state.question;
-  let correct;
-  if (q.type === "builder") {
-    if (!state.wallet.length) { setFeedback("wrong", tr("addMoney")); beep("wrong"); return; }
-    const total = state.wallet.reduce((sum, id) => sum + MONEY.find(m => m.id === id).value, 0); correct = total === q.answer;
+function renderMethods() {
+  const tool = state.tool; const total = tool.wallet.reduce((sum, id) => sum + MONEY.find(x => x.id === id).value, 0);
+  setChallenge(`${loc(ml("Jumlah di kaunter", "柜台金额", "Checkout total"))}: ${money(tool.price)}`, loc(ml("Pilih satu cara, kemudian lakukan langkah pembayarannya.", "选择一种方式，然后实际完成付款步骤。", "Choose a method, then perform its payment step.")));
+  const tabs = `<div class="method-tabs">${Object.entries(PAYMENT_METHODS).map(([id, data]) => `<button type="button" data-method="${id}" class="method-tab ${id === tool.method ? "active" : ""}">${methodVisual(data[1], true)}<span>${loc(data[0])}</span></button>`).join("")}</div>`;
+  let simulator = "";
+  if (tool.method === "cash") {
+    const tray = tool.wallet.length ? tool.wallet.map((id, index) => { const item = MONEY.find(x => x.id === id); return `<button type="button" class="wallet-item" data-remove="${index}">${moneyPicture(item)}</button>`; }).join("") : `<span class="wallet-empty">${loc(ml("Letakkan wang tunai di sini", "把现金放在这里", "Place cash here"))}</span>`;
+    simulator = `<div class="checkout-simulator"><div class="simulator-device cash-register">🧾 <strong>${money(tool.price)}</strong></div><div class="wallet-total"><span>${loc(ml("Tunai diberi", "已付现金", "Cash tendered"))}</span><strong>${money(total)}</strong></div><div class="wallet-tray">${tray}</div>${moneyBank(MONEY.filter(x => x.value <= 5000))}</div>`;
   } else {
-    if (state.selected === null) { setFeedback("wrong", tr("chooseFirst")); beep("wrong"); return; }
-    correct = state.selected === q.answer;
+    const action = tool.method === "card" ? ml("Sentuh kad pada terminal", "把卡贴近终端", "Tap card on terminal") : tool.method === "qr" ? ml("Imbas kod QR", "扫描二维码", "Scan QR code") : tool.method === "transfer" ? ml("Hantar pindahan", "发送转账", "Send transfer") : ml("Tandatangan dan serah cek", "签名并交付支票", "Sign and hand over cheque");
+    simulator = `<div class="digital-checkout">${methodVisual(tool.method)}<div class="payment-screen"><span>${loc(PAYMENT_METHODS[tool.method][0])}</span><strong>${money(tool.price)}</strong><button type="button" class="primary-button" id="completePayment">${loc(action)}</button></div></div>`;
   }
-  if (!correct) { setFeedback("wrong", `${tr("wrong")} ${q.type === "builder" ? `${tr("wallet")}: ${document.querySelector("#walletTotal").textContent}` : ""}`.trim()); beep("wrong"); return; }
-  state.answered = true; setFeedback("correct", `${tr("correct")} ${loc(q.explain)}`); beep("correct");
-  els.check.classList.add("hidden"); els.next.classList.remove("hidden");
+  els.stage.innerHTML = `${tabs}${simulator}`;
+  els.controls.innerHTML = `<button type="button" class="secondary-button compact" id="clearPayment">↻ ${loc(ml("Mulakan transaksi semula", "重新开始交易", "Restart transaction"))}</button>`;
+  els.stage.querySelectorAll("[data-method]").forEach(button => button.addEventListener("click", () => changeTool(t => { t.method = button.dataset.method; t.wallet = []; t.paid = false; })));
+  els.stage.querySelectorAll("[data-money]").forEach(button => button.addEventListener("click", () => changeTool(t => { t.wallet.push(button.dataset.money); t.paid = false; }, "coin")));
+  els.stage.querySelectorAll("[data-remove]").forEach(button => button.addEventListener("click", () => changeTool(t => { t.wallet.splice(Number(button.dataset.remove), 1); t.paid = false; })));
+  document.querySelector("#completePayment")?.addEventListener("click", () => changeTool(t => { t.paid = true; }, "done"));
+  document.querySelector("#clearPayment").addEventListener("click", () => changeTool(t => { t.wallet = []; t.paid = false; }));
+  if (tool.method === "cash") {
+    if (total >= tool.price) setSummary(`${loc(ml("Bayaran diterima", "付款已收到", "Payment received"))} · ${loc(ml("Baki", "找零", "Change"))}: <strong>${money(total - tool.price)}</strong>`, "success");
+    else setSummary(`${loc(ml("Tambah lagi", "还需加入", "Add"))} <strong>${money(tool.price - total)}</strong> ${loc(ml("untuk membayar", "即可付款", "to pay"))}`);
+  } else if (tool.paid) setSummary(`✓ ${loc(ml("Transaksi selesai. Bincangkan jejak digital dan keselamatan.", "交易完成。讨论数字记录与付款安全。", "Transaction complete. Discuss the digital record and safety."))}`, "success");
+  else setSummary(loc(ml("Gunakan alat pada skrin untuk melengkapkan simulasi.", "使用屏幕上的工具完成模拟。", "Use the on-screen device to complete the simulation.")));
 }
 
-function resetQuestion() {
-  state.selected = null; state.wallet = []; state.answered = false;
-  if (state.question.type === "builder") updateWallet();
-  document.querySelectorAll(".selected").forEach(el => el.classList.remove("selected"));
-  els.check.classList.remove("hidden"); els.next.classList.add("hidden"); setFeedback("neutral", state.question.type === "builder" ? tr("addMoney") : tr("neutral")); beep("click");
+function renderDocumentStudio(activity) {
+  const tool = state.tool; const total = tool.qty * tool.unit;
+  setChallenge(loc(ml("Bina dokumen urus niaga", "制作交易文件", "Build a transaction document")), loc(ml("Ubah jenis, kuantiti dan harga.", "修改类型、数量和价格。", "Change the type, quantity and price.")));
+  const names = { receipt: ml("RESIT · TELAH DIBAYAR", "收据 · 已付款", "RECEIPT · PAID"), bill: ml("BIL · PERLU DIBAYAR", "账单 · 应付", "BILL · AMOUNT DUE"), invoice: ml("INVOIS · PERMINTAAN BAYARAN", "发票 · 付款请求", "INVOICE · PAYMENT REQUEST") };
+  const date = "04-10-2026";
+  els.stage.innerHTML = `<div class="document-card live-document"><h3>${loc(ml("KEDAI CERIA", "欢乐商店", "HAPPY SHOP"))}</h3><div class="doc-stamp">${loc(names[tool.type])}</div><div class="document-row"><span>${loc(ml("Tarikh", "日期", "Date"))}</span><span>${date}</span></div><div class="document-row"><span>${loc(ml("Alat tulis", "文具", "Stationery"))} × ${tool.qty}</span><span>${money(total)}</span></div><div class="document-row"><span>${loc(ml("Harga seunit", "单价", "Unit price"))}</span><span>${money(tool.unit)}</span></div><div class="document-row total"><span>${loc(ml("JUMLAH", "总额", "TOTAL"))}</span><span>${money(total)}</span></div></div>`;
+  const allowed = activity === "receipt" ? [["receipt", ml("Resit", "收据", "Receipt")], ["bill", ml("Bil", "账单", "Bill")]] : [["receipt", ml("Resit", "收据", "Receipt")], ["bill", ml("Bil", "账单", "Bill")], ["invoice", ml("Invois", "发票", "Invoice")]];
+  els.controls.innerHTML = `<div class="field-grid"><label>${loc(ml("Jenis dokumen", "文件类型", "Document type"))}<select id="docType">${allowed.map(([id, name]) => `<option value="${id}" ${id === tool.type ? "selected" : ""}>${loc(name)}</option>`).join("")}</select></label><label>${loc(ml("Kuantiti", "数量", "Quantity"))}<input id="docQty" type="number" min="1" max="20" value="${tool.qty}"></label><label>${loc(ml("Harga seunit (RM)", "单价（RM）", "Unit price (RM)"))}<input id="docUnit" type="number" min="0.5" max="500" step="0.5" value="${tool.unit / 100}"></label></div>`;
+  document.querySelector("#docType").addEventListener("change", event => changeTool(t => { t.type = event.target.value; }));
+  document.querySelector("#docQty").addEventListener("change", event => changeTool(t => { t.qty = clamp(event.target.value, 1, 20); }));
+  document.querySelector("#docUnit").addEventListener("change", event => changeTool(t => { t.unit = Math.round(clamp(event.target.value, .5, 500) * 100); }));
+  const explanations = { receipt: ml("Resit merekodkan bayaran yang sudah dibuat.", "收据记录已经完成的付款。", "A receipt records a payment already made."), bill: ml("Bil menunjukkan jumlah yang masih perlu dibayar.", "账单显示仍需支付的金额。", "A bill shows an amount still due."), invoice: ml("Invois meminta bayaran bagi barang atau perkhidmatan.", "发票针对商品或服务提出付款要求。", "An invoice requests payment for goods or services.") };
+  setSummary(loc(explanations[tool.type]));
 }
 
-function refreshAll({ newQuestion = true } = {}) {
-  applyStaticLanguage(); refreshControls({ keepActivity: true });
-  if (newQuestion) renderQuestion(); else renderQuestion();
+const BOARD_ITEMS = [
+  ["rice", "🍚", ml("Makanan", "食物", "Food")], ["book", "📒", ml("Buku sekolah", "课本", "School book")], ["water", "💧", ml("Air minuman", "饮用水", "Drinking water")],
+  ["game", "🎮", ml("Permainan", "电子游戏", "Game")], ["toy", "🧸", ml("Mainan baharu", "新玩具", "New toy")], ["shoes", "👟", ml("Kasut", "鞋子", "Shoes")],
+];
+
+function renderNeedWant() {
+  setChallenge(loc(ml("Pindahkan setiap kad", "移动每张卡片", "Move every card")), loc(ml("Klik kad untuk memindahkannya: belum pilih → keperluan → kehendak.", "点击卡片移动：未分类 → 需要 → 想要。", "Tap a card to move it: unplaced → need → want.")));
+  const groups = ["pool", "need", "want"].map(group => {
+    const title = group === "pool" ? ml("Belum dipilih", "未分类", "Unplaced") : group === "need" ? ml("Keperluan", "需要", "Needs") : ml("Kehendak", "想要", "Wants");
+    const cards = BOARD_ITEMS.filter(([id]) => (state.tool.places[id] || "pool") === group).map(([id, icon, label]) => `<button type="button" class="sort-item-card" data-item="${id}"><span>${icon}</span><strong>${loc(label)}</strong></button>`).join("");
+    return `<div class="sort-bin ${group}"><h3>${loc(title)}</h3><div class="sort-items">${cards || `<small>${loc(ml("Ruang kosong", "空白区域", "Empty space"))}</small>`}</div></div>`;
+  }).join("");
+  els.stage.innerHTML = `<div class="sort-board">${groups}</div>`; els.controls.innerHTML = "";
+  els.stage.querySelectorAll("[data-item]").forEach(button => button.addEventListener("click", () => changeTool(t => { const current = t.places[button.dataset.item] || "pool"; t.places[button.dataset.item] = current === "pool" ? "need" : current === "need" ? "want" : "pool"; })));
+  const placed = Object.values(state.tool.places).filter(x => x !== "pool").length;
+  setSummary(`${placed}/6 ${loc(ml("kad sudah dipindahkan. Tiada pemarkahan — bincangkan konteks dan sebab pilihan.", "张卡片已移动。没有评分——请讨论情境与选择原因。", "cards moved. No scoring — discuss context and reasons."))}`);
+}
+
+function renderSavingPlan() {
+  const t = state.tool; const remaining = Math.max(0, t.goal - t.saved); const weeks = t.weekly ? Math.ceil(remaining / t.weekly) : 0; const pct = Math.min(100, t.saved / t.goal * 100);
+  setChallenge(loc(ml("Rancang simpanan untuk basikal", "规划脚踏车储蓄", "Plan savings for a bicycle")), loc(ml("Gerakkan kawalan dan lihat tempoh berubah.", "移动控制器，观察所需时间变化。", "Move the controls and watch the time change.")));
+  els.stage.innerHTML = `<div class="goal-scene"><span>🚲</span><div class="goal-ring" style="--progress:${pct * 3.6}deg"><strong>${Math.round(pct)}%</strong></div><div class="goal-stats">${metric(loc(ml("Sasaran", "目标", "Goal")), money(t.goal * 100))}${metric(loc(ml("Sudah disimpan", "已有储蓄", "Already saved")), money(t.saved * 100))}${metric(loc(ml("Minggu diperlukan", "所需周数", "Weeks needed")), weeks)}</div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("saveGoal", loc(ml("Harga sasaran (RM)", "目标价格（RM）", "Goal price (RM)")), 20, 500, 5, t.goal)}${slider("saveCurrent", loc(ml("Simpanan semasa (RM)", "目前储蓄（RM）", "Current savings (RM)")), 0, t.goal, 5, t.saved)}${slider("saveWeekly", loc(ml("Simpan setiap minggu (RM)", "每周储蓄（RM）", "Save each week (RM)")), 1, 50, 1, t.weekly)}</div>`;
+  [["saveGoal", "goal"], ["saveCurrent", "saved"], ["saveWeekly", "weekly"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); if (x.saved > x.goal) x.saved = x.goal; })));
+  setSummary(remaining ? `${loc(ml("Baki sasaran", "距离目标还差", "Remaining goal"))}: <strong>${money(remaining * 100)}</strong> · ${weeks} ${loc(ml("minggu", "周", "weeks"))}` : `🎉 ${loc(ml("Matlamat sudah dicapai!", "目标已达成！", "Goal reached!"))}`, remaining ? "neutral" : "success");
+}
+
+function renderBudget() {
+  const t = state.tool; const spent = t.needs + t.saving + t.learning + t.wants; const balance = t.income - spent;
+  setChallenge(loc(ml("Agihkan pendapatan bulanan", "分配每月收入", "Allocate monthly income")), loc(ml("Setiap peluncur mengubah baki.", "每个滑杆都会改变余额。", "Every slider changes the balance.")));
+  const cats = [["needs", "🏠", ml("Keperluan", "需要", "Needs")], ["saving", "🐷", ml("Simpanan", "储蓄", "Savings")], ["learning", "📚", ml("Pembelajaran", "学习", "Learning")], ["wants", "🎈", ml("Kehendak", "想要", "Wants")]];
+  els.stage.innerHTML = `<div class="budget-board"><div class="budget-income">${loc(ml("Pendapatan", "收入", "Income"))}<strong>${money(t.income * 100)}</strong></div><div class="budget-pots">${cats.map(([key, icon, label]) => `<div class="budget-pot"><span>${icon}</span><strong>${loc(label)}</strong><b>${money(t[key] * 100)}</b><i style="height:${Math.min(100, t[key] / t.income * 180)}%"></i></div>`).join("")}</div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("budgetIncome", loc(ml("Pendapatan (RM)", "收入（RM）", "Income (RM)")), 50, 1000, 10, t.income)}${cats.map(([key,, label]) => slider(`budget-${key}`, loc(label), 0, 500, 5, t[key])).join("")}</div>`;
+  document.querySelector("#budgetIncome").addEventListener("change", event => changeTool(x => { x.income = Number(event.target.value); }));
+  cats.forEach(([key]) => document.querySelector(`#budget-${key}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(balance >= 0 ? `${loc(ml("Baki belum diagih", "未分配余额", "Unallocated balance"))}: <strong>${money(balance * 100)}</strong>` : `${loc(ml("Perbelanjaan melebihi pendapatan sebanyak", "支出超过收入", "Spending exceeds income by"))} <strong>${money(-balance * 100)}</strong>`, balance >= 0 ? "success" : "attention");
+}
+
+function renderWiseChoice() {
+  const t = state.tool; const scoreA = (t.aQuality * 20 + t.aWarranty) / t.aPrice; const scoreB = (t.bQuality * 20 + t.bWarranty) / t.bPrice;
+  setChallenge(loc(ml("Bandingkan dua beg sekolah", "比较两个书包", "Compare two school bags")), loc(ml("Nilai bukan harga sahaja — lihat kualiti dan jaminan.", "价值不只看价格——也要看品质和保修。", "Value is not only price — inspect quality and warranty.")));
+  const product = (id, icon, price, quality, warranty, score) => `<div class="compare-card ${score === Math.max(scoreA, scoreB) ? "highlight" : ""}"><span class="product-art">${icon}</span><h3>${loc(ml(`Beg ${id}`, `书包 ${id}`, `Bag ${id}`))}</h3>${metric(loc(ml("Harga", "价格", "Price")), money(price * 100))}${metric(loc(ml("Kualiti", "品质", "Quality")), `${"★".repeat(quality)}${"☆".repeat(5 - quality)}`)}${metric(loc(ml("Jaminan", "保修", "Warranty")), `${warranty} ${loc(ml("bulan", "个月", "months"))}`)}<small>${loc(ml("Indeks nilai", "价值指数", "Value index"))}: ${score.toFixed(2)}</small></div>`;
+  els.stage.innerHTML = `<div class="compare-grid">${product("A", "🎒", t.aPrice, t.aQuality, t.aWarranty, scoreA)}${product("B", "💼", t.bPrice, t.bQuality, t.bWarranty, scoreB)}</div>`;
+  els.controls.innerHTML = `<div class="compare-controls"><fieldset><legend>A</legend>${slider("aPrice", loc(ml("Harga", "价格", "Price")), 20, 120, 5, t.aPrice)}${slider("aQuality", loc(ml("Kualiti", "品质", "Quality")), 1, 5, 1, t.aQuality)}${slider("aWarranty", loc(ml("Jaminan (bulan)", "保修（月）", "Warranty (months)")), 0, 24, 3, t.aWarranty)}</fieldset><fieldset><legend>B</legend>${slider("bPrice", loc(ml("Harga", "价格", "Price")), 20, 120, 5, t.bPrice)}${slider("bQuality", loc(ml("Kualiti", "品质", "Quality")), 1, 5, 1, t.bQuality)}${slider("bWarranty", loc(ml("Jaminan (bulan)", "保修（月）", "Warranty (months)")), 0, 24, 3, t.bWarranty)}</fieldset></div>`;
+  ["aPrice", "aQuality", "aWarranty", "bPrice", "bQuality", "bWarranty"].forEach(key => document.querySelector(`#${key}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(loc(ml("Indeks membantu perbandingan, tetapi keperluan dan bajet masih perlu dipertimbangkan.", "指数帮助比较，但仍要考虑需要与预算。", "The index supports comparison, but needs and budget still matter.")));
+}
+
+function renderCashless() {
+  const t = state.tool;
+  setChallenge(loc(ml("Cuba dompet digital", "模拟电子钱包", "Try a digital wallet")), loc(ml("Tambah nilai atau buat bayaran; baki bukan wang percuma.", "充值或付款；余额并不是免费的钱。", "Top up or pay; the balance is not free money.")));
+  els.stage.innerHTML = `<div class="phone-wallet"><div class="phone-top">9:41 <span>▮▮▮</span></div><div class="wallet-app"><span>📱</span><small>${loc(ml("Baki tersedia", "可用余额", "Available balance"))}</small><strong>${money(t.balance * 100)}</strong><div class="mini-card">💳 SMART WALLET</div></div><div class="transaction-log">${t.log.slice(-3).reverse().map(row => `<div><span>${row[0]}</span><strong>${row[1]}</strong></div>`).join("") || `<small>${loc(ml("Belum ada transaksi", "还没有交易", "No transactions yet"))}</small>`}</div></div>`;
+  els.controls.innerHTML = `${slider("cashlessAmount", loc(ml("Jumlah transaksi (RM)", "交易金额（RM）", "Transaction amount (RM)")), 1, 50, 1, t.amount)}<div class="action-grid"><button type="button" class="secondary-button" id="topUp">＋ ${loc(ml("Tambah nilai", "充值", "Top up"))}</button><button type="button" class="primary-button" id="payQr">▦ ${loc(ml("Bayar dengan QR", "使用 QR 付款", "Pay with QR"))}</button><button type="button" class="primary-button" id="payCard">💳 ${loc(ml("Sentuh kad", "感应银行卡", "Tap card"))}</button></div>`;
+  document.querySelector("#cashlessAmount").addEventListener("change", event => changeTool(x => { x.amount = Number(event.target.value); }));
+  document.querySelector("#topUp").addEventListener("click", () => changeTool(x => { x.balance += x.amount; x.log.push([loc(ml("Tambah nilai", "充值", "Top up")), `+${money(x.amount * 100)}`]); }, "done"));
+  const pay = method => changeTool(x => { if (x.balance >= x.amount) { x.balance -= x.amount; x.log.push([method, `−${money(x.amount * 100)}`]); } }, "done");
+  document.querySelector("#payQr").addEventListener("click", () => pay(loc(ml("Bayaran QR", "QR 付款", "QR payment"))));
+  document.querySelector("#payCard").addEventListener("click", () => pay(loc(ml("Bayaran kad", "银行卡付款", "Card payment"))));
+  setSummary(`${loc(ml("Setiap bayaran menolak wang daripada baki.", "每次付款都会从余额中扣除金额。", "Every payment deducts money from the balance."))} ${t.balance < t.amount ? loc(ml("Tambah nilai untuk transaksi seterusnya.", "请充值后再进行下一笔交易。", "Top up for the next transaction.")) : ""}`);
+}
+
+function renderCashCredit() {
+  const t = state.tool; const borrowed = Math.max(0, t.price - t.deposit); const interest = borrowed * t.rate / 100 * (t.months / 12); const total = t.deposit + borrowed + interest; const monthly = t.months ? (borrowed + interest) / t.months : 0;
+  setChallenge(loc(ml("Bandingkan tunai dan kredit", "比较现金与信贷", "Compare cash and credit")), loc(ml("Kredit menambah kos apabila faedah dikenakan.", "信贷在计算利息后会增加成本。", "Credit adds cost when interest is charged.")));
+  els.stage.innerHTML = `<div class="compare-grid"><div class="compare-card"><span class="product-art">💵</span><h3>${loc(ml("Bayar tunai", "现金付款", "Pay cash"))}</h3>${metric(loc(ml("Bayar sekarang", "现在支付", "Pay now")), money(t.price * 100))}${metric(loc(ml("Hutang", "债务", "Debt")), money(0))}</div><div class="compare-card"><span class="product-art">💳</span><h3>${loc(ml("Bayar secara kredit", "信贷付款", "Pay by credit"))}</h3>${metric(loc(ml("Deposit", "首付", "Deposit")), money(t.deposit * 100))}${metric(loc(ml("Ansuran bulanan", "每月分期", "Monthly instalment")), money(monthly * 100))}${metric(loc(ml("Jumlah keseluruhan", "总成本", "Total cost")), money(total * 100), "accent")}</div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("creditPrice", loc(ml("Harga barang (RM)", "商品价格（RM）", "Item price (RM)")), 100, 2000, 50, t.price)}${slider("creditDeposit", loc(ml("Deposit (RM)", "首付（RM）", "Deposit (RM)")), 0, t.price, 10, t.deposit)}${slider("creditRate", loc(ml("Kadar setahun", "年利率", "Annual rate")), 0, 20, .5, t.rate, "%")}${slider("creditMonths", loc(ml("Tempoh (bulan)", "期限（月）", "Term (months)")), 6, 60, 6, t.months)}</div>`;
+  [["creditPrice", "price"], ["creditDeposit", "deposit"], ["creditRate", "rate"], ["creditMonths", "months"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); if (x.deposit > x.price) x.deposit = x.price; })));
+  setSummary(`${loc(ml("Kos faedah", "利息成本", "Interest cost"))}: <strong>${money(interest * 100)}</strong> · ${loc(ml("Baca syarat sebenar sebelum meminjam.", "借贷前应阅读实际条款。", "Read actual terms before borrowing."))}`);
+}
+
+function renderSaveInvest() {
+  const t = state.tool; const invested = t.capital * t.investPct / 100; const saved = t.capital - invested; const savingEnd = saved * (1 + t.saveRate / 100); const investEnd = invested * (1 + t.investReturn / 100); const totalEnd = savingEnd + investEnd;
+  setChallenge(loc(ml("Agihkan wang antara simpanan dan pelaburan", "在储蓄与投资之间分配资金", "Split money between saving and investing")), loc(ml("Pulangan pelaburan boleh positif atau negatif.", "投资回报可能为正，也可能为负。", "Investment returns can be positive or negative.")));
+  els.stage.innerHTML = `<div class="allocation"><div class="allocation-bar"><i style="width:${100 - t.investPct}%"></i><b style="width:${t.investPct}%"></b></div><div class="compare-grid"><div class="compare-card">🏦<h3>${loc(ml("Simpanan", "储蓄", "Savings"))}</h3>${metric(loc(ml("Diperuntukkan", "分配金额", "Allocated")), money(saved * 100))}${metric(loc(ml("Selepas setahun", "一年后", "After one year")), money(savingEnd * 100))}</div><div class="compare-card">📈<h3>${loc(ml("Pelaburan", "投资", "Investment"))}</h3>${metric(loc(ml("Diperuntukkan", "分配金额", "Allocated")), money(invested * 100))}${metric(loc(ml("Selepas setahun", "一年后", "After one year")), money(investEnd * 100))}</div></div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("siCapital", loc(ml("Modal (RM)", "本金（RM）", "Capital (RM)")), 100, 5000, 100, t.capital)}${slider("siSplit", loc(ml("Bahagian pelaburan", "投资比例", "Investment share")), 0, 100, 5, t.investPct, "%")}${slider("siSaveRate", loc(ml("Kadar simpanan", "储蓄利率", "Savings rate")), 0, 8, .5, t.saveRate, "%")}${slider("siReturn", loc(ml("Senario pulangan pelaburan", "投资回报情境", "Investment return scenario")), -20, 20, 1, t.investReturn, "%")}</div>`;
+  [["siCapital", "capital"], ["siSplit", "investPct"], ["siSaveRate", "saveRate"], ["siReturn", "investReturn"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(`${loc(ml("Jumlah simulasi selepas setahun", "模拟一年后的总额", "Simulated total after one year"))}: <strong>${money(totalEnd * 100)}</strong> · ${loc(ml("Pulangan sebenar tidak dijamin.", "实际回报不受保证。", "Actual returns are not guaranteed."))}`);
+}
+
+function growthBars(simple, compound, principal, years) {
+  const max = Math.max(...compound, principal); return `<div class="growth-chart">${Array.from({ length: years + 1 }, (_, year) => `<div class="growth-column"><div class="growth-bars"><i style="height:${simple[year] / max * 100}%"></i><b style="height:${compound[year] / max * 100}%"></b></div><small>${year}</small></div>`).join("")}</div>`;
+}
+
+function renderInterest() {
+  const t = state.tool; const simple = []; const compound = [];
+  for (let y = 0; y <= t.years; y++) { simple.push(t.principal * (1 + t.rate / 100 * y)); compound.push(t.principal * Math.pow(1 + t.rate / 100, y)); }
+  setChallenge(loc(ml("Bandingkan pertumbuhan faedah", "比较利息增长", "Compare interest growth")), loc(ml("Hijau = mudah · jingga = kompaun", "绿色＝单利 · 橙色＝复利", "Green = simple · orange = compound")));
+  els.stage.innerHTML = `<div class="chart-wrap">${growthBars(simple, compound, t.principal, t.years)}<div class="chart-legend"><span><i></i>${loc(ml("Faedah mudah", "单利", "Simple"))}</span><span><b></b>${loc(ml("Faedah kompaun", "复利", "Compound"))}</span></div><div class="metric-row">${metric(loc(ml("Mudah", "单利", "Simple")), money(simple.at(-1) * 100))}${metric(loc(ml("Kompaun", "复利", "Compound")), money(compound.at(-1) * 100), "accent")}</div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("intPrincipal", loc(ml("Modal (RM)", "本金（RM）", "Principal (RM)")), 100, 5000, 100, t.principal)}${slider("intRate", loc(ml("Kadar setahun", "年利率", "Annual rate")), 0, 15, .5, t.rate, "%")}${slider("intYears", loc(ml("Tempoh (tahun)", "时间（年）", "Time (years)")), 1, 15, 1, t.years)}</div>`;
+  [["intPrincipal", "principal"], ["intRate", "rate"], ["intYears", "years"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(`${loc(ml("Perbezaan selepas tempoh ini", "期末差额", "Difference at the end"))}: <strong>${money((compound.at(-1) - simple.at(-1)) * 100)}</strong>`);
+}
+
+function renderDebt() {
+  const t = state.tool; const monthlyRate = t.rate / 1200; const payment = monthlyRate ? t.loan * monthlyRate / (1 - Math.pow(1 + monthlyRate, -t.months)) : t.loan / t.months; const total = payment * t.months; const interest = total - t.loan;
+  setChallenge(loc(ml("Lihat kesan tempoh hutang", "观察债务期限的影响", "See how loan term changes debt")), loc(ml("Tempoh lebih panjang biasanya mengurangkan ansuran tetapi menambah kos.", "期限越长，月供通常越低，但总成本更高。", "A longer term usually lowers payments but raises total cost.")));
+  const remainingAt = month => monthlyRate ? Math.max(0, t.loan * Math.pow(1 + monthlyRate, month) - payment * (Math.pow(1 + monthlyRate, month) - 1) / monthlyRate) : Math.max(0, t.loan - payment * month);
+  const samples = [1, Math.ceil(t.months / 2), t.months].map(month => `<div class="timeline-stop"><b>${month}</b><span>${loc(ml("bulan", "月", "month"))}</span><strong>${money(remainingAt(month) * 100)}</strong></div>`).join("");
+  els.stage.innerHTML = `<div class="debt-card">${metric(loc(ml("Pinjaman", "贷款", "Loan")), money(t.loan * 100))}${metric(loc(ml("Ansuran anggaran", "估计月供", "Estimated payment")), money(payment * 100), "accent")}${metric(loc(ml("Jumlah faedah", "总利息", "Total interest")), money(interest * 100))}<div class="debt-timeline">${samples}</div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("debtLoan", loc(ml("Jumlah pinjaman (RM)", "贷款额（RM）", "Loan amount (RM)")), 500, 20000, 500, t.loan)}${slider("debtRate", loc(ml("Kadar setahun", "年利率", "Annual rate")), 0, 20, .5, t.rate, "%")}${slider("debtMonths", loc(ml("Tempoh (bulan)", "期限（月）", "Term (months)")), 6, 84, 6, t.months)}</div>`;
+  [["debtLoan", "loan"], ["debtRate", "rate"], ["debtMonths", "months"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(`${loc(ml("Jumlah dibayar balik", "偿还总额", "Total repaid"))}: <strong>${money(total * 100)}</strong> · ${loc(ml("Anggaran pendidikan sahaja.", "仅供教学估算。", "Educational estimate only."))}`);
+}
+
+function renderDecision() {
+  const t = state.tool; const available = t.income - t.commitments - t.saving; const after = available - t.purchase;
+  setChallenge(loc(ml("Uji kemampuan sebelum membeli", "购买前测试负担能力", "Test affordability before buying")), loc(ml("Lihat wang yang tinggal selepas komitmen dan simpanan.", "观察固定开销与储蓄后剩余的钱。", "See what remains after commitments and saving.")));
+  els.stage.innerHTML = `<div class="cashflow"><div class="cashflow-source">${loc(ml("Pendapatan", "收入", "Income"))}<strong>${money(t.income * 100)}</strong></div><div class="cashflow-arrow">→</div><div class="cashflow-stack"><span>🏠 ${money(t.commitments * 100)}</span><span>🐷 ${money(t.saving * 100)}</span><span>🛍️ ${money(t.purchase * 100)}</span></div><div class="cashflow-arrow">→</div><div class="cashflow-result ${after < 0 ? "negative" : ""}">${loc(ml("Baki", "余额", "Balance"))}<strong>${money(after * 100)}</strong></div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("decIncome", loc(ml("Pendapatan (RM)", "收入（RM）", "Income (RM)")), 500, 6000, 100, t.income)}${slider("decCommitments", loc(ml("Komitmen (RM)", "固定开销（RM）", "Commitments (RM)")), 0, 5000, 100, t.commitments)}${slider("decSaving", loc(ml("Simpanan (RM)", "储蓄（RM）", "Savings (RM)")), 0, 2000, 50, t.saving)}${slider("decPurchase", loc(ml("Pembelian dirancang (RM)", "计划购买（RM）", "Planned purchase (RM)")), 0, 3000, 50, t.purchase)}</div>`;
+  [["decIncome", "income"], ["decCommitments", "commitments"], ["decSaving", "saving"], ["decPurchase", "purchase"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(after >= 0 ? `${loc(ml("Pembelian muat dalam aliran tunai simulasi. Baki", "这项购买在模拟现金流范围内。余额", "The purchase fits the simulated cash flow. Balance"))}: <strong>${money(after * 100)}</strong>` : `${loc(ml("Kekurangan", "资金不足", "Shortfall"))}: <strong>${money(-after * 100)}</strong> · ${loc(ml("Laraskan rancangan.", "请调整计划。", "Adjust the plan."))}`, after >= 0 ? "success" : "attention");
+}
+
+function renderProfitLoss() {
+  const t = state.tool; const revenue = t.price * t.qty; const costs = t.cost * t.qty; const result = revenue - costs;
+  setChallenge(loc(ml("Jalankan gerai mini", "经营迷你摊位", "Run a mini stall")), loc(ml("Ubah kos, harga jual dan jumlah jualan.", "调整成本、售价和销售数量。", "Change cost, selling price and sales volume.")));
+  els.stage.innerHTML = `<div class="stall-scene"><span class="stall">🏪</span><div class="metric-row">${metric(loc(ml("Jumlah kos", "总成本", "Total cost")), money(costs * 100))}${metric(loc(ml("Hasil jualan", "销售收入", "Sales revenue")), money(revenue * 100))}${metric(result >= 0 ? loc(ml("Untung", "盈利", "Profit")) : loc(ml("Rugi", "亏损", "Loss")), money(Math.abs(result) * 100), result >= 0 ? "positive" : "negative")}</div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("plCost", loc(ml("Kos seunit (RM)", "单位成本（RM）", "Cost per unit (RM)")), 1, 50, 1, t.cost)}${slider("plPrice", loc(ml("Harga jual seunit (RM)", "单位售价（RM）", "Selling price (RM)")), 1, 80, 1, t.price)}${slider("plQty", loc(ml("Kuantiti dijual", "销售数量", "Quantity sold")), 1, 100, 1, t.qty)}</div>`;
+  [["plCost", "cost"], ["plPrice", "price"], ["plQty", "qty"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(`${result >= 0 ? loc(ml("Untung", "盈利", "Profit")) : loc(ml("Rugi", "亏损", "Loss"))} = ${loc(ml("hasil jualan − jumlah kos", "销售收入 − 总成本", "sales revenue − total cost"))}`);
+}
+
+function renderDiscount() {
+  const t = state.tool; const discount = t.original * t.percent / 100; const afterDiscount = t.original - discount; const payable = Math.max(0, afterDiscount - t.voucher); const final = Math.max(0, payable - t.rebate); const saved = t.original - final;
+  setChallenge(loc(ml("Gabungkan tawaran kedai", "组合商店优惠", "Combine shop offers")), loc(ml("Lihat urutan harga asal → diskaun → baucar → rebat.", "观察原价 → 折扣 → 礼券 → 回扣。", "Follow original price → discount → voucher → rebate.")));
+  els.stage.innerHTML = `<div class="price-flow">${metric(loc(ml("Harga asal", "原价", "Original")), money(t.original * 100))}<span>− ${money(discount * 100)}</span>${metric(loc(ml("Selepas diskaun", "折后价", "After discount")), money(afterDiscount * 100))}<span>− ${money(t.voucher * 100)}</span>${metric(loc(ml("Bayar di kaunter", "柜台付款", "Pay at counter")), money(payable * 100))}<span>− ${money(t.rebate * 100)}</span>${metric(loc(ml("Kos akhir", "最终成本", "Final cost")), money(final * 100), "accent")}</div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("discOriginal", loc(ml("Harga asal (RM)", "原价（RM）", "Original price (RM)")), 20, 1000, 10, t.original)}${slider("discPercent", loc(ml("Diskaun", "折扣", "Discount")), 0, 70, 5, t.percent, "%")}${slider("discVoucher", loc(ml("Baucar (RM)", "礼券（RM）", "Voucher (RM)")), 0, 100, 5, t.voucher)}${slider("discRebate", loc(ml("Rebat (RM)", "回扣（RM）", "Rebate (RM)")), 0, 100, 5, t.rebate)}</div>`;
+  [["discOriginal", "original"], ["discPercent", "percent"], ["discVoucher", "voucher"], ["discRebate", "rebate"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(`${loc(ml("Jumlah dijimatkan", "总共节省", "Total saved"))}: <strong>${money(saved * 100)}</strong>` , "success");
+}
+
+function renderAssets() {
+  const t = state.tool; const assets = t.cash + t.savings + t.property; const debts = t.card + t.loan; const net = assets - debts;
+  setChallenge(loc(ml("Bina gambaran kedudukan kewangan", "构建财务状况图", "Build a financial position")), loc(ml("Nilai bersih = aset − liabiliti.", "净值＝资产 − 负债。", "Net worth = assets − liabilities.")));
+  const side = (title, icon, rows, total, cls) => `<div class="balance-side ${cls}"><h3>${icon} ${title}</h3>${rows.map(([label, value]) => `<div><span>${label}</span><strong>${money(value * 100)}</strong></div>`).join("")}<footer>${loc(ml("Jumlah", "总额", "Total"))}: ${money(total * 100)}</footer></div>`;
+  els.stage.innerHTML = `<div class="balance-board">${side(loc(ml("Aset", "资产", "Assets")), "🏠", [[loc(ml("Tunai", "现金", "Cash")), t.cash], [loc(ml("Simpanan", "储蓄", "Savings")), t.savings], [loc(ml("Harta", "财产", "Property")), t.property]], assets, "assets")}${side(loc(ml("Liabiliti", "负债", "Liabilities")), "🧾", [[loc(ml("Baki kad", "卡债", "Card balance")), t.card], [loc(ml("Pinjaman", "贷款", "Loan")), t.loan]], debts, "debts")}</div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("assetCash", loc(ml("Tunai", "现金", "Cash")), 0, 5000, 100, t.cash)}${slider("assetSavings", loc(ml("Simpanan", "储蓄", "Savings")), 0, 10000, 100, t.savings)}${slider("assetProperty", loc(ml("Harta", "财产", "Property")), 0, 20000, 500, t.property)}${slider("assetCard", loc(ml("Baki kad", "卡债", "Card balance")), 0, 5000, 100, t.card)}${slider("assetLoan", loc(ml("Pinjaman", "贷款", "Loan")), 0, 15000, 500, t.loan)}</div>`;
+  [["assetCash", "cash"], ["assetSavings", "savings"], ["assetProperty", "property"], ["assetCard", "card"], ["assetLoan", "loan"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(`${loc(ml("Nilai bersih", "净值", "Net worth"))}: <strong>${net < 0 ? "−" : ""}${money(Math.abs(net) * 100)}</strong>`, net >= 0 ? "success" : "attention");
+}
+
+function renderInsurance() {
+  const t = state.tool; const claimable = Math.max(0, t.loss - t.deductible); const payout = Math.min(t.coverage, claimable); const self = t.loss - payout;
+  setChallenge(loc(ml("Simulasikan perlindungan kewangan", "模拟财务保障", "Simulate financial protection")), loc(ml("Lihat bagaimana had perlindungan dan deduktibel mempengaruhi bayaran.", "观察保额与自付额如何影响赔付。", "See how coverage and deductible affect payment.")));
+  els.stage.innerHTML = `<div class="protection-scene"><span class="shield">🛡️</span><div class="claim-flow">${metric(loc(ml("Kerugian", "损失", "Loss")), money(t.loss * 100))}<span>→</span>${metric(loc(ml("Bayaran perlindungan", "保障赔付", "Protection payout")), money(payout * 100), "positive")}<span>＋</span>${metric(loc(ml("Ditanggung sendiri", "自行承担", "Paid by you")), money(self * 100), "negative")}</div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("insLoss", loc(ml("Jumlah kerugian (RM)", "损失金额（RM）", "Loss amount (RM)")), 500, 20000, 500, t.loss)}${slider("insCoverage", loc(ml("Had perlindungan (RM)", "保障上限（RM）", "Coverage limit (RM)")), 500, 20000, 500, t.coverage)}${slider("insDeductible", loc(ml("Deduktibel (RM)", "自付额（RM）", "Deductible (RM)")), 0, 5000, 100, t.deductible)}${slider("insPremium", loc(ml("Sumbangan / premium bulanan (RM)", "每月供款／保费（RM）", "Monthly contribution / premium (RM)")), 10, 300, 10, t.premium)}</div>`;
+  [["insLoss", "loss"], ["insCoverage", "coverage"], ["insDeductible", "deductible"], ["insPremium", "premium"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); })));
+  setSummary(`${loc(ml("Kos premium setahun", "一年保费", "Annual premium cost"))}: <strong>${money(t.premium * 12 * 100)}</strong> · ${loc(ml("Simulasi ringkas; polisi sebenar mempunyai syarat khusus.", "这是简化模拟；实际保单有具体条款。", "Simplified simulation; real policies have specific terms."))}`);
+}
+
+function renderTool() {
+  els.stage.replaceChildren(); els.controls.replaceChildren();
+  const renderers = {
+    identify: renderIdentify, compose: () => renderMoneyBuilder("compose"), equivalent: () => renderMoneyBuilder("equivalent"), foreign: renderForeign,
+    pay: () => renderMoneyBuilder("pay"), methods: renderMethods, receipt: () => renderDocumentStudio("receipt"), documents: () => renderDocumentStudio("documents"),
+    needWant: renderNeedWant, savingPlan: renderSavingPlan, budget: renderBudget, wiseChoice: renderWiseChoice, cashless: renderCashless,
+    cashCredit: renderCashCredit, saveInvest: renderSaveInvest, simpleCompound: renderInterest, creditDebt: renderDebt,
+    financialDecision: renderDecision, profitLoss: renderProfitLoss, discount: renderDiscount, assetsLiabilities: renderAssets, insurance: renderInsurance,
+  };
+  renderers[state.activity]();
+}
+
+function startTool({ preserve = false } = {}) {
+  applyStaticLanguage(); refreshNavigation({ keepActivity: true });
+  if (!preserve || !state.tool) state.tool = defaults(state.activity);
+  renderTool();
 }
 
 function updateTeacherPreview() {
-  const ringgit = Math.max(0, Number(els.teacherRinggit.value) || 0); const sen = Math.max(0, Number(els.teacherSen.value) || 0);
-  els.teacherPreview.textContent = formatMoney(Math.round(ringgit * 100 + sen)); els.teacherError.textContent = "";
+  const amount = Math.round(clamp(els.ringgit.value, 0, 50000) * 100 + clamp(els.sen.value, 0, 95));
+  const rate = clamp(els.rate.value, 0, 30); const period = clamp(els.period.value, 1, 20);
+  els.preview.textContent = `${money(amount)} · ${rate}% · ${period}`; els.teacherError.textContent = "";
 }
 
-function useTeacherQuestion() {
-  const value = Math.round((Number(els.teacherRinggit.value) || 0) * 100 + (Number(els.teacherSen.value) || 0));
-  const activity = els.teacherActivity.value;
-  if (value < 5 || value > 50000) { els.teacherError.textContent = tr("teacherRange"); return; }
-  if (value % 5 !== 0 || (activity === "identify" && !MONEY.some(m => m.value === value))) { els.teacherError.textContent = tr("teacherInvalid"); return; }
-  state.custom = { activity, value };
-  if (activity === "pay") { state.mode = "spend"; state.activity = GRADE_MODES[state.grade].spend.includes("pay") ? "pay" : GRADE_MODES[2].spend[0]; if (!GRADE_MODES[state.grade].spend.includes("pay")) { state.grade = 2; els.grade.value = "2"; } }
-  else { state.mode = "money"; state.activity = activity; if (!GRADE_MODES[state.grade].money.includes(activity)) { state.grade = activity === "identify" ? 2 : 3; els.grade.value = String(state.grade); } }
-  els.dialog.close(); refreshControls(); renderQuestion(); beep("correct");
+function applyTeacherSettings() {
+  const amount = Math.round(clamp(els.ringgit.value, 0, 50000) * 100 + clamp(els.sen.value, 0, 95));
+  if (amount < 5 || amount > 5000000 || amount % 5) { els.teacherError.textContent = loc(ml("Jumlah mesti sekurang-kurangnya 5 sen dan sen dalam gandaan 5.", "金额至少为 5 仙，仙数必须是 5 的倍数。", "Use at least 5 sen and a sen value in multiples of 5.")); return; }
+  state.teacher = { amount, rate: clamp(els.rate.value, 0, 30), period: clamp(els.period.value, 1, 20) };
+  els.dialog.close(); state.tool = defaults(state.activity); beep("done"); renderTool();
 }
 
-document.querySelectorAll("[data-lang]").forEach(button => button.addEventListener("click", () => { state.lang = button.dataset.lang; beep("click"); refreshAll(); }));
-document.querySelectorAll("[data-mode]").forEach(button => button.addEventListener("click", () => { if (button.disabled) return; state.mode = button.dataset.mode; state.activity = GRADE_MODES[state.grade][state.mode][0]; beep("click"); refreshControls(); renderQuestion(); }));
-els.grade.addEventListener("change", () => { state.grade = Number(els.grade.value); state.custom = null; beep("click"); refreshControls(); renderQuestion(); });
-els.activity.addEventListener("change", () => { state.activity = els.activity.value; state.custom = null; beep("click"); refreshControls({ keepActivity: true }); renderQuestion(); });
-els.check.addEventListener("click", checkAnswer);
-els.next.addEventListener("click", () => { beep("click"); renderQuestion(); });
-els.reset.addEventListener("click", resetQuestion);
-els.newQuestion.addEventListener("click", () => { beep("click"); renderQuestion(); });
-els.listen.addEventListener("click", () => { const q = state.question; speak(q.type === "builder" ? `${loc(q.prompt)} ${formatMoney(q.target)}` : loc(q.prompt)); });
-els.sound.addEventListener("click", () => { state.sound = !state.sound; els.sound.setAttribute("aria-pressed", String(state.sound)); applyStaticLanguage(); if (state.sound) beep("correct"); });
-els.teacher.addEventListener("click", () => { beep("click"); els.teacherError.textContent = ""; updateTeacherPreview(); els.dialog.showModal(); });
-[els.teacherRinggit, els.teacherSen].forEach(input => input.addEventListener("input", updateTeacherPreview));
-els.useTeacher.addEventListener("click", useTeacherQuestion);
+document.querySelectorAll("[data-lang]").forEach(button => button.addEventListener("click", () => { state.lang = button.dataset.lang; beep(); applyStaticLanguage(); refreshNavigation({ keepActivity: true }); renderTool(); }));
+document.querySelectorAll("[data-mode]").forEach(button => button.addEventListener("click", () => { if (button.disabled) return; state.mode = button.dataset.mode; state.activity = GRADE_MODES[state.grade][state.mode][0]; state.tool = null; beep(); startTool(); }));
+els.grade.addEventListener("change", () => { state.grade = Number(els.grade.value); state.tool = null; beep(); refreshNavigation(); startTool(); });
+els.activity.addEventListener("change", () => { state.activity = els.activity.value; state.tool = null; beep(); refreshNavigation({ keepActivity: true }); startTool(); });
+els.reset.addEventListener("click", () => { state.tool = defaults(state.activity); beep(); renderTool(); });
+els.listen.addEventListener("click", () => speak(`${els.title.textContent}. ${els.challenge.textContent}`));
+els.sound.addEventListener("click", () => { state.sound = !state.sound; els.sound.setAttribute("aria-pressed", String(state.sound)); applyStaticLanguage(); if (state.sound) beep("done"); });
+els.teacher.addEventListener("click", () => { els.ringgit.value = Math.floor(state.teacher.amount / 100); els.sen.value = state.teacher.amount % 100; els.rate.value = state.teacher.rate; els.period.value = state.teacher.period; updateTeacherPreview(); els.dialog.showModal(); beep(); });
+[els.ringgit, els.sen, els.rate, els.period].forEach(input => input.addEventListener("input", updateTeacherPreview));
+els.useSettings.addEventListener("click", applyTeacherSettings);
 
-applyStaticLanguage(); refreshControls(); renderQuestion();
+applyStaticLanguage(); refreshNavigation(); state.tool = defaults(state.activity); renderTool();

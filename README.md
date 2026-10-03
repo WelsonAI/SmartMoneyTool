@@ -1,6 +1,6 @@
 # SmartMoneyTool
 
-An interactive Malaysian primary-school money learning tool for Years 2–6, available in Bahasa Melayu, Chinese and English.
+An interactive Malaysian primary-school money toolkit for Years 2–6, available in Bahasa Melayu, Chinese and English. Every activity is a manipulable classroom simulation rather than a scored exercise.
 
 ## Learning progression
 
@@ -15,9 +15,10 @@ Formal addition, subtraction, multiplication and division practice is intentiona
 ## Features
 
 - Official current-series Malaysian banknote and coin images
-- Click-to-compose money wallet with exact total checking
-- Grade-specific activities based on Malaysian primary textbook topics
-- Teacher-created amounts for recognition, composition and exact payment
+- Click-to-compose money tray with a live total and real Malaysian currency images
+- Hands-on checkout, payment-method, needs-and-wants, saving, budget, interest, debt, discount, profit/loss and protection simulators
+- Grade-specific tools based on Malaysian primary textbook topics
+- Teacher-controlled amount, rate and period settings for classroom demonstrations
 - Bahasa Melayu, Chinese and English interface
 - Spoken prompts and interaction/feedback sounds
 - Responsive desktop and mobile layout
@@ -38,4 +39,4 @@ Open `index.html` in a modern browser. No build step is required.
 
 ## Verification
 
-`tests/smoke.mjs` checks grade/activity availability, currency asset loading, the `CONTOH` marker, answer checking, teacher questions, language switching and mobile overflow through the Chrome DevTools Protocol.
+`tests/smoke.mjs` checks all 21 tools, currency asset loading, the `CONTOH` marker, money manipulation, teacher settings, language switching, removal of legacy assessment controls and mobile overflow through the Chrome DevTools Protocol.
