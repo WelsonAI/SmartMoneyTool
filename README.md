@@ -14,6 +14,7 @@ An interactive Malaysian primary-school money toolkit for Years 2–6, available
 
 - Official current-series Malaysian banknote and coin images
 - Click-to-compose money tray with a live total and real Malaysian currency images
+- Grade-bounded random target amounts for the Year 2 and Year 3 money-composition tool
 - A real drag-and-drop needs-and-wants board that draws six balanced random cards from a bank of twenty situations, with an accessible tap-card-then-tap-space alternative
 - Savings and money-allocation tools with visible calculations
 - Grade-specific tools aligned to the Year 2–6 KSSR money standards used by SK and SJK

@@ -62,9 +62,11 @@ const moneyTool = await evaluate(`(() => {
   const grade=document.getElementById('gradeSelect'); grade.value='2'; grade.dispatchEvent(new Event('change',{bubbles:true}));
   document.querySelector('[data-mode=money]').click(); const activity=document.getElementById('activitySelect'); activity.value='compose'; activity.dispatchEvent(new Event('change',{bubbles:true}));
   document.querySelector('[data-money=rm50]').click(); document.querySelector('[data-money=rm5]').click(); document.querySelector('[data-money=rm1]').click(); document.querySelector('[data-money=sen50]').click();
-  return {total:document.querySelector('.wallet-total strong').textContent,summary:document.getElementById('liveSummary').textContent};
+  const exact={total:document.querySelector('.wallet-total strong').textContent,summary:document.getElementById('liveSummary').textContent}; const before2=state.tool.target; document.getElementById('randomTarget').click(); const year2={before:before2,target:state.tool.target,cleared:document.querySelector('.wallet-total strong').textContent};
+  grade.value='3'; grade.dispatchEvent(new Event('change',{bubbles:true})); document.querySelector('[data-mode=money]').click(); activity.value='compose'; activity.dispatchEvent(new Event('change',{bubbles:true})); const before3=state.tool.target; document.getElementById('randomTarget').click(); const year3={before:before3,target:state.tool.target,cleared:document.querySelector('.wallet-total strong').textContent};
+  return {exact,year2,year3};
 })()`);
-if (moneyTool.total !== "RM56.50" || !moneyTool.summary.includes("tepat")) throw new Error(`Money tool failed: ${JSON.stringify(moneyTool)}`);
+if (moneyTool.exact.total !== "RM56.50" || !moneyTool.exact.summary.includes("tepat") || moneyTool.year2.target === moneyTool.year2.before || moneyTool.year2.target < 50 || moneyTool.year2.target > 10000 || moneyTool.year2.target % 5 || moneyTool.year2.cleared !== "RM0.00" || moneyTool.year3.target === moneyTool.year3.before || moneyTool.year3.target < 1000 || moneyTool.year3.target > 100000 || moneyTool.year3.target % 5 || moneyTool.year3.cleared !== "RM0.00") throw new Error(`Money tool failed: ${JSON.stringify(moneyTool)}`);
 
 const board = await evaluate(`(() => {
   document.querySelector('[data-mode=manage]').click(); const activity=document.getElementById('activitySelect'); activity.value='needWant'; activity.dispatchEvent(new Event('change',{bubbles:true}));

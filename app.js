@@ -153,6 +153,12 @@ function renderIdentify() {
 }
 
 function walletTotal(wallet) { return wallet.reduce((sum, id) => sum + MONEY.find(x => x.id === id).value, 0); }
+function randomComposeTarget(current) {
+  const min = state.grade === 2 ? 50 : 1000; const max = state.grade === 2 ? 10000 : 100000; let next;
+  do { next = min + Math.floor(Math.random() * ((max - min) / 5 + 1)) * 5; } while (next === current);
+  return next;
+}
+
 function renderMoneyBuilder(kind) {
   const t = state.tool; const total = walletTotal(t.wallet); const diff = t.target - total; const available = MONEY;
   const product = t.target > 5000 ? ["🎒", ml("Beg sekolah", "书包", "School bag")] : t.target > 1500 ? ["🧴", ml("Botol minuman", "水壶", "Water bottle")] : ["📚", ml("Buku cerita", "故事书", "Storybook")];
@@ -161,10 +167,11 @@ function renderMoneyBuilder(kind) {
   const tray = t.wallet.length ? t.wallet.map((id, index) => { const item = MONEY.find(x => x.id === id); return `<button type="button" class="wallet-item" data-remove="${index}" aria-label="${item.label}">${moneyPicture(item)}</button>`; }).join("") : `<span class="wallet-empty">${loc(ml("Dulang masih kosong", "托盘还是空的", "The tray is empty"))}</span>`;
   const productCard = kind === "pay" ? `<div class="product-scene"><span class="product-art">${product[0]}</span><div><strong>${loc(product[1])}</strong><span class="price-tag">${money(t.target)}</span></div></div>` : "";
   els.stage.innerHTML = `<div class="money-builder">${productCard}<div class="wallet-total"><span>${loc(ml("Jumlah di dalam dulang", "托盘里的总额", "Total in tray"))}</span><strong>${money(total)}</strong></div><div class="wallet-tray">${tray}</div>${moneyBank(available)}</div>`;
-  els.controls.innerHTML = `<button type="button" class="secondary-button compact" id="clearWallet">↻ ${loc(ml("Kosongkan dulang", "清空托盘", "Clear tray"))}</button>`;
+  els.controls.innerHTML = `<div class="board-actions"><button type="button" class="secondary-button compact" id="clearWallet">↻ ${loc(ml("Kosongkan dulang", "清空托盘", "Clear tray"))}</button>${kind === "compose" ? `<button type="button" class="primary-button compact" id="randomTarget">🎲 ${loc(ml("Jumlah rawak", "随机金额", "Random amount"))}</button>` : ""}</div>`;
   els.stage.querySelectorAll("[data-money]").forEach(button => button.addEventListener("click", () => changeTool(x => { x.wallet.push(button.dataset.money); }, "coin")));
   els.stage.querySelectorAll("[data-remove]").forEach(button => button.addEventListener("click", () => changeTool(x => { x.wallet.splice(Number(button.dataset.remove), 1); })));
   document.querySelector("#clearWallet").addEventListener("click", () => changeTool(x => { x.wallet = []; }));
+  document.querySelector("#randomTarget")?.addEventListener("click", () => changeTool(x => { x.target = randomComposeTarget(x.target); x.wallet = []; }, "done"));
   if (diff === 0) setSummary(`✨ ${loc(ml("Jumlah tepat. Cuba bina dengan cara lain.", "金额刚刚好。再尝试另一种组合。", "Exact amount. Try another combination."))}`, "success");
   else if (diff > 0) setSummary(`${loc(ml("Masih perlu", "还需要", "Still needed"))} <strong>${money(diff)}</strong>`);
   else setSummary(`${loc(ml("Melebihi sasaran sebanyak", "超过目标", "Over the target by"))} <strong>${money(-diff)}</strong>`, "attention");
