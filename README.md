@@ -14,12 +14,11 @@ An interactive Malaysian primary-school money toolkit for Years 2–6, available
 
 - Official current-series Malaysian banknote and coin images
 - Click-to-compose money tray with a live total and real Malaysian currency images
-- A real drag-and-drop needs-and-wants board with an accessible tap-card-then-tap-space alternative
+- A real drag-and-drop needs-and-wants board that draws six balanced random cards from a bank of twenty situations, with an accessible tap-card-then-tap-space alternative
 - Savings and money-allocation tools with visible calculations
 - Grade-specific tools aligned to the Year 2–6 KSSR money standards used by SK and SJK
 - Teacher-controlled demonstration amounts
 - Bahasa Melayu, Chinese and English interface
-- Spoken calculation process and result only after the learner has interacted
 - Responsive desktop and mobile layout
 
 ## Currency image sources
@@ -48,4 +47,4 @@ Open `index.html` in a modern browser. No build step is required.
 
 ## Verification
 
-`tests/smoke.mjs` checks all fifteen tools, currency assets, exact RM56.50 composition, result-only narration, drag-and-drop boards, upper-year simulations, teacher settings, language switching and mobile overflow through the Chrome DevTools Protocol.
+`tests/smoke.mjs` checks all fourteen distinct tools, currency assets, exact RM56.50 composition, random drag-and-drop boards, upper-year simulations, teacher settings, language switching and mobile overflow through the Chrome DevTools Protocol.

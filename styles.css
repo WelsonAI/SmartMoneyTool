@@ -143,7 +143,7 @@ select, input {
 .tip-box { display: flex; gap: 8px; padding: 13px; border: 1px solid #efd07d; border-radius: 13px; background: #fff4d1; font-size: 14px; line-height: 1.35; }
 .side-spacer { flex: 1; min-height: 25px; }
 
-.teacher-button, .secondary-button, .primary-button, .listen-button {
+.teacher-button, .secondary-button, .primary-button {
   border: 2px solid var(--line);
   border-radius: 12px;
   padding: 10px 15px;
@@ -159,8 +159,6 @@ select, input {
 
 .activity-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
 .heading-actions { display: flex; align-items: center; gap: 12px; }
-.listen-button { border-color: #bca37d; color: #745326; }
-.listen-button:disabled { opacity: .48; cursor: not-allowed; box-shadow: none; transform: none; }
 .grade-badge { display: grid; place-items: center; min-width: 50px; height: 42px; border: 2px solid var(--line); border-radius: 12px; background: var(--yellow); font-weight: 800; }
 .challenge-panel {
   display: grid;
@@ -368,7 +366,7 @@ select, input {
 .sort-bin.is-over { border-color: var(--green-2); background: #dff5ee; box-shadow: inset 0 0 0 3px rgba(19,139,117,.14); }
 .sort-bin[role="button"] { cursor: pointer; }
 .sort-bin[role="button"]:focus-visible { outline: 3px solid var(--green-2); outline-offset: 2px; }
-.board-actions { display: flex; justify-content: center; }
+.board-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .classification-result { width: 100%; margin-top: 14px; padding: 16px; border: 2px solid #67bdaa; border-radius: 17px; background: #effbf7; box-shadow: 0 5px 0 rgba(13,108,91,.1); }
 .completion-title { margin-bottom: 12px; color: var(--green); font-size: 21px; font-weight: 900; text-align: center; }
 .classification-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -566,8 +564,6 @@ select, input {
   .activity-card { padding: 17px 10px; }
   .activity-heading { padding: 0 6px; }
   .activity-heading h2 { font-size: 21px; }
-  .listen-button span { display: none; }
-  .listen-button { width: 44px; padding: 8px; }
   .grade-badge { min-width: 43px; height: 39px; }
   .challenge-panel { min-height: 94px; padding: 12px 8px; }
   .challenge-text { font-size: 26px; }

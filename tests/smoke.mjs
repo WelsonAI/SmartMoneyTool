@@ -23,18 +23,18 @@ const initial = await evaluate(`(() => ({
   modes:[...document.querySelectorAll('[data-mode]')].map(x=>x.dataset.mode),
   activities:[...document.querySelectorAll('#activitySelect option')].map(x=>x.value),
   images:[...document.querySelectorAll('.money-picture img')].map(x=>x.complete&&x.naturalWidth>0),
-  listenDisabled:document.getElementById('listenButton').disabled,
+  listenAbsent:!document.getElementById('listenButton'),
   overflow:document.documentElement.scrollWidth-window.innerWidth
 }))()`);
 if (initial.grades.join(",") !== "2,3,4,5,6") throw new Error(`Unexpected grades: ${initial.grades}`);
 if (initial.modes.join(",") !== "money,spend,manage") throw new Error(`Unexpected modes: ${initial.modes}`);
-if (!initial.listenDisabled) throw new Error("Result narration should wait for an interaction.");
+if (!initial.listenAbsent) throw new Error("Listening control should be removed.");
 if (initial.images.some(ok => !ok)) throw new Error("Currency image failed.");
 if (initial.overflow > 1) throw new Error(`Mobile overflow: ${initial.overflow}px`);
 
 const expected = {
-  2:{money:["identify","compose","equivalent"],spend:["pay"],manage:["needWant","savingPlan","budget"]},
-  3:{money:["compose","equivalent","foreign"],spend:["pay"],manage:["needWant","savingPlan","budget"]},
+  2:{money:["identify","compose"],spend:["pay"],manage:["needWant","savingPlan","budget"]},
+  3:{money:["compose","foreign"],spend:["pay"],manage:["needWant","savingPlan","budget"]},
   4:{money:["foreign"],manage:["ledger","decision"]},
   5:{money:["operationMat","operationMachine"]},
   6:{spend:["shopLab","offerLab"],manage:["balanceSheet"]}
@@ -61,20 +61,22 @@ for (const [grade, modes] of Object.entries(expected)) {
 const moneyTool = await evaluate(`(() => {
   const grade=document.getElementById('gradeSelect'); grade.value='2'; grade.dispatchEvent(new Event('change',{bubbles:true}));
   document.querySelector('[data-mode=money]').click(); const activity=document.getElementById('activitySelect'); activity.value='compose'; activity.dispatchEvent(new Event('change',{bubbles:true}));
-  const before=document.getElementById('listenButton').disabled; document.querySelector('[data-money=rm50]').click(); document.querySelector('[data-money=rm5]').click(); document.querySelector('[data-money=rm1]').click(); document.querySelector('[data-money=sen50]').click();
-  return {before,after:document.getElementById('listenButton').disabled,total:document.querySelector('.wallet-total strong').textContent,summary:document.getElementById('liveSummary').textContent};
+  document.querySelector('[data-money=rm50]').click(); document.querySelector('[data-money=rm5]').click(); document.querySelector('[data-money=rm1]').click(); document.querySelector('[data-money=sen50]').click();
+  return {total:document.querySelector('.wallet-total strong').textContent,summary:document.getElementById('liveSummary').textContent};
 })()`);
-if (!moneyTool.before || moneyTool.after || moneyTool.total !== "RM56.50" || !moneyTool.summary.includes("tepat")) throw new Error(`Money tool failed: ${JSON.stringify(moneyTool)}`);
+if (moneyTool.total !== "RM56.50" || !moneyTool.summary.includes("tepat")) throw new Error(`Money tool failed: ${JSON.stringify(moneyTool)}`);
 
 const board = await evaluate(`(() => {
   document.querySelector('[data-mode=manage]').click(); const activity=document.getElementById('activitySelect'); activity.value='needWant'; activity.dispatchEvent(new Event('change',{bubbles:true}));
-  document.querySelector('[data-item=rice]').click(); const selected=document.querySelector('[data-item=rice]').classList.contains('selected'); document.querySelector('[data-bin=need]').click();
-  const transfer=new DataTransfer(); const game=document.querySelector('[data-item=game]'); game.dispatchEvent(new DragEvent('dragstart',{bubbles:true,dataTransfer:transfer})); document.querySelector('[data-bin=want]').dispatchEvent(new DragEvent('drop',{bubbles:true,cancelable:true,dataTransfer:transfer}));
-  const partialListen=document.getElementById('listenButton').disabled;
-  for(const [id,bin] of [['book','need'],['water','need'],['shoes','need'],['toy','want']]){ document.querySelector('[data-item='+id+']').click(); document.querySelector('[data-bin='+bin+']').click(); }
-  return {selected,moved:!!document.querySelector('[data-bin=need] [data-item=rice]'),dragged:!!document.querySelector('[data-bin=want] [data-item=game]'),partialListen,listen:!document.getElementById('listenButton').disabled,pool:!!document.querySelector('[data-bin=pool] [data-item=rice]'),completed:!!document.querySelector('.classification-result'),summary:document.getElementById('liveSummary').textContent,narration:state.narration,hint:document.querySelector('.classification-reason')?.textContent,overflow:document.documentElement.scrollWidth-window.innerWidth};
+  const firstSet=[...state.tool.itemIds]; const category=id=>BOARD_ITEMS.find(item=>item[0]===id)[3]; const first=firstSet[0], second=firstSet[1];
+  document.querySelector('[data-item="'+first+'"]').click(); const selected=document.querySelector('[data-item="'+first+'"]').classList.contains('selected'); document.querySelector('[data-bin='+category(first)+']').click();
+  const transfer=new DataTransfer(); const secondCard=document.querySelector('[data-item="'+second+'"]'); secondCard.dispatchEvent(new DragEvent('dragstart',{bubbles:true,dataTransfer:transfer})); document.querySelector('[data-bin='+category(second)+']').dispatchEvent(new DragEvent('drop',{bubbles:true,cancelable:true,dataTransfer:transfer}));
+  const clickMoved=!!document.querySelector('[data-bin='+category(first)+'] [data-item="'+first+'"]'); const dragMoved=!!document.querySelector('[data-bin='+category(second)+'] [data-item="'+second+'"]');
+  for(const id of firstSet.slice(2)){ document.querySelector('[data-item="'+id+'"]').click(); document.querySelector('[data-bin='+category(id)+']').click(); }
+  const completed=!!document.querySelector('.classification-result'); const summary=document.getElementById('liveSummary').textContent; const before=[...state.tool.itemIds].sort().join(','); document.getElementById('newBoardSet').click(); const after=[...state.tool.itemIds].sort().join(',');
+  return {selected,clickMoved,dragMoved,completed,summary,changed:before!==after,count:state.tool.itemIds.length,bank:BOARD_ITEMS.length,balanced:state.tool.itemIds.filter(id=>category(id)==='need').length===3,listenAbsent:!document.getElementById('listenButton'),overflow:document.documentElement.scrollWidth-window.innerWidth};
 })()`);
-if (!board.selected || !board.moved || !board.dragged || !board.partialListen || !board.listen || board.pool || !board.completed || !board.summary.includes('6') || board.narration !== board.hint || board.overflow > 1) throw new Error(`Board interaction failed: ${JSON.stringify(board)}`);
+if (!board.selected || !board.clickMoved || !board.dragMoved || !board.completed || !board.summary.includes('6') || !board.changed || board.count !== 6 || board.bank !== 20 || !board.balanced || !board.listenAbsent || board.overflow > 1) throw new Error(`Board interaction failed: ${JSON.stringify(board)}`);
 
 const teacher = await evaluate(`(() => {
   document.querySelector('[data-mode=spend]').click(); document.getElementById('teacherButton').click(); document.getElementById('teacherRinggit').value='56'; document.getElementById('teacherSen').value='50'; document.getElementById('useTeacherSettings').click();
@@ -84,16 +86,16 @@ if (teacher.open || !teacher.target.includes("56.50")) throw new Error(`Teacher 
 
 const upperYears = await evaluate(`(() => {
   const choose=(grade,mode,activity)=>{ const g=document.getElementById('gradeSelect'); g.value=grade; g.dispatchEvent(new Event('change',{bubbles:true})); document.querySelector('[data-mode='+mode+']').click(); const a=document.getElementById('activitySelect'); a.value=activity; a.dispatchEvent(new Event('change',{bubbles:true})); };
-  choose('4','manage','ledger'); document.getElementById('ledgerLabel').value='Tambang'; document.getElementById('ledgerAmount').value='7'; document.getElementById('ledgerType').value='expense'; document.getElementById('addLedger').click(); const ledger={rows:document.querySelectorAll('.ledger-sheet tbody tr').length,listen:!document.getElementById('listenButton').disabled};
-  choose('4','manage','decision'); document.querySelector('[data-choice=meal]').click(); document.querySelector('[data-decision-bin=buy]').click(); const decision={moved:!!document.querySelector('[data-decision-bin=buy] [data-choice=meal]'),listen:!document.getElementById('listenButton').disabled};
-  choose('5','money','operationMat'); document.querySelector('[data-op=×]').click(); const operation={result:document.querySelector('.operation-card.result').textContent,listen:!document.getElementById('listenButton').disabled};
-  choose('5','money','operationMachine'); document.getElementById('machineMultiplier').value='4'; document.getElementById('machineMultiplier').dispatchEvent(new Event('change',{bubbles:true})); const machine={result:document.querySelector('.machine-step.result strong').textContent,listen:!document.getElementById('listenButton').disabled};
-  choose('6','spend','shopLab'); document.getElementById('shopPrice').value='15'; document.getElementById('shopPrice').dispatchEvent(new Event('change',{bubbles:true})); const shop={summary:document.getElementById('liveSummary').textContent,listen:!document.getElementById('listenButton').disabled};
-  choose('6','spend','offerLab'); document.getElementById('offerDiscount').value='30'; document.getElementById('offerDiscount').dispatchEvent(new Event('change',{bubbles:true})); const offer={receipt:document.querySelector('.receipt-lab footer strong').textContent,listen:!document.getElementById('listenButton').disabled};
-  choose('6','manage','balanceSheet'); document.getElementById('debtLoan').value='2000'; document.getElementById('debtLoan').dispatchEvent(new Event('change',{bubbles:true})); const balance={summary:document.getElementById('liveSummary').textContent,listen:!document.getElementById('listenButton').disabled,overflow:document.documentElement.scrollWidth-window.innerWidth};
+  choose('4','manage','ledger'); document.getElementById('ledgerLabel').value='Tambang'; document.getElementById('ledgerAmount').value='7'; document.getElementById('ledgerType').value='expense'; document.getElementById('addLedger').click(); const ledger={rows:document.querySelectorAll('.ledger-sheet tbody tr').length};
+  choose('4','manage','decision'); document.querySelector('[data-choice=meal]').click(); document.querySelector('[data-decision-bin=buy]').click(); const decision={moved:!!document.querySelector('[data-decision-bin=buy] [data-choice=meal]')};
+  choose('5','money','operationMat'); document.querySelector('[data-op=×]').click(); const operation={result:document.querySelector('.operation-card.result').textContent};
+  choose('5','money','operationMachine'); document.getElementById('machineMultiplier').value='4'; document.getElementById('machineMultiplier').dispatchEvent(new Event('change',{bubbles:true})); const machine={result:document.querySelector('.machine-step.result strong').textContent};
+  choose('6','spend','shopLab'); document.getElementById('shopPrice').value='15'; document.getElementById('shopPrice').dispatchEvent(new Event('change',{bubbles:true})); const shop={summary:document.getElementById('liveSummary').textContent};
+  choose('6','spend','offerLab'); document.getElementById('offerDiscount').value='30'; document.getElementById('offerDiscount').dispatchEvent(new Event('change',{bubbles:true})); const offer={receipt:document.querySelector('.receipt-lab footer strong').textContent};
+  choose('6','manage','balanceSheet'); document.getElementById('debtLoan').value='2000'; document.getElementById('debtLoan').dispatchEvent(new Event('change',{bubbles:true})); const balance={summary:document.getElementById('liveSummary').textContent,overflow:document.documentElement.scrollWidth-window.innerWidth};
   return {ledger,decision,operation,machine,shop,offer,balance};
 })()`);
-if (upperYears.ledger.rows !== 3 || !upperYears.ledger.listen || !upperYears.decision.moved || !upperYears.decision.listen || !upperYears.operation.listen || !upperYears.machine.listen || !upperYears.shop.listen || !upperYears.offer.listen || !upperYears.balance.listen || upperYears.balance.overflow > 1) throw new Error(`Upper-year tools failed: ${JSON.stringify(upperYears)}`);
+if (upperYears.ledger.rows !== 3 || !upperYears.decision.moved || !upperYears.operation.result || !upperYears.machine.result || !upperYears.shop.summary || !upperYears.offer.receipt || upperYears.balance.overflow > 1) throw new Error(`Upper-year tools failed: ${JSON.stringify(upperYears)}`);
 
 const zh = await evaluate(`(() => { document.querySelector('[data-lang=zh]').click(); return {lang:document.documentElement.lang,title:document.querySelector('h1').textContent,overflow:document.documentElement.scrollWidth-window.innerWidth}; })()`);
 if (zh.lang !== "zh-Hans" || !zh.title.includes("钱币") || zh.overflow > 1) throw new Error(`Chinese UI failed: ${JSON.stringify(zh)}`);
