@@ -453,6 +453,43 @@ select, input {
 .shield { font-size: 90px; }
 .claim-flow { display: flex; align-items: center; justify-content: center; gap: 9px; width: 100%; }
 
+.ledger-sheet { width: 100%; padding: 16px; border: 2px solid #d2b678; border-radius: 18px; background: #fffdf7; box-shadow: 0 6px 0 rgba(105,70,20,.08); }
+.ledger-top { display: flex; justify-content: space-between; margin-bottom: 12px; padding: 10px 14px; border-radius: 12px; background: var(--green); color: white; font-weight: 900; }
+.ledger-sheet table { width: 100%; margin-bottom: 13px; border-collapse: collapse; }
+.ledger-sheet th, .ledger-sheet td { padding: 9px 7px; border-bottom: 1px dashed #d8c7a3; text-align: left; }
+.ledger-sheet th { color: #6b512a; font-size: 12px; }
+.ledger-sheet td.income { color: #08745f; font-weight: 900; }
+.ledger-sheet td.expense { color: #b04a3d; font-weight: 900; }
+.row-remove { width: 32px; height: 32px; border: 1px solid #d3b77d; border-radius: 9px; background: white; color: #9a3c32; font-weight: 900; }
+.ledger-controls, .machine-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; gap: 10px; }
+.ledger-controls label, .machine-controls label { margin: 0; }
+.ledger-controls input, .ledger-controls select, .machine-controls input, .machine-controls select { width: 100%; }
+.ledger-controls .primary-button { min-height: 48px; }
+
+.decision-board { grid-template-columns: repeat(4, 1fr); }
+.decision-board .sort-bin { min-height: 250px; }
+.decision-board .sort-item-card strong { display: grid; }
+.decision-board .sort-item-card small { color: #8a672e; }
+.decision-buy { background: #e7f8f1; }
+.decision-save { background: #fff8d9; }
+.decision-later { background: #edf1ff; }
+.decision-balance { display: flex; justify-content: space-between; width: 100%; margin-bottom: 12px; padding: 12px 16px; border-radius: 14px; background: var(--mint); color: var(--green); font-weight: 900; }
+.decision-balance.over { background: #ffe5df; color: #9d392e; }
+
+.operation-mat, .operation-machine { display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; }
+.operation-card, .machine-step { display: grid; place-items: center; min-width: 145px; min-height: 100px; padding: 14px; border: 2px solid #d5b36f; border-radius: 18px; background: #fff7d9; color: var(--green); font-size: 24px; font-weight: 900; }
+.operation-card.result, .machine-step.result { border-color: var(--green-2); background: var(--mint); }
+.operation-symbol, .machine-arrow { color: #8b6629; font-size: 27px; font-weight: 900; }
+.machine-step span { color: #775b32; font-size: 13px; }
+.machine-step strong { font-size: 23px; }
+.operation-fields { grid-template-columns: repeat(2, 1fr); }
+.operation-buttons { grid-template-columns: repeat(4, 1fr); }
+
+.receipt-lab { width: min(460px, 100%); padding: 18px 22px; border: 2px solid #d1b77e; border-radius: 8px; background: #fffef7; box-shadow: 0 7px 0 rgba(80,60,20,.08); }
+.receipt-title { justify-content: center !important; color: var(--green); font-size: 20px; font-weight: 900; }
+.receipt-lab > div, .receipt-lab footer { display: flex; justify-content: space-between; gap: 18px; padding: 8px 0; border-bottom: 1px dashed #cbbd9e; }
+.receipt-lab footer { margin-top: 8px; border-top: 3px double #7d6844; border-bottom: 0; color: var(--green); font-size: 20px; font-weight: 900; }
+
 @media (max-width: 760px) {
   .explorer-layout, .goal-scene { grid-template-columns: 1fr; }
   .converter, .digital-checkout, .cashflow, .claim-flow { flex-direction: column; }
@@ -466,6 +503,13 @@ select, input {
   .budget-pots { grid-template-columns: repeat(2, 1fr); }
   .debt-card { grid-template-columns: 1fr; }
   .debt-timeline { grid-column: auto; }
+  .ledger-controls, .machine-controls { grid-template-columns: 1fr; }
+  .decision-board { grid-template-columns: 1fr; }
+  .decision-board .sort-bin { min-height: 110px; }
+  .operation-mat, .operation-machine { flex-direction: column; }
+  .operation-card, .machine-step { width: min(280px, 100%); min-height: 72px; }
+  .machine-arrow { transform: rotate(90deg); }
+  .ledger-sheet { overflow-x: auto; }
 }
 
 .teacher-dialog { width: min(550px, calc(100% - 28px)); padding: 0; border: 2px solid var(--line); border-radius: 24px; background: #fffdf8; box-shadow: 0 25px 70px rgba(45,30,10,.32); }

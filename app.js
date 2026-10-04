@@ -4,7 +4,7 @@ const ml = (ms, zh, en) => ({ ms, zh, en });
 
 const I18N = {
   title: ml("Jom Teroka Wang!", "一起来探索钱币！", "Let's Explore Money!"),
-  subtitle: ml("Alat manipulatif Tahun 2–3 untuk SK dan SJK.", "配合 SK 与 SJK 二至三年级课本的操作工具。", "Hands-on Year 2–3 tools for SK and SJK."),
+  subtitle: ml("Alat manipulatif Tahun 2–6 untuk SK dan SJK.", "配合 SK 与 SJK 二至六年级课本的操作工具。", "Hands-on Year 2–6 tools for SK and SJK."),
   soundOn: ml("Bunyi: Buka", "声音：开", "Sound: On"),
   soundOff: ml("Bunyi: Tutup", "声音：关", "Sound: Off"),
   tabMoney: ml("Kenal & Bina", "认识与组合", "Recognise & Build"),
@@ -33,16 +33,26 @@ const ACTIVITIES = {
   identify: { label: ml("Teroka wang Malaysia", "探索马来西亚钱币", "Explore Malaysian money"), scope: ml("Tahun 2 · 4.1 Wang kertas dan duit syiling", "二年级 · 4.1 纸币与硬币", "Year 2 · 4.1 Banknotes and coins"), tip: ml("Pilih wang untuk melihat nilai dan hubungannya.", "选择钱币，观察面额和币值关系。", "Choose money to inspect its value and relationship.") },
   compose: { label: ml("Bina nilai wang", "组合钱币金额", "Build a money value"), scope: ml("Tahun 2–3 · Gabungan wang", "二至三年级 · 钱币组合", "Years 2–3 · Money combinations"), tip: ml("Tambah atau keluarkan wang; jumlah berubah serta-merta.", "加入或移除钱币，总额会即时变化。", "Add or remove money; the total changes instantly.") },
   equivalent: { label: ml("Bina nilai setara", "组合等值金额", "Build an equivalent value"), scope: ml("Tahun 2–3 · Nilai yang sama", "二至三年级 · 相同币值", "Years 2–3 · Equal values"), tip: ml("Bina nilai sasaran tanpa menggunakan wang yang sama nilainya.", "不用与目标相同面额的钱币，组合出等值金额。", "Build the target without using the matching denomination.") },
-  foreign: { label: ml("Banding mata wang ASEAN", "比较东盟货币", "Compare ASEAN currencies"), scope: ml("Tahun 3 · 4.6 Mata wang asing", "三年级 · 4.6 外国货币", "Year 3 · 4.6 Foreign currency"), tip: ml("Masukkan kadar semasa yang dibawa oleh guru.", "输入老师提供的当日汇率。", "Enter the current rate supplied by the teacher.") },
+  foreign: { label: ml("Banding mata wang asing", "比较外国货币", "Compare foreign currencies"), scope: ml("Tahun 3–4 · Mata wang asing", "三至四年级 · 外国货币", "Years 3–4 · Foreign currency"), tip: ml("Masukkan kadar semasa yang dibawa oleh guru.", "输入老师提供的当日汇率。", "Enter the current rate supplied by the teacher.") },
   pay: { label: ml("Kaunter bayar tepat", "准确付款柜台", "Exact-payment counter"), scope: ml("Tahun 2–3 · Situasi harian", "二至三年级 · 日常付款情境", "Years 2–3 · Everyday payment"), tip: ml("Gunakan wang Malaysia untuk membayar harga pada label.", "使用马来西亚钱币支付价格牌上的金额。", "Use Malaysian money to pay the labelled price.") },
   needWant: { label: ml("Papan keperluan & kehendak", "需要与想要分类板", "Needs & wants board"), scope: ml("Tahun 2–3 · Simpanan dan perbelanjaan", "二至三年级 · 储蓄与消费", "Years 2–3 · Saving and spending"), tip: ml("Seret kad, atau pilih kad kemudian pilih ruang.", "拖动卡片，或先选卡片再选择区域。", "Drag a card, or select it and then choose a space.") },
   savingPlan: { label: ml("Perancang simpanan", "储蓄规划器", "Savings planner"), scope: ml("Tahun 2–3 · Simpanan terancang", "二至三年级 · 有计划地储蓄", "Years 2–3 · Planned saving"), tip: ml("Laraskan sasaran dan simpanan mingguan.", "调整目标和每周储蓄额。", "Adjust the goal and weekly saving amount.") },
   budget: { label: ml("Papan agihan wang", "金钱分配板", "Money allocation board"), scope: ml("Tahun 2–3 · Pengurusan kewangan", "二至三年级 · 金钱管理", "Years 2–3 · Money management"), tip: ml("Agihkan wang kepada keperluan, simpanan dan kehendak.", "把钱分配给需要、储蓄和想要。", "Allocate money to needs, savings and wants.") },
+  ledger: { label: ml("Buku rekod kewangan", "收支记录簿", "Money record book"), scope: ml("Tahun 4 · 3.3 Pengurusan kewangan", "四年级 · 3.3 理财", "Year 4 · 3.3 Financial management"), tip: ml("Tambah pendapatan atau perbelanjaan dan lihat baki bergerak.", "加入收入或支出，观察余额变化。", "Add income or expenses and watch the running balance.") },
+  decision: { label: ml("Papan keputusan belanja", "消费决定板", "Spending decision board"), scope: ml("Tahun 4 · 3.4 Tanggungjawab membuat keputusan", "四年级 · 3.4 负责任地作决定", "Year 4 · 3.4 Responsible decisions"), tip: ml("Seret setiap pembelian kepada beli, simpan atau kemudian.", "把每项消费拖到购买、储蓄或以后。", "Drag each purchase to buy, save or later.") },
+  operationMat: { label: ml("Tikar operasi wang", "钱币运算板", "Money operation mat"), scope: ml("Tahun 5 · 3.1 Operasi asas wang", "五年级 · 3.1 钱币基本运算", "Year 5 · 3.1 Basic operations with money"), tip: ml("Ubah dua nilai dan operasi untuk melihat proses serta hasil.", "改变两个金额和运算，观察过程与结果。", "Change two amounts and the operation to see the process and result.") },
+  operationMachine: { label: ml("Mesin operasi bergabung", "混合运算机器", "Combined-operation machine"), scope: ml("Tahun 5 · 3.2 Operasi bergabung wang", "五年级 · 3.2 钱币混合运算", "Year 5 · 3.2 Combined money operations"), tip: ml("Susun dua operasi dan lihat aliran pengiraan.", "设置两步运算，观察计算流程。", "Set two operations and watch the calculation flow.") },
+  shopLab: { label: ml("Makmal untung & rugi", "盈亏实验室", "Profit & loss lab"), scope: ml("Tahun 6 · 3.1 Harga kos, harga jual, untung dan rugi", "六年级 · 3.1 成本、售价、盈利与亏损", "Year 6 · 3.1 Cost, selling price, profit and loss"), tip: ml("Laraskan kos, harga jual dan kuantiti.", "调整成本、售价与数量。", "Adjust cost, selling price and quantity.") },
+  offerLab: { label: ml("Makmal diskaun & resit", "折扣与收据实验室", "Discount & receipt lab"), scope: ml("Tahun 6 · 3.1 Diskaun, rebat, baucar dan cukai", "六年级 · 3.1 折扣、回扣、礼券与税", "Year 6 · 3.1 Discount, rebate, voucher and tax"), tip: ml("Ubah tawaran dan perhatikan harga akhir pada resit.", "改变优惠，观察收据上的最终价格。", "Change the offer and watch the final receipt price.") },
+  balanceSheet: { label: ml("Papan aset & liabiliti", "资产与负债板", "Assets & liabilities board"), scope: ml("Tahun 6 · 3.1 Aset dan liabiliti", "六年级 · 3.1 资产与负债", "Year 6 · 3.1 Assets and liabilities"), tip: ml("Laraskan nilai aset dan hutang untuk melihat nilai bersih.", "调整资产与债务，观察净值。", "Adjust assets and debts to see net worth.") },
 };
 
 const GRADE_MODES = {
   2: { money: ["identify", "compose", "equivalent"], spend: ["pay"], manage: ["needWant", "savingPlan", "budget"] },
   3: { money: ["compose", "equivalent", "foreign"], spend: ["pay"], manage: ["needWant", "savingPlan", "budget"] },
+  4: { money: ["foreign"], spend: [], manage: ["ledger", "decision"] },
+  5: { money: ["operationMat", "operationMachine"], spend: [], manage: [] },
+  6: { money: [], spend: ["shopLab", "offerLab"], manage: ["balanceSheet"] },
 };
 const MODE_LABELS = { money: I18N.tabMoney, spend: I18N.tabSpend, manage: I18N.tabManage };
 
@@ -74,7 +84,9 @@ let audioContext;
 const tr = key => I18N[key][state.lang];
 const loc = value => typeof value === "string" ? value : value[state.lang];
 const money = sen => `RM${(Number(sen) / 100).toFixed(2)}`;
+const ringgit = value => money(Math.round(Number(value) * 100));
 const clamp = (value, min, max) => Math.min(max, Math.max(min, Number(value) || 0));
+const escapeHTML = value => String(value).replace(/[&<>"]/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[char]));
 const gradeName = n => state.lang === "ms" ? `Tahun ${n}` : state.lang === "zh" ? `${n}年级` : `Year ${n}`;
 
 function beep(type = "tap") {
@@ -132,8 +144,15 @@ function defaults(activity) {
   const amount = state.teacherAmount;
   return {
     identify: { selected: "rm1", interacted: false }, compose: { target: amount, wallet: [] }, equivalent: { target: state.grade === 2 ? 1000 : 5000, wallet: [] },
-    pay: { target: amount, wallet: [] }, foreign: { rm: 10, currency: "sgd", rate: .31, interacted: false }, needWant: { places: {}, selected: null, interacted: false },
+    pay: { target: amount, wallet: [] }, foreign: { rm: 10, currency: state.grade === 4 ? "usd" : "sgd", rate: state.grade === 4 ? .23 : .31, interacted: false }, needWant: { places: {}, selected: null, interacted: false },
     savingPlan: { goal: 100, saved: 20, weekly: 5, interacted: false }, budget: { income: state.grade === 2 ? 100 : 200, needs: 50, saving: 20, wants: 20, interacted: false },
+    ledger: { opening: 100, entries: [{ id: 1, type: "income", label: ml("Wang saku", "零用钱", "Pocket money"), amount: 50 }, { id: 2, type: "expense", label: ml("Makanan", "食物", "Food"), amount: 18 }], interacted: false },
+    decision: { cash: 120, places: {}, selected: null, interacted: false },
+    operationMat: { a: 125.50, b: 36.75, op: "+", interacted: false },
+    operationMachine: { start: 800, change: 125, multiplier: 3, op1: "−", op2: "×", interacted: false },
+    shopLab: { cost: 8, price: 12, quantity: 20, interacted: false },
+    offerLab: { original: 180, discount: 20, voucher: 10, rebate: 5, tax: 6, interacted: false },
+    balanceSheet: { cash: 500, savings: 1200, property: 3000, loan: 1500, bills: 250, interacted: false },
   }[activity];
 }
 
@@ -176,8 +195,10 @@ function renderMoneyBuilder(kind) {
 }
 
 function renderForeign() {
-  const data = { sgd: ["🇸🇬", "SGD", .31], thb: ["🇹🇭", "THB", 7.6], idr: ["🇮🇩", "IDR", 3750] }; const [flag, code] = data[state.tool.currency]; const converted = state.tool.rm * state.tool.rate;
-  setChallenge(loc(ml("Bandingkan RM1 dengan mata wang ASEAN", "比较 RM1 与东盟货币", "Compare RM1 with ASEAN currencies")), loc(ml("Guru masukkan kadar semasa sebelum aktiviti.", "活动前由老师输入当日汇率。", "The teacher enters the current rate before the activity.")));
+  const asean = { sgd: ["🇸🇬", "SGD", .31], thb: ["🇹🇭", "THB", 7.6], idr: ["🇮🇩", "IDR", 3750] };
+  const world = { usd: ["🇺🇸", "USD", .23], gbp: ["🇬🇧", "GBP", .18], jpy: ["🇯🇵", "JPY", 35], cny: ["🇨🇳", "CNY", 1.65] };
+  const data = state.grade === 4 ? world : asean; const [flag, code] = data[state.tool.currency]; const converted = state.tool.rm * state.tool.rate;
+  setChallenge(loc(state.grade === 4 ? ml("Bandingkan RM1 dengan mata wang utama dunia", "比较 RM1 与世界主要货币", "Compare RM1 with major world currencies") : ml("Bandingkan RM1 dengan mata wang ASEAN", "比较 RM1 与东盟货币", "Compare RM1 with ASEAN currencies")), loc(ml("Guru masukkan kadar semasa sebelum aktiviti.", "活动前由老师输入当日汇率。", "The teacher enters the current rate before the activity.")));
   els.stage.innerHTML = `<div class="converter"><div class="currency-card"><span>🇲🇾</span><strong>${money(state.tool.rm * 100)}</strong><small>MYR</small></div><div class="relation-arrow">⇄</div><div class="currency-card accent"><span>${flag}</span><strong>${converted.toLocaleString(undefined, { maximumFractionDigits: code === "IDR" ? 0 : 2 })}</strong><small>${code}</small></div></div>`;
   els.controls.innerHTML = `<div class="field-grid foreign-fields"><label>${loc(ml("Jumlah MYR", "马币金额", "MYR amount"))}<input id="foreignAmount" type="number" min="1" max="100" value="${state.tool.rm}"></label><label>${loc(ml(`Kadar: 1 MYR = ? ${code}`, `汇率：1 MYR = ? ${code}`, `Rate: 1 MYR = ? ${code}`))}<input id="foreignRate" type="number" min="0.0001" step="0.01" value="${state.tool.rate}"></label></div><div class="segmented">${Object.entries(data).map(([id, value]) => `<button type="button" data-currency="${id}" class="${id === state.tool.currency ? "active" : ""}">${value[0]} ${value[1]}</button>`).join("")}</div>`;
   document.querySelector("#foreignAmount").addEventListener("change", event => changeTool(t => { t.rm = clamp(event.target.value, 1, 100); t.interacted = true; }));
@@ -247,9 +268,122 @@ function renderBudget() {
   if (t.interacted) setNarration(loc(ml(`Wang diterima ${money(t.income * 100)}. Tolak keperluan ${money(t.needs * 100)}, simpanan ${money(t.saving * 100)}, dan kehendak ${money(t.wants * 100)}. Baki ialah ${money(balance * 100)}.`, `收到 ${money(t.income * 100)}。减去需要 ${money(t.needs * 100)}、储蓄 ${money(t.saving * 100)}和想要 ${money(t.wants * 100)}，余额是 ${money(balance * 100)}。`, `Start with ${money(t.income * 100)}. Subtract needs ${money(t.needs * 100)}, savings ${money(t.saving * 100)}, and wants ${money(t.wants * 100)}. The balance is ${money(balance * 100)}.`)));
 }
 
+function renderLedger() {
+  const t = state.tool; let running = t.opening;
+  const rows = t.entries.map(entry => {
+    running += entry.type === "income" ? entry.amount : -entry.amount;
+    const sign = entry.type === "income" ? "+" : "−";
+    return `<tr><td>${escapeHTML(loc(entry.label))}</td><td class="${entry.type}">${sign}${ringgit(entry.amount)}</td><td>${ringgit(running)}</td><td><button type="button" class="row-remove" data-entry="${entry.id}" aria-label="Remove">×</button></td></tr>`;
+  }).join("");
+  const income = t.entries.filter(x => x.type === "income").reduce((sum, x) => sum + x.amount, 0);
+  const expenses = t.entries.filter(x => x.type === "expense").reduce((sum, x) => sum + x.amount, 0);
+  setChallenge(loc(ml("Rekod wang masuk dan wang keluar", "记录收入与支出", "Record money in and money out")), loc(ml("Tambah urus niaga sendiri; baki dikira selepas setiap baris.", "加入自己的交易；每行都会计算新余额。", "Add your own transactions; the balance is recalculated after every row.")));
+  els.stage.innerHTML = `<div class="ledger-sheet"><div class="ledger-top"><span>${loc(ml("Baki awal", "期初余额", "Opening balance"))}</span><strong>${ringgit(t.opening)}</strong></div><table><thead><tr><th>${loc(ml("Catatan", "项目", "Entry"))}</th><th>${loc(ml("Perubahan", "变动", "Change"))}</th><th>${loc(ml("Baki", "余额", "Balance"))}</th><th></th></tr></thead><tbody>${rows || `<tr><td colspan="4">${loc(ml("Belum ada catatan", "还没有记录", "No entries yet"))}</td></tr>`}</tbody></table><div class="metric-row">${metric(loc(ml("Jumlah masuk", "总收入", "Total in")), ringgit(income), "positive")}${metric(loc(ml("Jumlah keluar", "总支出", "Total out")), ringgit(expenses), "negative")}${metric(loc(ml("Baki akhir", "最终余额", "Final balance")), ringgit(running), running >= 0 ? "accent" : "negative")}</div></div>`;
+  els.controls.innerHTML = `<div class="ledger-controls"><label>${loc(ml("Baki awal (RM)", "期初余额（RM）", "Opening balance (RM)"))}<input id="ledgerOpening" type="number" min="0" max="100000" step="1" value="${t.opening}"></label><label>${loc(ml("Jenis", "类型", "Type"))}<select id="ledgerType"><option value="income">${loc(ml("Wang masuk", "收入", "Money in"))}</option><option value="expense">${loc(ml("Wang keluar", "支出", "Money out"))}</option></select></label><label>${loc(ml("Catatan", "项目", "Entry"))}<input id="ledgerLabel" maxlength="24" value="${loc(ml("Buku", "书本", "Book"))}"></label><label>${loc(ml("Jumlah (RM)", "金额（RM）", "Amount (RM)"))}<input id="ledgerAmount" type="number" min="0.01" max="100000" step="0.05" value="12"></label><button type="button" class="primary-button" id="addLedger">＋ ${loc(ml("Tambah catatan", "加入记录", "Add entry"))}</button></div>`;
+  document.querySelector("#ledgerOpening").addEventListener("change", event => changeTool(x => { x.opening = clamp(event.target.value, 0, 100000); x.interacted = true; }));
+  document.querySelector("#addLedger").addEventListener("click", () => {
+    const label = document.querySelector("#ledgerLabel").value.trim(); const amount = clamp(document.querySelector("#ledgerAmount").value, .01, 100000); const type = document.querySelector("#ledgerType").value;
+    if (!label) return;
+    changeTool(x => { x.entries.push({ id: Date.now(), label, amount, type }); x.interacted = true; }, "coin");
+  });
+  els.stage.querySelectorAll("[data-entry]").forEach(button => button.addEventListener("click", () => changeTool(x => { x.entries = x.entries.filter(entry => entry.id !== Number(button.dataset.entry)); x.interacted = true; })));
+  setSummary(`${ringgit(t.opening)} + ${ringgit(income)} − ${ringgit(expenses)} = <strong>${ringgit(running)}</strong>`, running >= 0 ? "success" : "attention");
+  if (t.interacted) setNarration(loc(ml(`Baki awal ${ringgit(t.opening)}, tambah jumlah masuk ${ringgit(income)}, tolak jumlah keluar ${ringgit(expenses)}, baki akhir ${ringgit(running)}.`, `期初余额 ${ringgit(t.opening)}，加上收入 ${ringgit(income)}，减去支出 ${ringgit(expenses)}，最终余额是 ${ringgit(running)}。`, `Opening balance ${ringgit(t.opening)}, plus income ${ringgit(income)}, minus expenses ${ringgit(expenses)}, gives a final balance of ${ringgit(running)}.`)));
+}
+
+const DECISION_ITEMS = [
+  ["meal", "🍱", ml("Makanan sekolah", "学校午餐", "School meal"), 12], ["shoes", "👟", ml("Kasut sekolah", "校鞋", "School shoes"), 45],
+  ["book", "📚", ml("Buku cerita", "故事书", "Storybook"), 24], ["game", "🎮", ml("Permainan", "电子游戏", "Game"), 65],
+  ["gift", "🎁", ml("Hadiah", "礼物", "Gift"), 30], ["save", "🐷", ml("Simpanan kecemasan", "应急储蓄", "Emergency savings"), 25],
+];
+
+function moveDecision(id, place) { changeTool(t => { t.places[id] = place; t.selected = null; t.interacted = true; }, "coin"); }
+
+function renderDecision() {
+  const t = state.tool; const spent = DECISION_ITEMS.filter(([id]) => t.places[id] === "buy").reduce((sum, item) => sum + item[3], 0); const balance = t.cash - spent;
+  const groups = ["pool", "buy", "save", "later"].map(group => {
+    const names = { pool: ml("Belum diputuskan", "尚未决定", "Not decided"), buy: ml("Beli sekarang", "现在购买", "Buy now"), save: ml("Simpan wang", "保留金钱", "Keep the money"), later: ml("Kemudian", "以后", "Later") };
+    const cards = DECISION_ITEMS.filter(([id]) => (t.places[id] || "pool") === group).map(([id, icon, label, price]) => `<button type="button" draggable="true" class="sort-item-card ${t.selected === id ? "selected" : ""}" data-choice="${id}"><span>${icon}</span><strong>${loc(label)}<small>${ringgit(price)}</small></strong><i>⠿</i></button>`).join("");
+    return `<div class="sort-bin decision-${group}" data-decision-bin="${group}" role="button" tabindex="0"><h3>${loc(names[group])}</h3><div class="sort-items">${cards || `<small>${loc(ml("Letakkan kad di sini", "把卡片放在这里", "Place a card here"))}</small>`}</div></div>`;
+  }).join("");
+  setChallenge(`${loc(ml("Wang tersedia", "可用金额", "Money available"))}: ${ringgit(t.cash)}`, loc(ml("Tidak ada satu jawapan betul—bincangkan kesan setiap keputusan.", "没有唯一正确答案——讨论每个决定的影响。", "There is no single correct answer—discuss the effect of each decision.")));
+  els.stage.innerHTML = `<div class="decision-balance ${balance < 0 ? "over" : ""}"><span>${loc(ml("Baki jika beli sekarang", "现在购买后的余额", "Balance after buying now"))}</span><strong>${ringgit(balance)}</strong></div><div class="sort-board decision-board">${groups}</div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("decisionCash", loc(ml("Wang tersedia (RM)", "可用金额（RM）", "Money available (RM)")), 20, 500, 5, t.cash)}</div>`;
+  document.querySelector("#decisionCash").addEventListener("change", event => changeTool(x => { x.cash = Number(event.target.value); x.interacted = true; }));
+  els.stage.querySelectorAll("[data-choice]").forEach(card => {
+    card.addEventListener("click", event => { event.stopPropagation(); changeTool(x => { x.selected = x.selected === card.dataset.choice ? null : card.dataset.choice; }); });
+    card.addEventListener("dragstart", event => { event.dataTransfer.setData("text/plain", card.dataset.choice); event.dataTransfer.effectAllowed = "move"; });
+  });
+  els.stage.querySelectorAll("[data-decision-bin]").forEach(bin => {
+    bin.addEventListener("dragover", event => event.preventDefault());
+    bin.addEventListener("drop", event => { event.preventDefault(); const id = event.dataTransfer.getData("text/plain"); if (id) moveDecision(id, bin.dataset.decisionBin); });
+    bin.addEventListener("click", () => { if (t.selected) moveDecision(t.selected, bin.dataset.decisionBin); });
+    bin.addEventListener("keydown", event => { if ((event.key === "Enter" || event.key === " ") && t.selected) { event.preventDefault(); moveDecision(t.selected, bin.dataset.decisionBin); } });
+  });
+  setSummary(`${ringgit(t.cash)} − ${ringgit(spent)} = <strong>${ringgit(balance)}</strong>`, balance >= 0 ? "success" : "attention");
+  if (t.interacted) setNarration(loc(ml(`Wang tersedia ${ringgit(t.cash)}. Pilihan beli sekarang berjumlah ${ringgit(spent)}. Baki ialah ${ringgit(balance)}.`, `可用金额 ${ringgit(t.cash)}。现在购买的总额是 ${ringgit(spent)}，余额是 ${ringgit(balance)}。`, `Available money is ${ringgit(t.cash)}. Buy-now choices total ${ringgit(spent)}. The balance is ${ringgit(balance)}.`)));
+}
+
+function operationResult(a, b, op) { return op === "+" ? a + b : op === "−" ? a - b : op === "×" ? a * b : b ? a / b : 0; }
+
+function renderOperationMat() {
+  const t = state.tool; const result = operationResult(t.a, t.b, t.op); const second = ["×", "÷"].includes(t.op) ? String(t.b) : ringgit(t.b); const expression = `${ringgit(t.a)} ${t.op} ${second} = ${ringgit(result)}`;
+  setChallenge(loc(ml("Bina operasi wang sendiri", "建立自己的钱币运算", "Build your own money operation")), loc(ml("Nilai dan simbol boleh diubah; ini bukan soalan pilihan jawapan.", "金额与符号都能改变；这不是选择题。", "Change the values and symbol; this is not a multiple-choice question.")));
+  els.stage.innerHTML = `<div class="operation-mat"><div class="operation-card">${ringgit(t.a)}</div><div class="operation-symbol">${t.op}</div><div class="operation-card">${second}</div><div class="operation-symbol">=</div><div class="operation-card result">${ringgit(result)}</div></div>`;
+  els.controls.innerHTML = `<div class="field-grid operation-fields"><label>${loc(ml("Nilai pertama (RM)", "第一个金额（RM）", "First amount (RM)"))}<input id="opA" type="number" min="0" max="1000000" step="0.01" value="${t.a}"></label><label>${["×", "÷"].includes(t.op) ? loc(ml("Nombor", "数目", "Number")) : loc(ml("Nilai kedua (RM)", "第二个金额（RM）", "Second amount (RM)"))}<input id="opB" type="number" min="${t.op === "÷" ? 1 : 0}" max="1000000" step="${["×", "÷"].includes(t.op) ? 1 : .01}" value="${t.b}"></label></div><div class="segmented operation-buttons">${["+", "−", "×", "÷"].map(op => `<button type="button" data-op="${op}" class="${op === t.op ? "active" : ""}">${op}</button>`).join("")}</div>`;
+  document.querySelector("#opA").addEventListener("change", event => changeTool(x => { x.a = clamp(event.target.value, 0, 1000000); x.interacted = true; }));
+  document.querySelector("#opB").addEventListener("change", event => changeTool(x => { x.b = clamp(event.target.value, t.op === "÷" ? 1 : 0, 1000000); x.interacted = true; }));
+  els.controls.querySelectorAll("[data-op]").forEach(button => button.addEventListener("click", () => changeTool(x => { x.op = button.dataset.op; if (["×", "÷"].includes(x.op)) x.b = Math.max(1, Math.round(x.b)); x.interacted = true; })));
+  setSummary(`<strong>${expression}</strong>`, result >= 0 ? "success" : "attention");
+  if (t.interacted) setNarration(loc(ml(`${ringgit(t.a)} ${t.op} ${second}, hasilnya ${ringgit(result)}.`, `${ringgit(t.a)} ${t.op} ${second}，结果是 ${ringgit(result)}。`, `${ringgit(t.a)} ${t.op} ${second} equals ${ringgit(result)}.`)));
+}
+
+function renderOperationMachine() {
+  const t = state.tool; const first = operationResult(t.start, t.change, t.op1); const result = operationResult(first, t.multiplier, t.op2); const expression = `(${ringgit(t.start)} ${t.op1} ${ringgit(t.change)}) ${t.op2} ${t.multiplier} = ${ringgit(result)}`;
+  setChallenge(loc(ml("Alirkan wang melalui dua operasi", "让金额通过两步运算", "Run money through two operations")), loc(ml("Ikut anak panah untuk melihat hasil pada setiap langkah.", "沿着箭头观察每一步的结果。", "Follow the arrows to see the result at each step.")));
+  els.stage.innerHTML = `<div class="operation-machine"><div class="machine-step"><span>${loc(ml("Mula", "开始", "Start"))}</span><strong>${ringgit(t.start)}</strong></div><div class="machine-arrow">${t.op1} ${ringgit(t.change)} →</div><div class="machine-step"><span>${loc(ml("Langkah 1", "步骤 1", "Step 1"))}</span><strong>${ringgit(first)}</strong></div><div class="machine-arrow">${t.op2} ${t.multiplier} →</div><div class="machine-step result"><span>${loc(ml("Hasil", "结果", "Result"))}</span><strong>${ringgit(result)}</strong></div></div>`;
+  els.controls.innerHTML = `<div class="machine-controls"><label>${loc(ml("Wang mula (RM)", "开始金额（RM）", "Starting money (RM)"))}<input id="machineStart" type="number" min="0" max="1000000" step="1" value="${t.start}"></label><label>${loc(ml("Operasi pertama", "第一步运算", "First operation"))}<select id="machineOp1"><option value="+" ${t.op1 === "+" ? "selected" : ""}>+</option><option value="−" ${t.op1 === "−" ? "selected" : ""}>−</option></select></label><label>${loc(ml("Nilai (RM)", "金额（RM）", "Amount (RM)"))}<input id="machineChange" type="number" min="0" max="1000000" step="1" value="${t.change}"></label><label>${loc(ml("Operasi kedua", "第二步运算", "Second operation"))}<select id="machineOp2"><option ${t.op2 === "×" ? "selected" : ""}>×</option><option ${t.op2 === "÷" ? "selected" : ""}>÷</option></select></label><label>${loc(ml("Nombor", "数目", "Number"))}<input id="machineMultiplier" type="number" min="1" max="1000" step="1" value="${t.multiplier}"></label></div>`;
+  [["machineStart", "start"], ["machineChange", "change"], ["machineMultiplier", "multiplier"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = clamp(event.target.value, key === "multiplier" ? 1 : 0, key === "multiplier" ? 1000 : 1000000); x.interacted = true; })));
+  document.querySelector("#machineOp1").addEventListener("change", event => changeTool(x => { x.op1 = event.target.value; x.interacted = true; }));
+  document.querySelector("#machineOp2").addEventListener("change", event => changeTool(x => { x.op2 = event.target.value; x.interacted = true; }));
+  setSummary(`<strong>${expression}</strong>`, result >= 0 ? "success" : "attention");
+  if (t.interacted) setNarration(loc(ml(`${ringgit(t.start)} ${t.op1} ${ringgit(t.change)} menjadi ${ringgit(first)}. Kemudian ${t.op2} ${t.multiplier}, hasilnya ${ringgit(result)}.`, `${ringgit(t.start)} ${t.op1} ${ringgit(t.change)} 得到 ${ringgit(first)}。然后 ${t.op2} ${t.multiplier}，结果是 ${ringgit(result)}。`, `${ringgit(t.start)} ${t.op1} ${ringgit(t.change)} gives ${ringgit(first)}. Then ${t.op2} ${t.multiplier} gives ${ringgit(result)}.`)));
+}
+
+function renderShopLab() {
+  const t = state.tool; const totalCost = t.cost * t.quantity; const sales = t.price * t.quantity; const result = sales - totalCost; const label = result >= 0 ? ml("Untung", "盈利", "Profit") : ml("Rugi", "亏损", "Loss");
+  setChallenge(loc(ml("Uji sebuah gerai jualan", "模拟一个小摊位", "Experiment with a sales stall")), loc(ml("Ubah kos, harga jual dan kuantiti; hasil berubah serta-merta.", "改变成本、售价与数量；结果即时变化。", "Change cost, selling price and quantity; the result changes instantly.")));
+  els.stage.innerHTML = `<div class="stall-scene"><div class="stall">🏪</div><div class="price-flow">${metric(loc(ml("Jumlah kos", "总成本", "Total cost")), ringgit(totalCost))}<b>→</b>${metric(loc(ml("Jumlah jualan", "总销售额", "Total sales")), ringgit(sales))}<b>→</b>${metric(loc(label), ringgit(Math.abs(result)), result >= 0 ? "positive" : "negative")}</div></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("shopCost", loc(ml("Harga kos seunit (RM)", "单位成本（RM）", "Unit cost (RM)")), 1, 100, 1, t.cost)}${slider("shopPrice", loc(ml("Harga jual seunit (RM)", "单位售价（RM）", "Unit selling price (RM)")), 1, 150, 1, t.price)}${slider("shopQty", loc(ml("Kuantiti", "数量", "Quantity")), 1, 100, 1, t.quantity)}</div>`;
+  [["shopCost", "cost"], ["shopPrice", "price"], ["shopQty", "quantity"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); x.interacted = true; })));
+  setSummary(`${ringgit(t.price)} × ${t.quantity} − (${ringgit(t.cost)} × ${t.quantity}) = <strong>${result < 0 ? "−" : ""}${ringgit(Math.abs(result))}</strong>`, result >= 0 ? "success" : "attention");
+  if (t.interacted) setNarration(loc(ml(`Jumlah jualan ${ringgit(sales)} tolak jumlah kos ${ringgit(totalCost)}. Hasilnya ${loc(label)} ${ringgit(Math.abs(result))}.`, `总销售额 ${ringgit(sales)} 减去总成本 ${ringgit(totalCost)}，结果是${loc(label)} ${ringgit(Math.abs(result))}。`, `Total sales ${ringgit(sales)} minus total cost ${ringgit(totalCost)} gives ${loc(label).toLowerCase()} of ${ringgit(Math.abs(result))}.`)));
+}
+
+function renderOfferLab() {
+  const t = state.tool; const discountValue = t.original * t.discount / 100; const afterDiscount = Math.max(0, t.original - discountValue - t.voucher); const afterRebate = Math.max(0, afterDiscount - t.rebate); const taxValue = afterRebate * t.tax / 100; const final = afterRebate + taxValue;
+  setChallenge(loc(ml("Bina tawaran dan baca resit", "设计优惠并查看收据", "Build an offer and read the receipt")), loc(ml("Setiap peluncur mewakili satu baris pada resit.", "每个滑杆对应收据上的一行。", "Each slider represents one line on the receipt.")));
+  els.stage.innerHTML = `<div class="receipt-lab"><div class="receipt-title">🧾 ${loc(ml("RESIT", "收据", "RECEIPT"))}</div><div><span>${loc(ml("Harga asal", "原价", "Original price"))}</span><strong>${ringgit(t.original)}</strong></div><div><span>${loc(ml(`Diskaun ${t.discount}%`, `折扣 ${t.discount}%`, `Discount ${t.discount}%`))}</span><strong>−${ringgit(discountValue)}</strong></div><div><span>${loc(ml("Baucar", "礼券", "Voucher"))}</span><strong>−${ringgit(t.voucher)}</strong></div><div><span>${loc(ml("Rebat", "回扣", "Rebate"))}</span><strong>−${ringgit(t.rebate)}</strong></div><div><span>${loc(ml(`Cukai perkhidmatan ${t.tax}%`, `服务税 ${t.tax}%`, `Service tax ${t.tax}%`))}</span><strong>+${ringgit(taxValue)}</strong></div><footer><span>${loc(ml("Bayaran akhir", "最终付款", "Final payment"))}</span><strong>${ringgit(final)}</strong></footer></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("offerOriginal", loc(ml("Harga asal (RM)", "原价（RM）", "Original price (RM)")), 10, 1000, 5, t.original)}${slider("offerDiscount", loc(ml("Diskaun (%)", "折扣（%）", "Discount (%)")), 0, 80, 5, t.discount)}${slider("offerVoucher", loc(ml("Baucar (RM)", "礼券（RM）", "Voucher (RM)")), 0, 100, 5, t.voucher)}${slider("offerRebate", loc(ml("Rebat (RM)", "回扣（RM）", "Rebate (RM)")), 0, 100, 5, t.rebate)}${slider("offerTax", loc(ml("Cukai perkhidmatan (%)", "服务税（%）", "Service tax (%)")), 0, 10, 1, t.tax)}</div>`;
+  [["offerOriginal", "original"], ["offerDiscount", "discount"], ["offerVoucher", "voucher"], ["offerRebate", "rebate"], ["offerTax", "tax"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); x.interacted = true; })));
+  setSummary(`${ringgit(t.original)} − ${ringgit(discountValue)} − ${ringgit(t.voucher)} − ${ringgit(t.rebate)} + ${ringgit(taxValue)} = <strong>${ringgit(final)}</strong>`, "success");
+  if (t.interacted) setNarration(loc(ml(`Harga asal ${ringgit(t.original)}. Tolak diskaun ${ringgit(discountValue)}, baucar ${ringgit(t.voucher)} dan rebat ${ringgit(t.rebate)}, kemudian tambah cukai ${ringgit(taxValue)}. Bayaran akhir ${ringgit(final)}.`, `原价 ${ringgit(t.original)}。减去折扣 ${ringgit(discountValue)}、礼券 ${ringgit(t.voucher)}和回扣 ${ringgit(t.rebate)}，再加税 ${ringgit(taxValue)}，最终付款 ${ringgit(final)}。`, `Original price ${ringgit(t.original)}. Subtract discount ${ringgit(discountValue)}, voucher ${ringgit(t.voucher)} and rebate ${ringgit(t.rebate)}, then add tax ${ringgit(taxValue)}. Final payment is ${ringgit(final)}.`)));
+}
+
+function renderBalanceSheet() {
+  const t = state.tool; const assets = t.cash + t.savings + t.property; const liabilities = t.loan + t.bills; const net = assets - liabilities;
+  setChallenge(loc(ml("Seimbangkan aset dan liabiliti", "比较资产与负债", "Balance assets and liabilities")), loc(ml("Laraskan nilai untuk melihat bagaimana nilai bersih berubah.", "调整数值，观察净值如何变化。", "Adjust the values to see how net worth changes.")));
+  els.stage.innerHTML = `<div class="balance-board"><section class="balance-side assets"><h3>＋ ${loc(ml("Aset", "资产", "Assets"))}</h3><div><span>${loc(ml("Tunai", "现金", "Cash"))}</span><strong>${ringgit(t.cash)}</strong></div><div><span>${loc(ml("Simpanan", "储蓄", "Savings"))}</span><strong>${ringgit(t.savings)}</strong></div><div><span>${loc(ml("Harta", "财产", "Property"))}</span><strong>${ringgit(t.property)}</strong></div><footer>${ringgit(assets)}</footer></section><section class="balance-side debts"><h3>− ${loc(ml("Liabiliti", "负债", "Liabilities"))}</h3><div><span>${loc(ml("Pinjaman", "贷款", "Loan"))}</span><strong>${ringgit(t.loan)}</strong></div><div><span>${loc(ml("Bil belum bayar", "未付账单", "Unpaid bills"))}</span><strong>${ringgit(t.bills)}</strong></div><footer>${ringgit(liabilities)}</footer></section></div>`;
+  els.controls.innerHTML = `<div class="range-grid">${slider("assetCash", loc(ml("Tunai (RM)", "现金（RM）", "Cash (RM)")), 0, 5000, 50, t.cash)}${slider("assetSavings", loc(ml("Simpanan (RM)", "储蓄（RM）", "Savings (RM)")), 0, 10000, 100, t.savings)}${slider("assetProperty", loc(ml("Harta (RM)", "财产（RM）", "Property (RM)")), 0, 20000, 500, t.property)}${slider("debtLoan", loc(ml("Pinjaman (RM)", "贷款（RM）", "Loan (RM)")), 0, 20000, 500, t.loan)}${slider("debtBills", loc(ml("Bil belum bayar (RM)", "未付账单（RM）", "Unpaid bills (RM)")), 0, 5000, 50, t.bills)}</div>`;
+  [["assetCash", "cash"], ["assetSavings", "savings"], ["assetProperty", "property"], ["debtLoan", "loan"], ["debtBills", "bills"]].forEach(([id, key]) => document.querySelector(`#${id}`).addEventListener("change", event => changeTool(x => { x[key] = Number(event.target.value); x.interacted = true; })));
+  setSummary(`${ringgit(assets)} − ${ringgit(liabilities)} = <strong>${ringgit(net)}</strong> ${loc(ml("nilai bersih", "净值", "net worth"))}`, net >= 0 ? "success" : "attention");
+  if (t.interacted) setNarration(loc(ml(`Jumlah aset ${ringgit(assets)} tolak jumlah liabiliti ${ringgit(liabilities)}, nilai bersih ialah ${ringgit(net)}.`, `总资产 ${ringgit(assets)} 减去总负债 ${ringgit(liabilities)}，净值是 ${ringgit(net)}。`, `Total assets ${ringgit(assets)} minus total liabilities ${ringgit(liabilities)} gives net worth of ${ringgit(net)}.`)));
+}
+
 function renderTool() {
   els.stage.replaceChildren(); els.controls.replaceChildren(); setNarration();
-  const renderers = { identify: renderIdentify, compose: () => renderMoneyBuilder("compose"), equivalent: () => renderMoneyBuilder("equivalent"), foreign: renderForeign, pay: () => renderMoneyBuilder("pay"), needWant: renderNeedWant, savingPlan: renderSavingPlan, budget: renderBudget };
+  els.teacher.hidden = !["compose", "pay"].includes(state.activity);
+  const renderers = { identify: renderIdentify, compose: () => renderMoneyBuilder("compose"), equivalent: () => renderMoneyBuilder("equivalent"), foreign: renderForeign, pay: () => renderMoneyBuilder("pay"), needWant: renderNeedWant, savingPlan: renderSavingPlan, budget: renderBudget, ledger: renderLedger, decision: renderDecision, operationMat: renderOperationMat, operationMachine: renderOperationMachine, shopLab: renderShopLab, offerLab: renderOfferLab, balanceSheet: renderBalanceSheet };
   renderers[state.activity]();
 }
 
