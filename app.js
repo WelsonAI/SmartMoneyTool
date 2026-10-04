@@ -210,8 +210,10 @@ function renderForeign() {
 
 const BOARD_ITEMS = [
   ["rice", "🍚", ml("Makanan", "食物", "Food")], ["book", "📒", ml("Buku sekolah", "课本", "School book")], ["water", "💧", ml("Air minuman", "饮用水", "Drinking water")],
-  ["game", "🎮", ml("Permainan", "电子游戏", "Game")], ["toy", "🧸", ml("Mainan baharu", "新玩具", "New toy")], ["shoes", "👟", ml("Kasut", "鞋子", "Shoes")],
+  ["game", "🎮", ml("Permainan", "电子游戏", "Game")], ["toy", "🧸", ml("Mainan baharu", "新玩具", "New toy")], ["shoes", "👟", ml("Kasut sekolah ganti", "替换破损校鞋", "Replacement school shoes")],
 ];
+
+const BOARD_REFERENCE = { need: ["rice", "book", "water", "shoes"], want: ["game", "toy"] };
 
 function moveBoardItem(id, place) { changeTool(t => { t.places[id] = place; t.selected = null; t.interacted = true; }, "coin"); }
 
@@ -222,7 +224,12 @@ function renderNeedWant() {
     const cards = BOARD_ITEMS.filter(([id]) => (state.tool.places[id] || "pool") === group).map(([id, icon, label]) => `<button type="button" draggable="true" class="sort-item-card ${state.tool.selected === id ? "selected" : ""}" data-item="${id}"><span>${icon}</span><strong>${loc(label)}</strong><i>⠿</i></button>`).join("");
     return `<div class="sort-bin ${group}" data-bin="${group}" role="button" tabindex="0"><h3>${loc(title)}</h3><div class="sort-items">${cards || `<small>${loc(ml("Lepaskan kad di sini", "把卡片放在这里", "Drop a card here"))}</small>`}</div></div>`;
   }).join("");
-  els.stage.innerHTML = `<div class="sort-board">${groups}</div>`;
+  const placed = BOARD_ITEMS.filter(([id]) => (state.tool.places[id] || "pool") !== "pool").length;
+  const namesFor = ids => ids.map(id => loc(BOARD_ITEMS.find(item => item[0] === id)[2])).join("、");
+  const ownNames = place => BOARD_ITEMS.filter(([id]) => state.tool.places[id] === place).map(([, , label]) => loc(label)).join("、") || "—";
+  const completed = placed === BOARD_ITEMS.length;
+  const resultPanel = completed ? `<section class="classification-result"><div class="completion-title">✓ ${loc(ml("Klasifikasi selesai", "分类完成", "Classification complete"))}</div><div class="classification-columns"><div><span>${loc(ml("Pilihan kamu · Keperluan", "你的分类 · 需要", "Your board · Needs"))}</span><strong>${ownNames("need")}</strong><span>${loc(ml("Pilihan kamu · Kehendak", "你的分类 · 想要", "Your board · Wants"))}</span><strong>${ownNames("want")}</strong></div><div class="reference-card"><span>${loc(ml("Rujukan mengikut situasi kad", "根据卡片情境的参考分类", "Reference for these card situations"))}</span><p><b>${loc(ml("Keperluan", "需要", "Needs"))}:</b> ${namesFor(BOARD_REFERENCE.need)}</p><p><b>${loc(ml("Kehendak", "想要", "Wants"))}:</b> ${namesFor(BOARD_REFERENCE.want)}</p></div></div><p class="classification-reason">${loc(ml("Keperluan menyokong kehidupan, kesihatan dan pembelajaran. Kehendak menambah keseronokan tetapi boleh ditangguhkan. Bandingkan dengan pilihan kamu dan bincangkan sebabnya.", "需要维持生活、健康和学习；想要增添乐趣，但可以延后。请把参考分类与你的选择比较，并说明理由。", "Needs support life, health and learning. Wants add enjoyment but can be delayed. Compare the reference with your choices and discuss why."))}</p></section>` : "";
+  els.stage.innerHTML = `<div class="sort-board">${groups}</div>${resultPanel}`;
   els.controls.innerHTML = `<div class="board-actions"><button type="button" class="secondary-button compact" id="clearBoard">↻ ${loc(ml("Kembalikan semua kad", "放回所有卡片", "Return all cards"))}</button></div>`;
   els.stage.querySelectorAll("[data-item]").forEach(card => {
     card.addEventListener("click", event => { event.stopPropagation(); changeTool(t => { t.selected = t.selected === card.dataset.item ? null : card.dataset.item; }); });
@@ -237,12 +244,10 @@ function renderNeedWant() {
     bin.addEventListener("keydown", event => { if ((event.key === "Enter" || event.key === " ") && state.tool.selected) { event.preventDefault(); moveBoardItem(state.tool.selected, bin.dataset.bin); } });
   });
   document.querySelector("#clearBoard").addEventListener("click", () => changeTool(t => { t.places = {}; t.selected = null; t.interacted = false; }));
-  const placed = BOARD_ITEMS.filter(([id]) => (state.tool.places[id] || "pool") !== "pool").length;
   const selectedName = BOARD_ITEMS.find(([id]) => id === state.tool.selected)?.[2];
-  setSummary(selectedName ? `${loc(ml("Dipilih", "已选择", "Selected"))}: <strong>${loc(selectedName)}</strong> · ${loc(ml("Sekarang pilih satu ruang.", "现在选择一个区域。", "Now choose a space."))}` : `${placed}/6 ${loc(ml("kad telah diletakkan.", "张卡片已分类。", "cards placed."))}`);
-  if (state.tool.interacted && placed) {
-    const names = place => BOARD_ITEMS.filter(([id]) => state.tool.places[id] === place).map(([, , label]) => loc(label)).join(", ") || loc(ml("tiada", "没有", "none"));
-    setNarration(loc(ml(`Kamu meletakkan ${names("need")} sebagai keperluan, dan ${names("want")} sebagai kehendak. Bincangkan sebab bagi setiap pilihan.`, `你把${names("need")}放在“需要”，把${names("want")}放在“想要”。请说明每项选择的原因。`, `You placed ${names("need")} under needs, and ${names("want")} under wants. Discuss the reason for each choice.`)));
+  setSummary(selectedName ? `${loc(ml("Dipilih", "已选择", "Selected"))}: <strong>${loc(selectedName)}</strong> · ${loc(ml("Sekarang pilih satu ruang.", "现在选择一个区域。", "Now choose a space."))}` : completed ? `✓ <strong>${loc(ml("Semua 6 kad selesai", "6 张卡片已全部分类", "All 6 cards are complete"))}</strong> · ${loc(ml("Bandingkan pilihan kamu dengan rujukan di atas.", "请比较你的分类与上方参考。", "Compare your board with the reference above."))}` : `${placed}/6 ${loc(ml("kad telah diletakkan. Teruskan hingga lengkap untuk melihat hasil.", "张卡片已分类。全部完成后会显示结果。", "cards placed. Complete all cards to see the result."))}`, completed ? "success" : "neutral");
+  if (completed) {
+    setNarration(loc(ml(`Klasifikasi selesai. Kamu meletakkan ${ownNames("need")} sebagai keperluan, dan ${ownNames("want")} sebagai kehendak. Dalam situasi kad ini, rujukannya ialah: keperluan, ${namesFor(BOARD_REFERENCE.need)}; kehendak, ${namesFor(BOARD_REFERENCE.want)}. Keperluan menyokong kehidupan, kesihatan dan pembelajaran, manakala kehendak boleh ditangguhkan.`, `分类完成。你把${ownNames("need")}放在“需要”，把${ownNames("want")}放在“想要”。在这些卡片的情境中，参考分类是：需要——${namesFor(BOARD_REFERENCE.need)}；想要——${namesFor(BOARD_REFERENCE.want)}。需要维持生活、健康和学习；想要可以延后。`, `Classification complete. You placed ${ownNames("need")} under needs, and ${ownNames("want")} under wants. For these card situations, the reference is: needs—${namesFor(BOARD_REFERENCE.need)}; wants—${namesFor(BOARD_REFERENCE.want)}. Needs support life, health and learning, while wants can be delayed.`)));
   }
 }
 

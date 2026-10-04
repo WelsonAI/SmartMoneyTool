@@ -70,9 +70,11 @@ const board = await evaluate(`(() => {
   document.querySelector('[data-mode=manage]').click(); const activity=document.getElementById('activitySelect'); activity.value='needWant'; activity.dispatchEvent(new Event('change',{bubbles:true}));
   document.querySelector('[data-item=rice]').click(); const selected=document.querySelector('[data-item=rice]').classList.contains('selected'); document.querySelector('[data-bin=need]').click();
   const transfer=new DataTransfer(); const game=document.querySelector('[data-item=game]'); game.dispatchEvent(new DragEvent('dragstart',{bubbles:true,dataTransfer:transfer})); document.querySelector('[data-bin=want]').dispatchEvent(new DragEvent('drop',{bubbles:true,cancelable:true,dataTransfer:transfer}));
-  return {selected,moved:!!document.querySelector('[data-bin=need] [data-item=rice]'),dragged:!!document.querySelector('[data-bin=want] [data-item=game]'),listen:!document.getElementById('listenButton').disabled,pool:!!document.querySelector('[data-bin=pool] [data-item=rice]')};
+  const partialListen=document.getElementById('listenButton').disabled;
+  for(const [id,bin] of [['book','need'],['water','need'],['shoes','need'],['toy','want']]){ document.querySelector('[data-item='+id+']').click(); document.querySelector('[data-bin='+bin+']').click(); }
+  return {selected,moved:!!document.querySelector('[data-bin=need] [data-item=rice]'),dragged:!!document.querySelector('[data-bin=want] [data-item=game]'),partialListen,listen:!document.getElementById('listenButton').disabled,pool:!!document.querySelector('[data-bin=pool] [data-item=rice]'),completed:!!document.querySelector('.classification-result'),summary:document.getElementById('liveSummary').textContent,overflow:document.documentElement.scrollWidth-window.innerWidth};
 })()`);
-if (!board.selected || !board.moved || !board.dragged || !board.listen || board.pool) throw new Error(`Board interaction failed: ${JSON.stringify(board)}`);
+if (!board.selected || !board.moved || !board.dragged || !board.partialListen || !board.listen || board.pool || !board.completed || !board.summary.includes('6') || board.overflow > 1) throw new Error(`Board interaction failed: ${JSON.stringify(board)}`);
 
 const teacher = await evaluate(`(() => {
   document.querySelector('[data-mode=spend]').click(); document.getElementById('teacherButton').click(); document.getElementById('teacherRinggit').value='56'; document.getElementById('teacherSen').value='50'; document.getElementById('useTeacherSettings').click();

@@ -1,5 +1,5 @@
 import fs from "node:fs";
-const [endpoint,targetUrl,output,widthText="1365",heightText="900",grade="2",lang="zh",mode="money",activity="identify"] = process.argv.slice(2);
+const [endpoint,targetUrl,output,widthText="1365",heightText="900",grade="2",lang="zh",mode="money",activity="identify",scenario=""] = process.argv.slice(2);
 const targets = await fetch(`${endpoint}/json/list`).then(r=>r.json());
 const target = targets.find(x=>x.type==="page");
 const socket = new WebSocket(target.webSocketDebuggerUrl);
@@ -9,6 +9,6 @@ socket.addEventListener("message",event=>{const m=JSON.parse(event.data);if(m.id
 function send(method,params={}){const call=++id;socket.send(JSON.stringify({id:call,method,params}));return new Promise((resolve,reject)=>pending.set(call,{resolve,reject}));}
 await send("Page.enable"); await send("Emulation.setDeviceMetricsOverride",{width:Number(widthText),height:Number(heightText),deviceScaleFactor:1,mobile:Number(widthText)<600});
 await send("Page.navigate",{url:targetUrl}); await new Promise(r=>setTimeout(r,1000));
-await send("Runtime.evaluate",{expression:`(()=>{const g=document.getElementById('gradeSelect');g.value=${JSON.stringify(grade)};g.dispatchEvent(new Event('change',{bubbles:true}));document.querySelector('[data-lang=${lang}]')?.click();document.querySelector('[data-mode=${mode}]')?.click();const a=document.getElementById('activitySelect');if([...a.options].some(x=>x.value===${JSON.stringify(activity)})){a.value=${JSON.stringify(activity)};a.dispatchEvent(new Event('change',{bubbles:true}));}})()`});
+await send("Runtime.evaluate",{expression:`(()=>{const g=document.getElementById('gradeSelect');g.value=${JSON.stringify(grade)};g.dispatchEvent(new Event('change',{bubbles:true}));document.querySelector('[data-lang=${lang}]')?.click();document.querySelector('[data-mode=${mode}]')?.click();const a=document.getElementById('activitySelect');if([...a.options].some(x=>x.value===${JSON.stringify(activity)})){a.value=${JSON.stringify(activity)};a.dispatchEvent(new Event('change',{bubbles:true}));}if(${JSON.stringify(scenario)}==='complete-board'){for(const [id,bin] of [['rice','need'],['book','need'],['water','need'],['shoes','need'],['game','want'],['toy','want']]){document.querySelector('[data-item="'+id+'"]')?.click();document.querySelector('[data-bin="'+bin+'"]')?.click();}}})()`});
 await new Promise(r=>setTimeout(r,700));
 const shot=await send("Page.captureScreenshot",{format:"png",captureBeyondViewport:false,fromSurface:true});fs.writeFileSync(output,Buffer.from(shot.data,"base64"));console.log(output);socket.close();

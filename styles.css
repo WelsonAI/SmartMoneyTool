@@ -369,6 +369,15 @@ select, input {
 .sort-bin[role="button"] { cursor: pointer; }
 .sort-bin[role="button"]:focus-visible { outline: 3px solid var(--green-2); outline-offset: 2px; }
 .board-actions { display: flex; justify-content: center; }
+.classification-result { width: 100%; margin-top: 14px; padding: 16px; border: 2px solid #67bdaa; border-radius: 17px; background: #effbf7; box-shadow: 0 5px 0 rgba(13,108,91,.1); }
+.completion-title { margin-bottom: 12px; color: var(--green); font-size: 21px; font-weight: 900; text-align: center; }
+.classification-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.classification-columns > div { display: grid; gap: 6px; padding: 12px; border-radius: 13px; background: white; }
+.classification-columns span { color: #765a32; font-size: 12px; font-weight: 800; }
+.classification-columns strong { color: var(--green); line-height: 1.45; }
+.reference-card { border: 1px solid #93d0c2; }
+.reference-card p { margin: 2px 0; line-height: 1.45; }
+.classification-reason { margin: 12px 0 0; padding-top: 11px; border-top: 1px dashed #9ccabd; color: #5f4a2b; line-height: 1.55; }
 
 .goal-scene { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 22px; }
 .goal-scene > span { font-size: 80px; }
@@ -506,6 +515,7 @@ select, input {
   .ledger-controls, .machine-controls { grid-template-columns: 1fr; }
   .decision-board { grid-template-columns: 1fr; }
   .decision-board .sort-bin { min-height: 110px; }
+  .classification-columns { grid-template-columns: 1fr; }
   .operation-mat, .operation-machine { flex-direction: column; }
   .operation-card, .machine-step { width: min(280px, 100%); min-height: 72px; }
   .machine-arrow { transform: rotate(90deg); }
