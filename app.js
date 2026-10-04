@@ -66,6 +66,24 @@ const MONEY = [
   { id: "sen5", value: 5, label: "5 sen", kind: "coin", image: "assets/sen5.png" },
 ];
 
+const SHOP_PRODUCTS = [
+  { id: "bag", icon: "🎒", label: ml("Beg sekolah", "书包", "School bag"), min: 2500, max: 10000, minGrade: 2 },
+  { id: "bottle", icon: "🥤", label: ml("Botol minuman", "水壶", "Water bottle"), min: 800, max: 4500, minGrade: 2 },
+  { id: "storybook", icon: "📚", label: ml("Buku cerita", "故事书", "Storybook"), min: 500, max: 3000, minGrade: 2 },
+  { id: "pencilcase", icon: "🖍️", label: ml("Kotak pensel", "文具盒", "Pencil case"), min: 300, max: 2500, minGrade: 2 },
+  { id: "lunchbox", icon: "🍱", label: ml("Bekas makanan", "午餐盒", "Lunch box"), min: 800, max: 4000, minGrade: 2 },
+  { id: "umbrella", icon: "☂️", label: ml("Payung", "雨伞", "Umbrella"), min: 1000, max: 5000, minGrade: 2 },
+  { id: "shoes", icon: "👟", label: ml("Kasut sekolah", "校鞋", "School shoes"), min: 2500, max: 10000, minGrade: 2 },
+  { id: "ruler", icon: "📏", label: ml("Pembaris", "尺", "Ruler"), min: 50, max: 500, minGrade: 2 },
+  { id: "calculator", icon: "🧮", label: ml("Kalkulator", "计算器", "Calculator"), min: 2000, max: 8000, minGrade: 2 },
+  { id: "ball", icon: "⚽", label: ml("Bola sukan", "球", "Sports ball"), min: 1500, max: 8000, minGrade: 2 },
+  { id: "artset", icon: "🎨", label: ml("Set seni", "画具", "Art set"), min: 800, max: 6000, minGrade: 2 },
+  { id: "notebook", icon: "📒", label: ml("Buku nota", "笔记本", "Notebook"), min: 100, max: 1500, minGrade: 2 },
+  { id: "bicycle", icon: "🚲", label: ml("Basikal", "自行车", "Bicycle"), min: 20000, max: 100000, minGrade: 3 },
+  { id: "scooter", icon: "🛴", label: ml("Skuter", "滑板车", "Scooter"), min: 10000, max: 50000, minGrade: 3 },
+  { id: "watch", icon: "⌚", label: ml("Jam sukan", "运动手表", "Sports watch"), min: 5000, max: 30000, minGrade: 3 },
+];
+
 const els = {
   grade: document.querySelector("#gradeSelect"), activity: document.querySelector("#activitySelect"), sideTitle: document.querySelector("#sideTitle"),
   scope: document.querySelector("#scopeNote"), tip: document.querySelector("#tipBox span:last-child"), title: document.querySelector("#activityTitle"),
@@ -128,7 +146,7 @@ function defaults(activity) {
   const amount = state.teacherAmount;
   return {
     identify: { selected: "rm1", interacted: false }, compose: { target: amount, wallet: [] },
-    pay: { target: amount, wallet: [] }, foreign: { rm: 10, currency: state.grade === 4 ? "usd" : "sgd", rate: state.grade === 4 ? .23 : .31, interacted: false }, needWant: { places: {}, selected: null, itemIds: buildBoardSet(), interacted: false },
+    pay: { target: amount, wallet: [], productId: "bag" }, foreign: { rm: 10, currency: state.grade === 4 ? "usd" : "sgd", rate: state.grade === 4 ? .23 : .31, interacted: false }, needWant: { places: {}, selected: null, itemIds: buildBoardSet(), interacted: false },
     savingPlan: { goal: 100, saved: 20, weekly: 5, interacted: false }, budget: { income: state.grade === 2 ? 100 : 200, needs: 50, saving: 20, wants: 20, interacted: false },
     ledger: { opening: 100, entries: [{ id: 1, type: "income", label: ml("Wang saku", "零用钱", "Pocket money"), amount: 50 }, { id: 2, type: "expense", label: ml("Makanan", "食物", "Food"), amount: 18 }], interacted: false },
     decision: { cash: 120, places: {}, selected: null, interacted: false },
@@ -159,19 +177,27 @@ function randomComposeTarget(current) {
   return next;
 }
 
+function randomPurchase(currentId, currentTarget) {
+  const available = SHOP_PRODUCTS.filter(product => product.minGrade <= state.grade && product.id !== currentId);
+  const product = available[Math.floor(Math.random() * available.length)]; let target;
+  do { target = product.min + Math.floor(Math.random() * ((product.max - product.min) / 5 + 1)) * 5; } while (target === currentTarget);
+  return { productId: product.id, target };
+}
+
 function renderMoneyBuilder(kind) {
   const t = state.tool; const total = walletTotal(t.wallet); const diff = t.target - total; const available = MONEY;
-  const product = t.target > 5000 ? ["🎒", ml("Beg sekolah", "书包", "School bag")] : t.target > 1500 ? ["🧴", ml("Botol minuman", "水壶", "Water bottle")] : ["📚", ml("Buku cerita", "故事书", "Storybook")];
-  const title = kind === "pay" ? `${loc(product[1])} · ${money(t.target)}` : `${loc(ml("Jumlah sasaran", "目标金额", "Target amount"))}: ${money(t.target)}`;
+  const product = SHOP_PRODUCTS.find(item => item.id === t.productId) || SHOP_PRODUCTS[0];
+  const title = kind === "pay" ? `<span class="challenge-product"><span class="challenge-product-icon" aria-hidden="true">${product.icon}</span><strong>${loc(product.label)}</strong><span class="challenge-price">${money(t.target)}</span></span>` : `${loc(ml("Jumlah sasaran", "目标金额", "Target amount"))}: ${money(t.target)}`;
   setChallenge(title, loc(ml("Klik wang untuk menambah; klik wang dalam dulang untuk mengeluarkan.", "点击钱币加入；点击托盘中的钱币移除。", "Tap money to add it; tap money in the tray to remove it.")));
   const tray = t.wallet.length ? t.wallet.map((id, index) => { const item = MONEY.find(x => x.id === id); return `<button type="button" class="wallet-item" data-remove="${index}" aria-label="${item.label}">${moneyPicture(item)}</button>`; }).join("") : `<span class="wallet-empty">${loc(ml("Dulang masih kosong", "托盘还是空的", "The tray is empty"))}</span>`;
-  const productCard = kind === "pay" ? `<div class="product-scene"><span class="product-art">${product[0]}</span><div><strong>${loc(product[1])}</strong><span class="price-tag">${money(t.target)}</span></div></div>` : "";
-  els.stage.innerHTML = `<div class="money-builder">${productCard}<div class="wallet-total"><span>${loc(ml("Jumlah di dalam dulang", "托盘里的总额", "Total in tray"))}</span><strong>${money(total)}</strong></div><div class="wallet-tray">${tray}</div>${moneyBank(available)}</div>`;
-  els.controls.innerHTML = `<div class="board-actions"><button type="button" class="secondary-button compact" id="clearWallet">↻ ${loc(ml("Kosongkan dulang", "清空托盘", "Clear tray"))}</button>${kind === "compose" ? `<button type="button" class="primary-button compact" id="randomTarget">🎲 ${loc(ml("Jumlah rawak", "随机金额", "Random amount"))}</button>` : ""}</div>`;
+  els.stage.innerHTML = `<div class="money-builder"><div class="wallet-total"><span>${loc(ml("Jumlah di dalam dulang", "托盘里的总额", "Total in tray"))}</span><strong>${money(total)}</strong></div><div class="wallet-tray">${tray}</div>${moneyBank(available)}</div>`;
+  const randomButton = kind === "compose" ? `<button type="button" class="primary-button compact" id="randomTarget">🎲 ${loc(ml("Jumlah rawak", "随机金额", "Random amount"))}</button>` : `<button type="button" class="primary-button compact" id="randomPurchase">🎲 ${loc(ml("Produk & harga rawak", "随机商品与金额", "Random product & price"))}</button>`;
+  els.controls.innerHTML = `<div class="board-actions"><button type="button" class="secondary-button compact" id="clearWallet">↻ ${loc(ml("Kosongkan dulang", "清空托盘", "Clear tray"))}</button>${randomButton}</div>`;
   els.stage.querySelectorAll("[data-money]").forEach(button => button.addEventListener("click", () => changeTool(x => { x.wallet.push(button.dataset.money); }, "coin")));
   els.stage.querySelectorAll("[data-remove]").forEach(button => button.addEventListener("click", () => changeTool(x => { x.wallet.splice(Number(button.dataset.remove), 1); })));
   document.querySelector("#clearWallet").addEventListener("click", () => changeTool(x => { x.wallet = []; }));
   document.querySelector("#randomTarget")?.addEventListener("click", () => changeTool(x => { x.target = randomComposeTarget(x.target); x.wallet = []; }, "done"));
+  document.querySelector("#randomPurchase")?.addEventListener("click", () => changeTool(x => { const next = randomPurchase(x.productId, x.target); x.productId = next.productId; x.target = next.target; x.wallet = []; }, "done"));
   if (diff === 0) setSummary(`✨ ${loc(ml("Jumlah tepat. Cuba bina dengan cara lain.", "金额刚刚好。再尝试另一种组合。", "Exact amount. Try another combination."))}`, "success");
   else if (diff > 0) setSummary(`${loc(ml("Masih perlu", "还需要", "Still needed"))} <strong>${money(diff)}</strong>`);
   else setSummary(`${loc(ml("Melebihi sasaran sebanyak", "超过目标", "Over the target by"))} <strong>${money(-diff)}</strong>`, "attention");

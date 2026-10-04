@@ -68,6 +68,19 @@ const moneyTool = await evaluate(`(() => {
 })()`);
 if (moneyTool.exact.total !== "RM56.50" || !moneyTool.exact.summary.includes("tepat") || moneyTool.year2.target === moneyTool.year2.before || moneyTool.year2.target < 50 || moneyTool.year2.target > 10000 || moneyTool.year2.target % 5 || moneyTool.year2.cleared !== "RM0.00" || moneyTool.year3.target === moneyTool.year3.before || moneyTool.year3.target < 1000 || moneyTool.year3.target > 100000 || moneyTool.year3.target % 5 || moneyTool.year3.cleared !== "RM0.00") throw new Error(`Money tool failed: ${JSON.stringify(moneyTool)}`);
 
+const purchaseTool = await evaluate(`(() => {
+  const grade=document.getElementById('gradeSelect'); grade.value='2'; grade.dispatchEvent(new Event('change',{bubbles:true}));
+  document.querySelector('[data-mode=spend]').click(); const activity=document.getElementById('activitySelect'); activity.value='pay'; activity.dispatchEvent(new Event('change',{bubbles:true}));
+  const initial={product:state.tool.productId,target:state.tool.target,banner:!!document.querySelector('.challenge-product'),separateCard:!!document.querySelector('.product-scene'),price:document.querySelector('.challenge-price')?.textContent};
+  document.querySelector('[data-money=rm1]').click(); document.getElementById('randomPurchase').click();
+  const year2={product:state.tool.productId,target:state.tool.target,cleared:document.querySelector('.wallet-total strong').textContent,price:document.querySelector('.challenge-price')?.textContent};
+  grade.value='3'; grade.dispatchEvent(new Event('change',{bubbles:true})); document.querySelector('[data-mode=spend]').click(); activity.value='pay'; activity.dispatchEvent(new Event('change',{bubbles:true}));
+  const before3={product:state.tool.productId,target:state.tool.target}; document.querySelector('[data-money=rm1]').click(); document.getElementById('randomPurchase').click();
+  const year3={product:state.tool.productId,target:state.tool.target,cleared:document.querySelector('.wallet-total strong').textContent,price:document.querySelector('.challenge-price')?.textContent};
+  return {initial,year2,before3,year3,bank:SHOP_PRODUCTS.length,overflow:document.documentElement.scrollWidth-window.innerWidth};
+})()`);
+if (!purchaseTool.initial.banner || purchaseTool.initial.separateCard || !purchaseTool.initial.price?.includes('56.50') || purchaseTool.year2.product === purchaseTool.initial.product || purchaseTool.year2.target < 50 || purchaseTool.year2.target > 10000 || purchaseTool.year2.target % 5 || purchaseTool.year2.cleared !== "RM0.00" || purchaseTool.year2.price !== `RM${(purchaseTool.year2.target / 100).toFixed(2)}` || purchaseTool.year3.product === purchaseTool.before3.product || purchaseTool.year3.target < 50 || purchaseTool.year3.target > 100000 || purchaseTool.year3.target % 5 || purchaseTool.year3.cleared !== "RM0.00" || purchaseTool.year3.price !== `RM${(purchaseTool.year3.target / 100).toFixed(2)}` || purchaseTool.bank !== 15 || purchaseTool.overflow > 1) throw new Error(`Purchase tool failed: ${JSON.stringify(purchaseTool)}`);
+
 const board = await evaluate(`(() => {
   document.querySelector('[data-mode=manage]').click(); const activity=document.getElementById('activitySelect'); activity.value='needWant'; activity.dispatchEvent(new Event('change',{bubbles:true}));
   const firstSet=[...state.tool.itemIds]; const category=id=>BOARD_ITEMS.find(item=>item[0]===id)[3]; const first=firstSet[0], second=firstSet[1];
@@ -102,5 +115,5 @@ if (upperYears.ledger.rows !== 3 || !upperYears.decision.moved || !upperYears.op
 const zh = await evaluate(`(() => { document.querySelector('[data-lang=zh]').click(); return {lang:document.documentElement.lang,title:document.querySelector('h1').textContent,overflow:document.documentElement.scrollWidth-window.innerWidth}; })()`);
 if (zh.lang !== "zh-Hans" || !zh.title.includes("钱币") || zh.overflow > 1) throw new Error(`Chinese UI failed: ${JSON.stringify(zh)}`);
 if (errors.length) throw new Error(`Runtime errors: ${errors.join(" | ")}`);
-console.log(JSON.stringify({ ok:true, uniqueTools:new Set(coverage).size, initial, moneyTool, board, teacher, upperYears, zh }, null, 2));
+console.log(JSON.stringify({ ok:true, uniqueTools:new Set(coverage).size, initial, moneyTool, purchaseTool, board, teacher, upperYears, zh }, null, 2));
 socket.close();
