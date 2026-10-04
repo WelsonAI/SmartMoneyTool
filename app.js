@@ -48,7 +48,7 @@ const ACTIVITIES = {
   documents: { label: ml("Pembina dokumen kewangan", "财务文件生成器", "Financial document builder"), scope: ml("Tahun 6 · Bil, invois dan resit", "六年级 · 账单、发票与收据", "Year 6 · Bills, invoices and receipts"), tip: ml("Tukar jenis dokumen dan butiran transaksi.", "切换文件类型并修改交易资料。", "Switch the document type and transaction details.") },
   balanceSheet: { label: ml("Papan aset & liabiliti", "资产与负债板", "Assets & liabilities board"), scope: ml("Tahun 6 · 3.1 Aset dan liabiliti", "六年级 · 3.1 资产与负债", "Year 6 · 3.1 Assets and liabilities"), tip: ml("Laraskan nilai aset dan hutang untuk melihat nilai bersih.", "调整资产与债务，观察净值。", "Adjust assets and debts to see net worth.") },
   interestDividend: { label: ml("Papan faedah & dividen", "利息与股息板", "Interest & dividend board"), scope: ml("Tahun 6 · Faedah dan dividen", "六年级 · 利息与股息", "Year 6 · Interest and dividends"), tip: ml("Pilih faedah atau dividen, kemudian lihat hubungan peratus dengan nilai pulangan.", "选择利息或股息，观察百分率与所得金额的关系。", "Choose interest or dividends and observe how the percentage determines the return.") },
-  insurance: { label: ml("Papan insurans & takaful", "保险与回教保险板", "Insurance & takaful board"), scope: ml("Tahun 6 · Insurans dan takaful", "六年级 · 保险与回教保险", "Year 6 · Insurance and takaful"), tip: ml("Bandingkan ciri dan teroka jenis perlindungan yang dinyatakan dalam buku teks.", "比较两者特点，并探索课本列出的保障种类。", "Compare their features and explore the protection types listed in the textbook.") },
+  insurance: { label: ml("Model perkongsian risiko", "风险分担模拟板", "Risk-sharing model"), scope: ml("Tahun 6 · Insurans dan takaful", "六年级 · 保险与回教保险", "Year 6 · Insurance and takaful"), tip: ml("Gerakkan premium atau sumbangan, kemudian lihat cara perlindungan diberikan apabila kerugian berlaku.", "移动保费或献金，再观察发生损失时保障如何流动。", "Move a premium or contribution, then observe how protection flows when loss occurs.") },
 };
 
 const GRADE_MODES = {
@@ -174,7 +174,7 @@ function defaults(activity) {
     documents: { type: "invoice", item: "equipment", qty: 3, unit: 750, interacted: false },
     balanceSheet: { cash: 500, savings: 1200, property: 3000, loan: 1500, bills: 250, interacted: false },
     interestDividend: { type: "interest", capital: 3500, rate: 2, years: 2, interacted: false },
-    insurance: { view: "compare", protection: "life", interacted: false },
+    insurance: { scheme: "insurance", step: 0, selected: false, interacted: false },
   }[activity];
 }
 
@@ -600,21 +600,49 @@ function renderInterestDividend() {
 
 function renderInsurance() {
   const t = state.tool;
-  const protections = {
-    life: ["❤️", ml("Hayat", "生命", "Life")], saving: ["🐷", ml("Simpanan", "储蓄", "Savings")], education: ["🎓", ml("Pendidikan", "教育", "Education")],
-    medical: ["🏥", ml("Perubatan", "医药", "Medical")], accident: ["🩹", ml("Kemalangan diri", "人身意外", "Personal accident")], automobile: ["🚗", ml("Automobil", "汽车", "Automobile")], child: ["🧒", ml("Kanak-kanak", "儿童", "Children")],
-  };
-  setChallenge(loc(ml("Bandingkan insurans dan takaful", "比较保险与回教保险", "Compare insurance and takaful")), loc(ml("Gunakan dua paparan untuk melihat ciri dan jenis perlindungan dalam buku teks.", "用两个视图查看课本中的特点和保障种类。", "Use the two views to see the textbook features and protection types.")));
-  if (t.view === "compare") {
-    els.stage.innerHTML = `<div class="insurance-compare"><section><span class="shield">🛡️</span><h3>${loc(ml("Insurans", "保险", "Insurance"))}</h3><p>${loc(ml("Pemegang polisi membayar premium secara berkala.", "投保人定期支付保费。", "The policyholder pays premiums regularly."))}</p><p>${loc(ml("Syarikat insurans menanggung risiko.", "保险公司承担风险。", "The insurance company bears the risk."))}</p><p>${loc(ml("Tidak perlu beroperasi mengikut syariah.", "不需要依照伊斯兰教法来运作。", "It does not have to operate under Shariah principles."))}</p></section><section><span class="shield">🤝</span><h3>${loc(ml("Takaful", "回教保险", "Takaful"))}</h3><p>${loc(ml("Peserta membayar sumbangan secara berkala.", "缴纳者定期支付献金。", "Participants pay contributions regularly."))}</p><p>${loc(ml("Semua peserta saling menanggung risiko.", "所有参与者共同承担风险。", "All participants share the risk."))}</p><p>${loc(ml("Semua syarat mematuhi syariah.", "所有条件符合伊斯兰教法。", "All conditions follow Shariah principles."))}</p></section><div class="insurance-common"><strong>${loc(ml("Persamaan", "共同点", "In common"))}</strong><span>${loc(ml("Menanggung risiko dan memberi perlindungan ketika berlaku kerugian · Kontrak yang sah", "承担风险，在遭遇损失时提供保障 · 具法律效力的契约", "Risk protection when loss occurs · A legally valid contract"))}</span></div></div>`;
+  const takaful = t.scheme === "takaful";
+  const provider = takaful ? ml("Dana bersama", "共同基金", "Shared fund") : ml("Syarikat insurans", "保险公司", "Insurance company");
+  const contributor = takaful ? ml("Para peserta", "所有参与者", "Participants") : ml("Pemegang polisi", "投保人", "Policyholder");
+  const payment = takaful ? ml("Sumbangan", "献金", "Contribution") : ml("Premium", "保费", "Premium");
+  const actorIcon = takaful ? "👩‍🦱 👨‍🦰 👩" : "👤 🏠";
+  const providerIcon = takaful ? "🤝" : "🏢";
+  const selectedClass = t.selected ? " selected" : "";
+  const token = (kind, icon, label) => `<button type="button" draggable="true" class="risk-token ${kind}${selectedClass}" data-risk-token="${kind}" aria-label="${loc(label)}"><span>${icon}</span><strong>${loc(label)}</strong><small>${loc(ml("Seret saya", "拖动我", "Drag me"))}</small></button>`;
+  const actor = (content = "", target = false, damaged = false) => `<section class="risk-node actor ${target ? "drop-ready" : ""} ${damaged ? "damaged" : ""}" ${target ? 'data-risk-drop="receiver" role="button" tabindex="0"' : ""}><span class="risk-node-icon">${actorIcon}</span><h3>${loc(contributor)}</h3>${content}</section>`;
+  const fund = (content = "", target = false) => `<section class="risk-node provider ${target ? "drop-ready" : ""}" ${target ? 'data-risk-drop="provider" role="button" tabindex="0"' : ""}><span class="risk-node-icon">${providerIcon}</span><h3>${loc(provider)}</h3>${content}</section>`;
+  let model = "";
+  if (t.step === 0) {
+    model = `${actor(token("payment", "🪙", payment))}<div class="risk-arrow"><span>→</span><small>${loc(ml("Bayar", "支付", "Pay"))}</small></div>${fund(`<p>${loc(ml("Lepaskan di sini", "拖到这里", "Drop here"))}</p>`, true)}`;
+  } else if (t.step === 1) {
+    model = `${actor(`<span class="flow-done">✓ ${loc(payment)} ${loc(ml("dibayar", "已支付", "paid"))}</span>`)}<div class="risk-event"><span>⚡</span><button type="button" class="primary-button compact" id="riskLoss">${loc(ml("Berlaku kerugian", "发生损失", "A loss occurs"))}</button><small>${loc(ml("Tekan untuk meneruskan model", "点击继续观察模型", "Press to continue the model"))}</small></div>${fund(`<span class="flow-done">✓ ${loc(payment)} ${loc(ml("diterima", "已收取", "received"))}</span>`)}`;
+  } else if (t.step === 2) {
+    model = `${actor(`<p>${loc(ml("Kerugian berlaku di sini", "这里发生了损失", "The loss happened here"))}</p>`, true, true)}<div class="risk-arrow reverse"><span>←</span><small>${loc(ml("Beri perlindungan", "提供保障", "Provide protection"))}</small></div>${fund(token("protection", "🛡️", ml("Perlindungan", "保障", "Protection")))}`;
   } else {
-    const selected = protections[t.protection];
-    els.stage.innerHTML = `<div class="protection-catalog"><div class="selected-protection"><span>${selected[0]}</span><small>${loc(ml("Jenis perlindungan", "保障种类", "Protection type"))}</small><strong>${loc(selected[1])}</strong></div><div class="protection-grid">${Object.entries(protections).map(([id, item]) => `<button type="button" data-protection="${id}" class="${id === t.protection ? "active" : ""}"><span>${item[0]}</span><strong>${loc(item[1])}</strong></button>`).join("")}</div></div>`;
+    model = `${actor(`<span class="protected-mark">🛡️</span><strong class="flow-result">${loc(ml("Dilindungi ketika kerugian berlaku", "发生损失时获得保障", "Protected when loss occurs"))}</strong>`)}<div class="risk-arrow complete"><span>✓</span></div>${fund(`<span class="flow-done">${takaful ? loc(ml("Risiko dikongsi oleh semua peserta", "所有参与者共同分担风险", "Risk is shared by all participants")) : loc(ml("Risiko ditanggung oleh syarikat", "风险由保险公司承担", "Risk is borne by the company"))}</span>`)}`;
   }
-  els.controls.innerHTML = `<div class="segmented insurance-tabs"><button type="button" data-insurance-view="compare" class="${t.view === "compare" ? "active" : ""}">${loc(ml("Banding ciri", "比较特点", "Compare features"))}</button><button type="button" data-insurance-view="protection" class="${t.view === "protection" ? "active" : ""}">${loc(ml("Jenis perlindungan", "保障种类", "Protection types"))}</button></div>`;
-  els.controls.querySelectorAll("[data-insurance-view]").forEach(button => button.addEventListener("click", () => changeTool(x => { x.view = button.dataset.insuranceView; x.interacted = true; })));
-  els.stage.querySelectorAll("[data-protection]").forEach(button => button.addEventListener("click", () => changeTool(x => { x.protection = button.dataset.protection; x.interacted = true; })));
-  setSummary(t.view === "compare" ? loc(ml("Kedua-duanya memberikan perlindungan risiko melalui kontrak yang sah.", "两者都通过合法合约提供风险保障。", "Both provide risk protection through a valid contract.")) : `${loc(ml("Dipilih", "已选择", "Selected"))}: <strong>${loc(protections[t.protection][1])}</strong>`);
+  setChallenge(loc(ml("Jejaki aliran perlindungan", "追踪保障怎样流动", "Trace how protection flows")), loc(ml("Seret token, cetuskan kerugian dan lihat pihak yang menanggung risiko.", "拖动卡片、触发损失，再观察由谁承担风险。", "Drag the token, trigger a loss, and observe who bears the risk.")));
+  els.stage.innerHTML = `<div class="risk-model"><div class="risk-model-title"><strong>${loc(takaful ? ml("Takaful · saling membantu", "回教保险 · 守望相助", "Takaful · mutual help") : ml("Insurans · pemindahan risiko", "保险 · 转移风险", "Insurance · risk transfer"))}</strong><span>${t.step}/3</span></div><div class="risk-flow">${model}</div><div class="risk-rule"><strong>${loc(ml("Apa yang berubah?", "操作后有什么变化？", "What changes?"))}</strong><span>${loc(takaful ? ml("Sumbangan masuk ke dana bersama; peserta saling menanggung risiko.", "献金进入共同基金；所有参与者共同分担风险。", "Contributions enter a shared fund; participants share the risk.") : ml("Premium dibayar kepada syarikat; syarikat mengambil alih risiko.", "保费交给保险公司；风险转移给保险公司。", "The premium goes to the company; the risk is transferred to it."))}</span></div></div>`;
+  els.controls.innerHTML = `<div class="segmented insurance-tabs"><button type="button" data-risk-scheme="insurance" class="${!takaful ? "active" : ""}">${loc(ml("Insurans", "保险", "Insurance"))}</button><button type="button" data-risk-scheme="takaful" class="${takaful ? "active" : ""}">${loc(ml("Takaful", "回教保险", "Takaful"))}</button></div><div class="board-actions"><button type="button" class="secondary-button compact" id="resetRisk">↻ ${loc(ml("Mula semula", "重新开始", "Start again"))}</button></div>`;
+  const moveToken = () => changeTool(x => { if (x.step === 0 || x.step === 2) x.step += 1; x.selected = false; x.interacted = true; }, "coin");
+  els.controls.querySelectorAll("[data-risk-scheme]").forEach(button => button.addEventListener("click", () => changeTool(x => { x.scheme = button.dataset.riskScheme; x.step = 0; x.selected = false; x.interacted = true; })));
+  document.querySelector("#resetRisk").addEventListener("click", () => changeTool(x => { x.step = 0; x.selected = false; x.interacted = false; }));
+  document.querySelector("#riskLoss")?.addEventListener("click", () => changeTool(x => { x.step = 2; x.selected = false; x.interacted = true; }, "done"));
+  els.stage.querySelectorAll("[data-risk-token]").forEach(item => {
+    item.addEventListener("click", event => { event.stopPropagation(); changeTool(x => { x.selected = !x.selected; }); });
+    item.addEventListener("dragstart", event => { event.dataTransfer.setData("text/plain", item.dataset.riskToken); event.dataTransfer.effectAllowed = "move"; item.classList.add("dragging"); });
+    item.addEventListener("dragend", () => item.classList.remove("dragging"));
+  });
+  els.stage.querySelectorAll("[data-risk-drop]").forEach(target => {
+    target.addEventListener("dragover", event => { event.preventDefault(); target.classList.add("is-over"); });
+    target.addEventListener("dragleave", () => target.classList.remove("is-over"));
+    target.addEventListener("drop", event => { event.preventDefault(); target.classList.remove("is-over"); if (event.dataTransfer.getData("text/plain")) moveToken(); });
+    target.addEventListener("click", () => { if (state.tool.selected) moveToken(); });
+    target.addEventListener("keydown", event => { if ((event.key === "Enter" || event.key === " ") && state.tool.selected) { event.preventDefault(); moveToken(); } });
+  });
+  const summaries = takaful
+    ? [ml("Seret sumbangan peserta ke dana bersama.", "把参与者的献金拖入共同基金。", "Drag the participants' contribution into the shared fund."), ml("Sumbangan kini berada dalam dana bersama. Cetuskan kerugian.", "献金已进入共同基金。现在触发损失。", "The contribution is now in the shared fund. Trigger a loss."), ml("Seret perlindungan daripada dana bersama kepada peserta.", "把共同基金的保障拖给遭遇损失的参与者。", "Drag protection from the shared fund to the participant."), ml("Semua peserta berkongsi risiko melalui dana bersama.", "所有参与者通过共同基金分担风险。", "All participants share risk through the shared fund.")]
+    : [ml("Seret premium pemegang polisi kepada syarikat insurans.", "把投保人的保费拖给保险公司。", "Drag the policyholder's premium to the insurance company."), ml("Premium telah dibayar. Cetuskan kerugian.", "保费已支付。现在触发损失。", "The premium has been paid. Trigger a loss."), ml("Seret perlindungan daripada syarikat kepada pemegang polisi.", "把保险公司的保障拖给投保人。", "Drag protection from the company to the policyholder."), ml("Risiko telah dipindahkan kepada syarikat insurans.", "风险已经转移给保险公司。", "The risk has been transferred to the insurance company.")];
+  setSummary(loc(summaries[t.step]), t.step === 3 ? "success" : "neutral");
 }
 
 function renderTool() {

@@ -20,7 +20,7 @@ An interactive Malaysian primary-school money toolkit for Years 2–6, available
 - A Year 4 decision board that draws six random-priced purchases from a bank of twenty-four
 - A Year 4 step-by-step payment workbench covering cash, self-checkout, contactless bank cards, online payment and QR payment without quiz prompts
 - Textbook comparison boards for Year 5 saving/investment and cash/credit concepts
-- Year 6 textbook models for compound interest, dividends, insurance, takaful and protection types
+- A Year 6 drag-and-drop risk-flow model showing how premiums, contributions and protection move in insurance and takaful
 - Savings and money-allocation tools with visible calculations
 - Grade-specific tools aligned to the Year 2–6 KSSR money standards used by SK and SJK
 - Teacher-controlled demonstration amounts
