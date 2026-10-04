@@ -6,9 +6,9 @@ An interactive Malaysian primary-school money toolkit for Years 2–6, available
 
 - **Year 2:** recognise Malaysian notes and coins up to RM100, determine and compose values, pay exact amounts, and explore basic saving and spending decisions.
 - **Year 3:** compose money values, pay in daily situations, compare ASEAN currencies using a teacher-supplied current rate, and explore needs, wants and planned saving.
-- **Year 4:** compare foreign currencies, keep a running income-and-expense record, and move purchases across a decision board while observing the effect on the balance.
-- **Year 5:** build basic money operations and run values through a two-step combined-operation machine.
-- **Year 6:** model cost, sales, profit or loss; construct a live discount-and-tax receipt; and compare assets with liabilities.
+- **Year 4:** compare foreign currencies, build receipts and bills, compare cash with credit, keep a running income-and-expense record, and move random-priced purchases across a decision board.
+- **Year 5:** build money operations, split money between saving and investing, compare simple with compound interest, and simulate debt repayment.
+- **Year 6:** model profit or loss, construct discount-and-tax receipts, build bills/invoices/receipts, compare assets with liabilities, and simulate insurance or takaful protection.
 
 ## Features
 
@@ -17,6 +17,8 @@ An interactive Malaysian primary-school money toolkit for Years 2–6, available
 - Grade-bounded random target amounts for the Year 2 and Year 3 money-composition tool
 - A Year 2–3 exact-payment counter with fifteen products and matching random price ranges
 - A real drag-and-drop needs-and-wants board that draws six balanced random cards from a bank of twenty situations, with an accessible tap-card-then-tap-space alternative
+- A Year 4 decision board that draws six random-priced purchases from a bank of twenty-four
+- Adjustable receipt, cash-versus-credit, saving/investment, interest, debt and protection simulators for Years 4–6
 - Savings and money-allocation tools with visible calculations
 - Grade-specific tools aligned to the Year 2–6 KSSR money standards used by SK and SJK
 - Teacher-controlled demonstration amounts
@@ -49,4 +51,4 @@ Open `index.html` in a modern browser. No build step is required.
 
 ## Verification
 
-`tests/smoke.mjs` checks all fourteen distinct tools, currency assets, exact RM56.50 composition, random drag-and-drop boards, upper-year simulations, teacher settings, language switching and mobile overflow through the Chrome DevTools Protocol.
+`tests/smoke.mjs` checks all twenty-one distinct tools, currency assets, exact RM56.50 composition, random drag-and-drop boards, upper-year simulations, teacher settings, language switching and mobile overflow through the Chrome DevTools Protocol.

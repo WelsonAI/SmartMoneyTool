@@ -398,6 +398,7 @@ select, input {
 .compare-card { display: grid; place-items: center; gap: 8px; padding: 16px; border: 2px solid #d6bd8c; border-radius: 18px; background: #fff9e9; }
 .compare-card.highlight { border-color: var(--green-2); box-shadow: 0 0 0 4px rgba(19,139,117,.12); }
 .compare-card h3 { margin: 0; color: var(--green); }
+.compare-icon { font-size: 54px; line-height: 1; }
 .compare-card .metric { width: 100%; padding: 8px; }
 .compare-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .compare-controls fieldset { min-width: 0; padding: 10px; border: 2px solid #dbc293; border-radius: 15px; }
@@ -499,6 +500,7 @@ select, input {
 @media (max-width: 760px) {
   .explorer-layout, .goal-scene { grid-template-columns: 1fr; }
   .converter, .digital-checkout, .cashflow, .claim-flow { flex-direction: column; }
+  .compare-grid { grid-template-columns: 1fr; }
   .currency-card { min-width: min(250px, 90%); }
   .method-tabs { grid-template-columns: repeat(3, 1fr); }
   .method-tab { min-height: 78px; }

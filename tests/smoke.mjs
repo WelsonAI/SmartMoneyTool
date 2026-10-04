@@ -35,9 +35,9 @@ if (initial.overflow > 1) throw new Error(`Mobile overflow: ${initial.overflow}p
 const expected = {
   2:{money:["identify","compose"],spend:["pay"],manage:["needWant","savingPlan","budget"]},
   3:{money:["compose","foreign"],spend:["pay"],manage:["needWant","savingPlan","budget"]},
-  4:{money:["foreign"],manage:["ledger","decision"]},
-  5:{money:["operationMat","operationMachine"]},
-  6:{spend:["shopLab","offerLab"],manage:["balanceSheet"]}
+  4:{money:["foreign"],spend:["receiptStudio","cashCredit"],manage:["ledger","decision"]},
+  5:{money:["operationMat","operationMachine"],spend:["cashCredit"],manage:["saveInvest","simpleCompound","creditDebt"]},
+  6:{spend:["shopLab","offerLab","documents"],manage:["balanceSheet","insurance"]}
 };
 const coverage = [];
 for (const [grade, modes] of Object.entries(expected)) {
@@ -57,6 +57,7 @@ for (const [grade, modes] of Object.entries(expected)) {
     coverage.push(...result.checks.map(x => x.value));
   }
 }
+if (new Set(coverage).size !== 21) throw new Error(`Unexpected unique tool count: ${new Set(coverage).size}`);
 
 const moneyTool = await evaluate(`(() => {
   const grade=document.getElementById('gradeSelect'); grade.value='2'; grade.dispatchEvent(new Event('change',{bubbles:true}));
@@ -102,15 +103,22 @@ if (teacher.open || !teacher.target.includes("56.50")) throw new Error(`Teacher 
 const upperYears = await evaluate(`(() => {
   const choose=(grade,mode,activity)=>{ const g=document.getElementById('gradeSelect'); g.value=grade; g.dispatchEvent(new Event('change',{bubbles:true})); document.querySelector('[data-mode='+mode+']').click(); const a=document.getElementById('activitySelect'); a.value=activity; a.dispatchEvent(new Event('change',{bubbles:true})); };
   choose('4','manage','ledger'); document.getElementById('ledgerLabel').value='Tambang'; document.getElementById('ledgerAmount').value='7'; document.getElementById('ledgerType').value='expense'; document.getElementById('addLedger').click(); const ledger={rows:document.querySelectorAll('.ledger-sheet tbody tr').length};
-  choose('4','manage','decision'); document.querySelector('[data-choice=meal]').click(); document.querySelector('[data-decision-bin=buy]').click(); const decision={moved:!!document.querySelector('[data-decision-bin=buy] [data-choice=meal]')};
+  choose('4','manage','decision'); const choice=state.tool.itemIds[0]; const beforeSet=[...state.tool.itemIds].sort().join(','); const beforePrices=JSON.stringify(state.tool.prices); document.querySelector('[data-choice='+choice+']').click(); document.querySelector('[data-decision-bin=buy]').click(); const moved=!!document.querySelector('[data-decision-bin=buy] [data-choice='+choice+']'); document.getElementById('newDecisionSet').click(); const decision={moved,changed:beforeSet!==[...state.tool.itemIds].sort().join(',')||beforePrices!==JSON.stringify(state.tool.prices),count:state.tool.itemIds.length,bank:DECISION_ITEMS.length,prices:Object.values(state.tool.prices),cleared:Object.keys(state.tool.places).length===0};
+  choose('4','spend','receiptStudio'); const receiptItem=state.tool.item; document.getElementById('randomDocument').click(); const receipt={changed:state.tool.item!==receiptItem,total:document.querySelector('.document-row.total').textContent};
+  choose('4','spend','cashCredit'); document.getElementById('creditRate').value='8'; document.getElementById('creditRate').dispatchEvent(new Event('change',{bubbles:true})); const cashCredit={summary:document.getElementById('liveSummary').textContent,cards:document.querySelectorAll('.compare-card').length};
   choose('5','money','operationMat'); document.querySelector('[data-op=×]').click(); const operation={result:document.querySelector('.operation-card.result').textContent};
   choose('5','money','operationMachine'); document.getElementById('machineMultiplier').value='4'; document.getElementById('machineMultiplier').dispatchEvent(new Event('change',{bubbles:true})); const machine={result:document.querySelector('.machine-step.result strong').textContent};
+  choose('5','manage','saveInvest'); document.getElementById('siSplit').value='60'; document.getElementById('siSplit').dispatchEvent(new Event('change',{bubbles:true})); const saveInvest={cards:document.querySelectorAll('.compare-card').length,summary:document.getElementById('liveSummary').textContent};
+  choose('5','manage','simpleCompound'); document.getElementById('intYears').value='10'; document.getElementById('intYears').dispatchEvent(new Event('change',{bubbles:true})); const interest={columns:document.querySelectorAll('.growth-column').length,summary:document.getElementById('liveSummary').textContent};
+  choose('5','manage','creditDebt'); document.getElementById('debtMonths').value='60'; document.getElementById('debtMonths').dispatchEvent(new Event('change',{bubbles:true})); const debt={stops:document.querySelectorAll('.timeline-stop').length,summary:document.getElementById('liveSummary').textContent};
   choose('6','spend','shopLab'); document.getElementById('shopPrice').value='15'; document.getElementById('shopPrice').dispatchEvent(new Event('change',{bubbles:true})); const shop={summary:document.getElementById('liveSummary').textContent};
   choose('6','spend','offerLab'); document.getElementById('offerDiscount').value='30'; document.getElementById('offerDiscount').dispatchEvent(new Event('change',{bubbles:true})); const offer={receipt:document.querySelector('.receipt-lab footer strong').textContent};
+  choose('6','spend','documents'); document.getElementById('docType').value='invoice'; document.getElementById('docType').dispatchEvent(new Event('change',{bubbles:true})); document.getElementById('docQty').value='4'; document.getElementById('docQty').dispatchEvent(new Event('change',{bubbles:true})); const documents={stamp:document.querySelector('.doc-stamp').textContent,total:document.querySelector('.document-row.total').textContent};
   choose('6','manage','balanceSheet'); document.getElementById('debtLoan').value='2000'; document.getElementById('debtLoan').dispatchEvent(new Event('change',{bubbles:true})); const balance={summary:document.getElementById('liveSummary').textContent,overflow:document.documentElement.scrollWidth-window.innerWidth};
-  return {ledger,decision,operation,machine,shop,offer,balance};
+  choose('6','manage','insurance'); document.getElementById('insCoverage').value='8000'; document.getElementById('insCoverage').dispatchEvent(new Event('change',{bubbles:true})); const insurance={metrics:document.querySelectorAll('.claim-flow .metric').length,summary:document.getElementById('liveSummary').textContent,overflow:document.documentElement.scrollWidth-window.innerWidth};
+  return {ledger,decision,receipt,cashCredit,operation,machine,saveInvest,interest,debt,shop,offer,documents,balance,insurance};
 })()`);
-if (upperYears.ledger.rows !== 3 || !upperYears.decision.moved || !upperYears.operation.result || !upperYears.machine.result || !upperYears.shop.summary || !upperYears.offer.receipt || upperYears.balance.overflow > 1) throw new Error(`Upper-year tools failed: ${JSON.stringify(upperYears)}`);
+if (upperYears.ledger.rows !== 3 || !upperYears.decision.moved || !upperYears.decision.changed || upperYears.decision.count !== 6 || upperYears.decision.bank !== 24 || !upperYears.decision.prices.every(value => value % 5 === 0) || !upperYears.decision.cleared || !upperYears.receipt.changed || !upperYears.receipt.total || upperYears.cashCredit.cards !== 2 || !upperYears.cashCredit.summary || !upperYears.operation.result || !upperYears.machine.result || upperYears.saveInvest.cards !== 2 || !upperYears.saveInvest.summary || upperYears.interest.columns !== 11 || !upperYears.interest.summary || upperYears.debt.stops !== 3 || !upperYears.debt.summary || !upperYears.shop.summary || !upperYears.offer.receipt || !upperYears.documents.stamp.includes('INVOIS') || !upperYears.documents.total || upperYears.balance.overflow > 1 || upperYears.insurance.metrics !== 3 || !upperYears.insurance.summary || upperYears.insurance.overflow > 1) throw new Error(`Upper-year tools failed: ${JSON.stringify(upperYears)}`);
 
 const zh = await evaluate(`(() => { document.querySelector('[data-lang=zh]').click(); return {lang:document.documentElement.lang,title:document.querySelector('h1').textContent,overflow:document.documentElement.scrollWidth-window.innerWidth}; })()`);
 if (zh.lang !== "zh-Hans" || !zh.title.includes("钱币") || zh.overflow > 1) throw new Error(`Chinese UI failed: ${JSON.stringify(zh)}`);
