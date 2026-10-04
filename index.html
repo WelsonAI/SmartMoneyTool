@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+SC:wght@500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
   <div class="page-shell">
@@ -39,7 +39,6 @@
       <button type="button" data-mode="money" class="active"><span>💵</span><span data-i18n="tabMoney">Kenal &amp; Bina</span></button>
       <button type="button" data-mode="spend"><span>🛒</span><span data-i18n="tabSpend">Bayar &amp; Belanja</span></button>
       <button type="button" data-mode="manage"><span>🐷</span><span data-i18n="tabManage">Urus Wang</span></button>
-      <button type="button" data-mode="finance"><span>🌱</span><span data-i18n="tabFinance">Celik Kewangan</span></button>
     </nav>
 
     <main class="workspace">
@@ -52,9 +51,6 @@
         <select id="gradeSelect">
           <option value="2">Tahun 2</option>
           <option value="3">Tahun 3</option>
-          <option value="4">Tahun 4</option>
-          <option value="5">Tahun 5</option>
-          <option value="6">Tahun 6</option>
         </select>
 
         <label for="activitySelect" data-i18n="activity">Aktiviti</label>
@@ -75,7 +71,7 @@
             <h2 id="activityTitle"></h2>
           </div>
           <div class="heading-actions">
-            <button id="listenButton" class="listen-button" type="button">🔊 <span data-i18n="listen">Dengar</span></button>
+            <button id="listenButton" class="listen-button" type="button" disabled title="Lengkapkan aktiviti dahulu">🔊 <span>Selesaikan dahulu</span></button>
             <span id="gradeBadge" class="grade-badge">T2</span>
           </div>
         </div>
@@ -104,14 +100,10 @@
       <div class="divider"></div>
       <p data-i18n="customHelp">Gunakan nilai ini dalam alat semasa untuk demonstrasi kelas.</p>
       <div class="money-inputs">
-        <div><label for="teacherRinggit" data-i18n="ringgit">Ringgit</label><input id="teacherRinggit" type="number" min="0" max="500" value="12"></div>
+        <div><label for="teacherRinggit" data-i18n="ringgit">Ringgit</label><input id="teacherRinggit" type="number" min="0" max="10000" value="56"></div>
         <div><label for="teacherSen" data-i18n="sen">Sen</label><input id="teacherSen" type="number" min="0" max="95" step="5" value="50"></div>
       </div>
-      <div class="money-inputs">
-        <div><label for="teacherRate" data-i18n="rate">Kadar (%)</label><input id="teacherRate" type="number" min="0" max="30" step="0.5" value="5"></div>
-        <div><label for="teacherPeriod" data-i18n="period">Tempoh</label><input id="teacherPeriod" type="number" min="1" max="20" value="5"></div>
-      </div>
-      <div id="teacherPreview" class="teacher-preview">RM12.50 · 5% · 5</div>
+      <div id="teacherPreview" class="teacher-preview">RM56.50</div>
       <p id="teacherError" class="dialog-error"></p>
       <div class="dialog-actions">
         <button type="submit" value="cancel" class="secondary-button" data-i18n="cancel">Batal</button>
@@ -127,6 +119,6 @@
     </button>
   </template>
 
-  <script src="app.js?v=2"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>

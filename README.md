@@ -1,14 +1,11 @@
 # SmartMoneyTool
 
-An interactive Malaysian primary-school money toolkit for Years 2–6, available in Bahasa Melayu, Chinese and English. Every activity is a manipulable classroom simulation rather than a scored exercise.
+An interactive Malaysian primary-school money toolkit for Years 2–3, available in Bahasa Melayu, Chinese and English. The scope follows the KSSR money units used by SK and SJK and favours concrete manipulation over broad but shallow topic coverage.
 
 ## Learning progression
 
-- **Year 2:** recognise current Malaysian banknotes and coins, compose equivalent values, pay exact amounts, distinguish needs and wants, and plan simple savings.
-- **Year 3:** money combinations, everyday payments, ASEAN currency names, cashless payment tools and simple budgets.
-- **Year 4:** payment methods, receipts and bills, budgeting, wise financial decisions, and cash versus credit.
-- **Year 5:** savings and investments, simple and compound interest, credit and debt.
-- **Year 6:** profit and loss, discounts/rebates/vouchers, bills/invoices/receipts, assets and liabilities, insurance and takaful.
+- **Year 2:** recognise Malaysian notes and coins up to RM100, determine and compose values, pay exact amounts, and explore basic saving and spending decisions.
+- **Year 3:** compose money values, pay in daily situations, compare ASEAN currencies using a teacher-supplied current rate, and explore needs, wants and planned saving.
 
 Formal addition, subtraction, multiplication and division practice is intentionally reserved for the separate Block Operations Tool.
 
@@ -16,11 +13,12 @@ Formal addition, subtraction, multiplication and division practice is intentiona
 
 - Official current-series Malaysian banknote and coin images
 - Click-to-compose money tray with a live total and real Malaysian currency images
-- Hands-on checkout, payment-method, needs-and-wants, saving, budget, interest, debt, discount, profit/loss and protection simulators
-- Grade-specific tools based on Malaysian primary textbook topics
-- Teacher-controlled amount, rate and period settings for classroom demonstrations
+- A real drag-and-drop needs-and-wants board with an accessible tap-card-then-tap-space alternative
+- Savings and money-allocation tools with visible calculations
+- Grade-specific tools aligned to the Year 2 and Year 3 KSSR money standards used by SK and SJK
+- Teacher-controlled demonstration amounts
 - Bahasa Melayu, Chinese and English interface
-- Spoken prompts and interaction/feedback sounds
+- Spoken calculation process and result only after the learner has interacted
 - Responsive desktop and mobile layout
 
 ## Currency image sources
@@ -33,10 +31,16 @@ Currency images are sourced from Bank Negara Malaysia and are displayed as elect
 
 The interface adds a visible `CONTOH` web overlay and credits Bank Negara Malaysia. Images remain single-sided and are not presented at physical print size.
 
+## Curriculum references
+
+- [KPM-linked Year 2 SK, SJKC and SJKT digital textbooks](https://sites.google.com/moe-dl.edu.my/ppd-batu-pahat-sains-matematik/buku-teks-digital-bidang-sains-matematik/buku-teks-sekolah-rendah/matematik-tahun-2)
+- [KSSR Mathematics Year 2: Money](https://c.zoom-a.com/cache/dbp/refpub/1668665030212/DSKP-Th2-MM.pdf)
+- [KSSR Mathematics Year 3: Money](https://c.zoom-a.com/cache/dbp/refpub/1668664885340/DSKP-Th3-MM.pdf)
+
 ## Run locally
 
 Open `index.html` in a modern browser. No build step is required.
 
 ## Verification
 
-`tests/smoke.mjs` checks all 21 tools, currency asset loading, the `CONTOH` marker, money manipulation, teacher settings, language switching, removal of legacy assessment controls and mobile overflow through the Chrome DevTools Protocol.
+`tests/smoke.mjs` checks the eight retained tools, currency assets, exact RM56.50 composition, result-only narration, needs-and-wants placement, teacher settings, language switching and mobile overflow through the Chrome DevTools Protocol.
